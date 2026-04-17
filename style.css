@@ -1,4 +1,6 @@
-/* --- CONFIGURACIÓN GENERAL --- */
+/* =========================================
+   1. CONFIGURACIÓN BASE
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,59 +9,155 @@
 }
 
 body {
-    background-color: #f5ebe0; /* Crema */
-    color: #3d2b1f; /* Café */
+    background-color: #f5ebe0;
+    color: #3d2b1f;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- NAVBAR --- */
+/* =========================================
+   2. NAVBAR (Compacto con Dropdown)
+   ========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #3d2b1f;
-    padding: 1.2rem 8%;
+    padding: 0.5rem 15%; /* Mantiene el ancho elegante que pediste */
     color: #f5ebe0;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    width: 100%;
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    height: 60px; /* Altura fija para que no tape el inicio */
 }
 
 .logo {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #d4a373; /* Dorado */
+    color: #d4a373;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .nav-links {
+    display: flex;
     list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+    position: relative; /* Para que el dropdown se alinee aquí */
 }
 
 .nav-links a {
     color: #f5ebe0;
     text-decoration: none;
-    transition: 0.3s;
     font-size: 1rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
 }
 
 .nav-links a:hover {
     color: #d4a373;
 }
 
-/* --- CONTENEDOR PRINCIPAL --- */
+/* --- LÓGICA DEL DROPDOWN (Solo aparece al tocar/hover) --- */
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    top: 100%; 
+    left: 0;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #3d2b1f;
+    padding: 12px 16px;
+    display: block;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5ebe0;
+    color: #d4a373;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Solo se muestra al pasar el mouse */
+}
+
+/* =========================================
+   3. HERO (Página de Inicio)
+   ========================================= */
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(61, 43, 31, 0.7), rgba(61, 43, 31, 0.7)), 
+                url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #f5ebe0;
+    padding: 80px 20px 40px 20px; /* Reducido para que no tape contenido */
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+    color: #e3d5ca;
+}
+
+.btn-main {
+    padding: 18px 45px;
+    background-color: #d4a373;
+    color: #3d2b1f;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: inline-block;
+}
+
+.btn-main:hover {
+    background-color: #bc8a5f;
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   4. CONTENEDOR DE INTRODUCCIÓN
+   ========================================= */
 .container {
-    max-width: 1100px; /* Ancho mayor para claridad de test */
-    margin: 50px auto;
+    max-width: 900px;
+    margin: 100px auto 60px auto; 
     padding: 0 20px;
 }
 
 .section-title {
     text-align: center;
     font-size: 2.8rem;
-    color: #3d2b1f;
     margin-bottom: 10px;
 }
 
@@ -70,112 +168,65 @@ body {
     font-style: italic;
 }
 
-/* --- ACORDEONES (DETAILS) --- */
 details {
     background-color: #ffffff;
     margin-bottom: 20px;
     border-radius: 15px;
     border-left: 8px solid #d4a373;
     box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-details[open] {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 summary {
-    padding: 22px;
+    padding: 20px;
     font-weight: bold;
-    font-size: 1.2rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    background-color: #fff;
+    font-size: 1.1rem;
 }
 
-summary i {
-    margin-right: 15px;
-    color: #d4a373;
-    font-size: 1.4rem;
-}
-
-summary:hover {
-    background-color: #fdfaf7;
-}
+summary i { margin-right: 15px; color: #d4a373; }
 
 .content {
-    padding: 20px 40px 40px;
+    padding: 30px;
     border-top: 1px solid #f5ebe0;
 }
 
-/* --- CRONOGRAMA --- */
-.wide-image-container {
+/* =========================================
+   5. IMÁGENES Y TEST (Scroll Horizontal)
+   ========================================= */
+.wide-image-container, .test-image-wrapper {
     width: 100%;
-    background: #fff;
-    border-radius: 10px;
-    padding: 15px;
-    border: 1px solid #e3d5ca;
-    overflow-x: auto; /* Scroll en celulares si es muy ancho */
-}
-
-.responsive-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-
-/* --- BLOQUES DE ANÁLISIS Y TEST --- */
-.analysis-block {
-    margin-bottom: 30px;
-}
-
-.analysis-block h3 {
-    color: #6f4e37;
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-}
-
-.test-image-wrapper {
-    width: 100%;
-    background-color: #ffffff;
+    overflow-x: auto;
     border: 1px solid #e3d5ca;
     border-radius: 12px;
+    background: #fff;
+    padding: 10px;
     margin: 20px 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+}
+
+.responsive-img, .test-img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 .test-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+    min-width: 700px; 
 }
 
-.analysis-text {
-    text-align: justify;
-    font-size: 1.05rem;
-    color: #4a3c31;
-    margin-bottom: 20px;
-}
-
-/* --- FIRMAS PROFESIONALES --- */
+/* =========================================
+   6. FIRMAS
+   ========================================= */
 .signature-box {
-    width: 250px;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 220px;
+    margin-top: 30px;
 }
 
 .signature-img {
-    max-height: 80px;
-    width: auto;
-    margin-bottom: -15px; /* IMPORTANTE: Hace que la firma pise la línea */
-    mix-blend-mode: multiply; /* Quita el fondo blanco si la imagen lo tiene */
+    max-height: 70px;
+    margin-bottom: -15px;
+    mix-blend-mode: multiply;
 }
 
 .signature-line {
@@ -184,25 +235,32 @@ summary:hover {
     background-color: #3d2b1f;
 }
 
-.signature-box span {
-    font-size: 0.8rem;
-    color: #6f4e37;
-    margin-top: 8px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
 .separator {
     border: 0;
     height: 1px;
-    background: linear-gradient(to right, transparent, #d4a373, transparent);
-    margin: 50px 0;
+    background: #e3d5ca;
+    margin: 40px 0;
 }
 
-/* --- RESPONSIVE --- */
+/* =========================================
+   7. RESPONSIVE (Móvil)
+   ========================================= */
 @media (max-width: 768px) {
-    .container { width: 95%; }
-    .section-title { font-size: 2rem; }
-    .content { padding: 15px 15px 30px 20px; }
-    .signature-box { width: 100%; max-width: 200px; }
+    .navbar {
+        padding: 0.8rem 5%;
+    }
+    
+    .nav-links li {
+        margin-left: 10px;
+    }
+
+    .nav-links a span {
+        display: none; 
+    }
+
+    .container {
+        margin-top: 100px;
+    }
+
+    .test-img { min-width: 500px; }
 }
