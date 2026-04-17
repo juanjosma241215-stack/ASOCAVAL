@@ -241,7 +241,49 @@ summary i { margin-right: 15px; color: #d4a373; }
     background: #e3d5ca;
     margin: 40px 0;
 }
+/* Estilos para los canales de comunicación */
+.social-channels {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
 
+.social-channels li {
+    margin-bottom: 15px;
+}
+
+.social-channels a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #3d2b1f;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.social-channels a:hover {
+    transform: translateX(10px);
+    color: #d4a373;
+}
+
+.social-channels i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+}
+
+/* Colores originales de cada marca */
+.fa-whatsapp { color: #25D366; }
+.fa-envelope { color: #EA4335; }
+.fa-video { color: #2D8CFF; } /* Zoom */
+.fa-instagram { color: #E1306C; }
+
+.social-channels span strong {
+    display: block;
+    font-size: 0.9rem;
+    color: #6f4e37;
+}
 /* =========================================
    7. RESPONSIVE (Móvil)
    ========================================= */
