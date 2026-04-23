@@ -117,7 +117,7 @@ img {
    ========================================= */
 .hero {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -126,7 +126,7 @@ img {
     background: linear-gradient(rgba(61, 43, 31, 0.65), rgba(61, 43, 31, 0.65)),
         url('https://concepto.de/wp-content/uploads/2018/08/cacao-e1533849112880.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center bottom;
     background-attachment: fixed;
     color: #f5ebe0;
     padding: 100px 20px 60px;
