@@ -22,15 +22,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3d2b1f;
-    padding: 0.5rem 15%; /* Mantiene el ancho elegante que pediste */
+    background-color: rgba(61, 43, 31, 0.95); /* Un poco de transparencia */
+    padding: 0.5rem 15%;
     color: #f5ebe0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 2000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    height: 60px; /* Altura fija para que no tape el inicio */
+    height: 60px;
+    backdrop-filter: blur(5px); /* Efecto moderno */
 }
 
 .logo {
@@ -49,7 +50,7 @@ body {
 
 .nav-links li {
     margin-left: 20px;
-    position: relative; /* Para que el dropdown se alinee aquí */
+    position: relative;
 }
 
 .nav-links a {
@@ -67,7 +68,7 @@ body {
     color: #d4a373;
 }
 
-/* --- LÓGICA DEL DROPDOWN (Solo aparece al tocar/hover) --- */
+/* DROPDOWN */
 .dropdown-content {
     display: none; 
     position: absolute;
@@ -94,11 +95,11 @@ body {
 }
 
 .dropdown:hover .dropdown-content {
-    display: block; /* Solo se muestra al pasar el mouse */
+    display: block;
 }
 
 /* =========================================
-   3. HERO (Página de Inicio)
+   3. HERO (Imagen de Fondo Principal)
    ========================================= */
 .hero {
     width: 100%;
@@ -108,18 +109,23 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(61, 43, 31, 0.7), rgba(61, 43, 31, 0.7)), 
-                url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1350&q=80');
+    
+    /* CONFIGURACIÓN DE LA IMAGEN */
+    background: linear-gradient(rgba(61, 43, 31, 0.65), rgba(61, 43, 31, 0.65)), 
+                url('https://concepto.de/wp-content/uploads/2018/08/cacao-e1533849112880.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed; /* Efecto Parallax */
+    
     color: #f5ebe0;
-    padding: 80px 20px 40px 20px; /* Reducido para que no tape contenido */
+    padding: 80px 20px;
 }
 
 .hero h1 {
     font-size: clamp(2.5rem, 8vw, 4rem);
     margin-bottom: 1.5rem;
     max-width: 900px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
 .hero p {
@@ -147,11 +153,11 @@ body {
 }
 
 /* =========================================
-   4. CONTENEDOR DE INTRODUCCIÓN
+   4. CONTENEDOR Y COMPONENTES
    ========================================= */
 .container {
     max-width: 900px;
-    margin: 100px auto 60px auto; 
+    margin: 80px auto; 
     padding: 0 20px;
 }
 
@@ -193,9 +199,9 @@ summary i { margin-right: 15px; color: #d4a373; }
 }
 
 /* =========================================
-   5. IMÁGENES Y TEST (Scroll Horizontal)
+   5. IMÁGENES Y SOCIAL
    ========================================= */
-.wide-image-container, .test-image-wrapper {
+.wide-image-container {
     width: 100%;
     overflow-x: auto;
     border: 1px solid #e3d5ca;
@@ -205,34 +211,27 @@ summary i { margin-right: 15px; color: #d4a373; }
     margin: 20px 0;
 }
 
-.responsive-img, .test-img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
+.social-channels {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
 }
 
-.test-img {
-    min-width: 700px; 
+.social-channels a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000000 !important; 
+    font-size: 1rem;
+    transition: 0.3s;
+    margin-bottom: 15px;
 }
 
-/* =========================================
-   6. FIRMAS
-   ========================================= */
-.signature-box {
-    width: 220px;
-    margin-top: 30px;
-}
-
-.signature-img {
-    max-height: 70px;
-    margin-bottom: -15px;
-    mix-blend-mode: multiply;
-}
-
-.signature-line {
-    width: 100%;
-    height: 2px;
-    background-color: #3d2b1f;
+.social-channels i {
+    font-size: 1.3rem;
+    margin-right: 15px;
+    width: 30px;
+    color: #000000 !important;
 }
 
 .separator {
@@ -241,43 +240,22 @@ summary i { margin-right: 15px; color: #d4a373; }
     background: #e3d5ca;
     margin: 40px 0;
 }
-/* Estilos para los canales de comunicación */
-/* Estilos para Canales en color negro */
-.social-channels {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
-}
 
-.social-channels li {
-    margin-bottom: 12px;
-}
-
-.social-channels a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    /* Forzamos el color negro */
-    color: #000000 !important; 
-    font-size: 1rem;
-    transition: 0.3s;
-}
-
-.social-channels i {
-    font-size: 1.2rem;
-    margin-right: 15px;
-    width: 25px;
+.signature-box {
+    width: 220px;
+    margin-top: 50px;
     text-align: center;
-    /* Forzamos que los iconos también sean negros */
-    color: #000000 !important; 
 }
 
-.social-channels a:hover {
-    opacity: 0.7;
-    transform: translateX(5px);
+.signature-line {
+    width: 100%;
+    height: 2px;
+    background-color: #3d2b1f;
+    margin-bottom: 10px;
 }
+
 /* =========================================
-   7. RESPONSIVE (Móvil)
+   6. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
     .navbar {
@@ -289,12 +267,10 @@ summary i { margin-right: 15px; color: #d4a373; }
     }
 
     .nav-links a span {
-        display: none; 
+        display: none; /* Solo iconos en móvil */
     }
 
-    .container {
-        margin-top: 100px;
+    .hero h1 {
+        font-size: 2.2rem;
     }
-
-    .test-img { min-width: 500px; }
 }
