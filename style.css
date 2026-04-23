@@ -274,3 +274,30 @@ summary i { margin-right: 15px; color: #d4a373; }
         font-size: 2.2rem;
     }
 }
+/* Ajustes específicos para que el fondo sea responsive en celulares */
+@media (max-width: 768px) {
+    .hero {
+        /* Ajustamos la altura para móviles */
+        min-height: 100vh; 
+        
+        /* Optimizamos el fondo para pantallas verticales */
+        background-attachment: scroll; /* En muchos móviles el 'fixed' da problemas, 'scroll' es más fluido */
+        background-position: center center;
+        background-size: cover;
+        
+        /* Reducimos el padding para que el contenido no quede muy apretado */
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        /* Tamaño de letra más pequeño para que el título no se rompa en dos líneas */
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        /* Ajustamos el tamaño del párrafo para lectura en móvil */
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+}
