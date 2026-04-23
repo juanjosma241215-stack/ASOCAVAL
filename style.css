@@ -257,43 +257,65 @@ summary i { margin-right: 15px; color: #d4a373; }
 /* =========================================
    6. RESPONSIVE
    ========================================= */
+
 @media (max-width: 768px) {
+    /* Ajustes de Navegación */
     .navbar {
-        padding: 0.8rem 5%;
+        padding: 0.5rem 5%;
+        height: 60px;
     }
     
+    .logo {
+        font-size: 1.2rem; /* Logo más pequeño en móvil */
+    }
+
     .nav-links li {
-        margin-left: 10px;
+        margin-left: 12px;
     }
 
     .nav-links a span {
-        display: none; /* Solo iconos en móvil */
+        display: none; /* Mantiene solo los iconos para ahorrar espacio */
     }
 
-  
-
+    /* Ajustes de la Imagen de Fondo y Hero */
     .hero {
-        /* Ajustamos la altura para móviles */
-        min-height: 100vh; 
-        
-        /* Optimizamos el fondo para pantallas verticales */
-        background-attachment: scroll; /* En muchos móviles el 'fixed' da problemas, 'scroll' es más fluido */
-        background-position: center center;
-        background-size: cover;
-        
-        /* Reducimos el padding para que el contenido no quede muy apretado */
-        padding: 60px 15px;
+        min-height: 100vh;
+        /* IMPORTANTE: Centramos la imagen para que no se vea vacía en vertical */
+        background-position: center center; 
+        /* En móviles, 'scroll' es más estable que 'fixed' para evitar parpadeos */
+        background-attachment: scroll; 
+        padding: 100px 20px 40px 20px;
     }
 
     .hero h1 {
-        /* Tamaño de letra más pequeño para que el título no se rompa en dos líneas */
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
+        font-size: 2.5rem; /* Tamaño optimizado */
+        line-height: 1.2;
+        margin-bottom: 15px;
     }
 
     .hero p {
-        /* Ajustamos el tamaño del párrafo para lectura en móvil */
         font-size: 1rem;
-        padding: 0 10px;
+        margin-bottom: 25px;
+        line-height: 1.4;
+    }
+
+    .btn-main {
+        padding: 15px 35px; /* Botón más manejable para dedos */
+        font-size: 1rem;
+    }
+
+    /* Ajustes de Contenido */
+    .container {
+        margin-top: 60px;
+        padding: 0 15px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* Aseguramos que las imágenes de tablas o tests se puedan deslizar */
+    .test-img { 
+        min-width: 450px; 
     }
 }
