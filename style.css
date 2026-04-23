@@ -257,65 +257,20 @@ summary i { margin-right: 15px; color: #d4a373; }
 /* =========================================
    6. RESPONSIVE
    ========================================= */
-
 @media (max-width: 768px) {
-    /* Ajustes de Navegación */
     .navbar {
-        padding: 0.5rem 5%;
-        height: 60px;
+        padding: 0.8rem 5%;
     }
     
-    .logo {
-        font-size: 1.2rem; /* Logo más pequeño en móvil */
-    }
-
     .nav-links li {
-        margin-left: 12px;
+        margin-left: 10px;
     }
 
     .nav-links a span {
-        display: none; /* Mantiene solo los iconos para ahorrar espacio */
-    }
-
-    /* Ajustes de la Imagen de Fondo y Hero */
-    .hero {
-        min-height: 100vh;
-        /* IMPORTANTE: Centramos la imagen para que no se vea vacía en vertical */
-        background-position: center center; 
-        /* En móviles, 'scroll' es más estable que 'fixed' para evitar parpadeos */
-        background-attachment: scroll; 
-        padding: 100px 20px 40px 20px;
+        display: none; /* Solo iconos en móvil */
     }
 
     .hero h1 {
-        font-size: 2.5rem; /* Tamaño optimizado */
-        line-height: 1.2;
-        margin-bottom: 15px;
-    }
-
-    .hero p {
-        font-size: 1rem;
-        margin-bottom: 25px;
-        line-height: 1.4;
-    }
-
-    .btn-main {
-        padding: 15px 35px; /* Botón más manejable para dedos */
-        font-size: 1rem;
-    }
-
-    /* Ajustes de Contenido */
-    .container {
-        margin-top: 60px;
-        padding: 0 15px;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    /* Aseguramos que las imágenes de tablas o tests se puedan deslizar */
-    .test-img { 
-        min-width: 450px; 
+        font-size: 2.2rem;
     }
 }
