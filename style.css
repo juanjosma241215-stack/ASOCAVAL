@@ -270,12 +270,8 @@ summary i { margin-right: 15px; color: #d4a373; }
         display: none; /* Solo iconos en móvil */
     }
 
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-}
-/* Ajustes específicos para que el fondo sea responsive en celulares */
-@media (max-width: 768px) {
+  
+
     .hero {
         /* Ajustamos la altura para móviles */
         min-height: 100vh; 
