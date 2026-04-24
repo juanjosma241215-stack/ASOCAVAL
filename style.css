@@ -418,6 +418,267 @@ summary i {
     margin-bottom: 5px;
 }
 
+.economic-page {
+    margin-top: 100px;
+}
+
+.economic-block {
+    background: #fffaf4;
+    border: 1px solid #e3d5ca;
+    border-radius: 20px;
+    box-shadow: 8px 8px 0 #d4a373;
+    padding: 28px;
+    margin-bottom: 30px;
+}
+
+.economic-heading {
+    margin-bottom: 24px;
+}
+
+.economic-heading h3 {
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    margin-bottom: 10px;
+    color: #3d2b1f;
+}
+
+.economic-heading p {
+    color: #6f4e37;
+    max-width: 68ch;
+}
+
+.economic-kicker {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #f3dfca;
+    color: #7a5638;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.country-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.country-card {
+    background: #ffffff;
+    border: 1px solid #ead7c4;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 14px 24px rgba(61, 43, 31, 0.08);
+}
+
+.country-card-header {
+    margin-bottom: 16px;
+}
+
+.country-card-header h4 {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.country-card-header span {
+    color: #8b6749;
+    font-size: 0.95rem;
+}
+
+.country-image-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.country-figure {
+    background: #fcf7f1;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #eedecf;
+}
+
+.country-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.country-figure figcaption {
+    padding: 12px 14px;
+    color: #6f4e37;
+    font-size: 0.95rem;
+}
+
+.excel-uploader {
+    display: grid;
+    gap: 18px;
+}
+
+.upload-dropzone {
+    display: grid;
+    place-items: center;
+    gap: 8px;
+    min-height: 180px;
+    border: 2px dashed #c79a6a;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #fcf7f1, #f6ede2);
+    color: #7a5638;
+    text-align: center;
+    cursor: pointer;
+    padding: 24px;
+}
+
+.upload-dropzone i {
+    font-size: 2rem;
+}
+
+.upload-dropzone small {
+    color: #8b6749;
+}
+
+.excel-input {
+    display: none;
+}
+
+.excel-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.gallery-placeholder {
+    grid-column: 1 / -1;
+    padding: 30px 20px;
+    border-radius: 16px;
+    background: #fcf7f1;
+    border: 1px dashed #dcc0a2;
+    text-align: center;
+    color: #8b6749;
+}
+
+.excel-card {
+    background: #fff;
+    border: 1px solid #ead7c4;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(61, 43, 31, 0.08);
+}
+
+.excel-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.excel-card span {
+    display: block;
+    padding: 12px 14px;
+    font-size: 0.92rem;
+    color: #6f4e37;
+    word-break: break-word;
+}
+
+.rating-panel {
+    background: #ffffff;
+    border: 1px solid #ead7c4;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 14px 24px rgba(61, 43, 31, 0.08);
+}
+
+.analysis-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.analysis-input {
+    width: 100%;
+    resize: vertical;
+    min-height: 140px;
+    padding: 14px 16px;
+    border: 1px solid #d8bda0;
+    border-radius: 16px;
+    background: #fffcf8;
+    color: #3d2b1f;
+    font-size: 1rem;
+    margin-bottom: 18px;
+}
+
+.analysis-input:focus {
+    outline: 2px solid rgba(212, 163, 115, 0.35);
+    border-color: #c79261;
+}
+
+.rating-stars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.star-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #f7ede3;
+    color: #d0b08a;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    font-size: 1.2rem;
+}
+
+.star-btn:hover {
+    transform: translateY(-2px);
+}
+
+.star-btn.is-active,
+.star-btn.is-selected {
+    background: #ffe2b9;
+    color: #c67a15;
+}
+
+.rating-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.rating-save {
+    box-shadow: none;
+}
+
+.rating-delete {
+    padding: 14px 20px;
+    border: 1px solid #d8bda0;
+    border-radius: 999px;
+    background: #fff7ef;
+    color: #7a5638;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rating-message {
+    margin-top: 16px;
+    color: #6f4e37;
+    font-weight: 500;
+}
+
+.rating-message.is-error {
+    color: #b04832;
+}
+
+.rating-message.is-success {
+    color: #3f6b34;
+}
+
 details[open],
 .card-info:hover,
 .info-section:hover {
@@ -555,6 +816,14 @@ details[open],
     .info-image {
         min-height: 220px;
     }
+
+    .country-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .economic-block {
+        padding: 22px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -602,5 +871,19 @@ details[open],
 
     .hero h1 {
         font-size: 2.2rem;
+    }
+
+    .economic-block {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .rating-panel {
+        padding: 18px;
+    }
+
+    .star-btn {
+        width: 44px;
+        height: 44px;
     }
 }

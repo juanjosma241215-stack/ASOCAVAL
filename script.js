@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setupRevealAnimations();
     setupDetailsBehavior();
     setupHeroMotion();
+    setupExcelGallery();
+    setupRatingPanel();
 });
 
 function setupScrollProgress() {
@@ -158,4 +160,171 @@ function setupHeroMotion() {
 
     updateHero();
     window.addEventListener('scroll', updateHero, { passive: true });
+}
+
+function setupExcelGallery() {
+    const input = document.querySelector('[data-excel-input]');
+    const gallery = document.querySelector('[data-excel-gallery]');
+    if (!(input instanceof HTMLInputElement) || !gallery) return;
+
+    input.addEventListener('change', () => {
+        const files = [...(input.files || [])].filter((file) => file.type.startsWith('image/'));
+        gallery.innerHTML = '';
+
+        if (!files.length) {
+            gallery.innerHTML = '<div class="gallery-placeholder">Tus imagenes apareceran aqui ordenadas automaticamente.</div>';
+            return;
+        }
+
+        files
+            .sort((a, b) => a.name.localeCompare(b.name, 'es', { numeric: true }))
+            .forEach((file) => {
+                const card = document.createElement('figure');
+                card.className = 'excel-card';
+
+                const image = document.createElement('img');
+                image.alt = file.name;
+
+                const caption = document.createElement('span');
+                caption.textContent = file.name;
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    image.src = event.target?.result;
+                };
+                reader.readAsDataURL(file);
+
+                card.appendChild(image);
+                card.appendChild(caption);
+                gallery.appendChild(card);
+            });
+    });
+}
+
+function setupRatingPanel() {
+    const panel = document.querySelector('[data-rating-panel]');
+    if (!panel) return;
+
+    const textArea = panel.querySelector('[data-analysis-text]');
+    const message = panel.querySelector('[data-rating-message]');
+    const saveButton = panel.querySelector('[data-save-rating]');
+    const resetButton = panel.querySelector('[data-reset-rating]');
+    const starButtons = [...panel.querySelectorAll('.star-btn')];
+    const storageKey = 'asocaval-economic-rating';
+
+    if (!(textArea instanceof HTMLTextAreaElement) || !(message instanceof HTMLElement) || !(saveButton instanceof HTMLButtonElement) || !(resetButton instanceof HTMLButtonElement)) {
+        return;
+    }
+
+    let selectedRating = 0;
+    let savedState = loadSavedState();
+
+    function paintStars(value) {
+        starButtons.forEach((button) => {
+            const buttonValue = Number(button.dataset.value || 0);
+            button.classList.toggle('is-active', buttonValue <= value);
+            button.classList.toggle('is-selected', buttonValue === value && value > 0);
+        });
+    }
+
+    function setLockedState(isLocked) {
+        textArea.readOnly = isLocked;
+        saveButton.disabled = isLocked;
+        starButtons.forEach((button) => {
+            button.disabled = isLocked;
+        });
+    }
+
+    function loadSavedState() {
+        try {
+            const raw = window.localStorage.getItem(storageKey);
+            return raw ? JSON.parse(raw) : null;
+        } catch {
+            return null;
+        }
+    }
+
+    function persistState() {
+        try {
+            window.localStorage.setItem(storageKey, JSON.stringify(savedState));
+        } catch {
+            message.textContent = 'No se pudo guardar en el navegador.';
+            message.className = 'rating-message is-error';
+        }
+    }
+
+    function clearPersistedState() {
+        try {
+            window.localStorage.removeItem(storageKey);
+        } catch {
+            message.textContent = 'No se pudo eliminar la calificacion guardada.';
+            message.className = 'rating-message is-error';
+        }
+    }
+
+    function applySavedState() {
+        if (savedState && savedState.rating) {
+            selectedRating = savedState.rating;
+            textArea.value = savedState.analysis || '';
+            paintStars(selectedRating);
+            setLockedState(true);
+            message.textContent = `Calificacion guardada con ${selectedRating} estrella(s). Si hubo un error, usa el boton eliminar.`;
+            message.className = 'rating-message is-success';
+        } else {
+            selectedRating = 0;
+            paintStars(0);
+            setLockedState(false);
+            message.textContent = 'Selecciona estrellas y guarda tu calificacion.';
+            message.className = 'rating-message';
+        }
+    }
+
+    starButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (savedState) return;
+            selectedRating = Number(button.dataset.value || 0);
+            paintStars(selectedRating);
+            message.textContent = `Seleccionaste ${selectedRating} estrella(s). Ahora puedes guardar.`;
+            message.className = 'rating-message';
+        });
+    });
+
+    saveButton.addEventListener('click', () => {
+        const text = textArea.value.trim();
+
+        if (savedState) {
+            message.textContent = 'Esta calificacion ya fue registrada. Si necesitas cambiarla, presiona eliminar.';
+            message.className = 'rating-message is-error';
+            return;
+        }
+
+        if (!text) {
+            message.textContent = 'Escribe primero el analisis de palabras.';
+            message.className = 'rating-message is-error';
+            return;
+        }
+
+        if (!selectedRating) {
+            message.textContent = 'Selecciona una cantidad de estrellas antes de guardar.';
+            message.className = 'rating-message is-error';
+            return;
+        }
+
+        savedState = {
+            analysis: text,
+            rating: selectedRating
+        };
+        persistState();
+        applySavedState();
+    });
+
+    resetButton.addEventListener('click', () => {
+        savedState = null;
+        selectedRating = 0;
+        textArea.value = '';
+        clearPersistedState();
+        applySavedState();
+    });
+
+    applySavedState();
 }

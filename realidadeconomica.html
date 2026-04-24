@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASOCAVAL - Realidad Económica</title>
+    <title>ASOCAVAL - Realidad Economica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -14,30 +14,107 @@
         <div class="logo">ASOCAVAL</div>
         <ul class="nav-links">
             <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-            <li><a href="introduccion.html"><i class="fas fa-info-circle"></i> Introducción</a></li>
-             <li><a href="realidadempresarial.html"><i class="fas fa-building"></i> Realidad Empresarial</a></li>
-             <li><a href="realidadeconomica.html"><i class="fas fa-chart-line"></i> Realidad Económica</a></li>
-           
+            <li><a href="introduccion.html"><i class="fas fa-info-circle"></i> Introduccion</a></li>
+            <li><a href="realidadempresarial.html"><i class="fas fa-building"></i> Realidad Empresarial</a></li>
+            <li><a href="realidadeconomica.html"><i class="fas fa-chart-line"></i> Realidad Economica</a></li>
         </ul>
     </nav>
 
-    <main class="container">
-        <h2 class="section-title">Realidad Económica</h2>
-        <p class="section-subtitle">Análisis del mercado y cifras del sector cacaotero</p>
+    <main class="container economic-page">
+        <h2 class="section-title">Realidad Economica</h2>
+        <p class="section-subtitle">Analisis del mercado, paises objetivo, evidencias en Excel y valoracion del contenido</p>
 
-        <details open>
-            <summary><i class="fas fa-globe-americas"></i> Contexto Internacional</summary>
-            <div class="content">
-                <p>Análisis de los precios internacionales del cacao y las oportunidades de exportación para la asociación.</p>
+        <section class="economic-block">
+            <div class="economic-heading">
+                <span class="economic-kicker">Paises Objetivo</span>
+                <h3>Comparacion visual entre Malasia e Indonesia</h3>
+                <p>En cada tarjeta puedes reemplazar las imagenes por las que prefieras del pais y su paisaje representativo.</p>
             </div>
-        </details>
 
-        <details>
-            <summary><i class="fas fa-chart-pie"></i> Participación de Mercado</summary>
-            <div class="content">
-                <p>Cifras sobre la producción local y el impacto económico en la región de Valdivia.</p>
+            <div class="country-grid">
+                <article class="country-card">
+                    <div class="country-card-header">
+                        <h4>Malasia</h4>
+                        <span>Mercado asiatico</span>
+                    </div>
+                    <div class="country-image-grid">
+                        <figure class="country-figure">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Malaysia.svg/1280px-Flag_of_Malaysia.svg.png" alt="Imagen de Malasia" class="country-image">
+                            <figcaption>Imagen principal del pais</figcaption>
+                        </figure>
+                        <figure class="country-figure">
+                            <img src="https://images.unsplash.com/photo-1526481280695-3c4691ca1e5c?auto=format&fit=crop&w=900&q=80" alt="Paisaje de Malasia" class="country-image">
+                            <figcaption>Paisaje de Malasia</figcaption>
+                        </figure>
+                    </div>
+                </article>
+
+                <article class="country-card">
+                    <div class="country-card-header">
+                        <h4>Indonesia</h4>
+                        <span>Mercado estrategico</span>
+                    </div>
+                    <div class="country-image-grid">
+                        <figure class="country-figure">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg">
+                            <figcaption>Imagen principal del pais</figcaption>
+                        </figure>
+                        <figure class="country-figure">
+                            <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?auto=format&fit=crop&w=900&q=80" alt="Paisaje de Indonesia" class="country-image">
+                            <figcaption>Paisaje de Indonesia</figcaption>
+                        </figure>
+                    </div>
+                </article>
             </div>
-        </details>
+        </section>
+
+        <section class="economic-block">
+            <div class="economic-heading">
+                <span class="economic-kicker">Evidencias</span>
+                <h3>Galeria ordenada de imagenes de Excel</h3>
+                <p>Sube una o varias imagenes y se acomodaran automaticamente en una cuadricula limpia.</p>
+            </div>
+
+            <div class="excel-uploader" data-excel-uploader>
+                <label for="excel-images" class="upload-dropzone">
+                    <i class="fas fa-file-excel"></i>
+                    <span>Haz clic aqui para subir imagenes de Excel</span>
+                    <small>Puedes seleccionar varias a la vez</small>
+                </label>
+                <input id="excel-images" class="excel-input" type="file" accept="image/*" multiple data-excel-input>
+                <div class="excel-gallery" data-excel-gallery>
+                    <div class="gallery-placeholder">Tus imagenes apareceran aqui ordenadas automaticamente.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="economic-block">
+            <div class="economic-heading">
+                <span class="economic-kicker">Valoracion</span>
+                <h3>Analisis de palabras</h3>
+                <p>Escribe tu analisis, califica con estrellas una sola vez y si te equivocas puedes borrar la evaluacion.</p>
+            </div>
+
+            <div class="rating-panel" data-rating-panel>
+                <label class="analysis-label" for="word-analysis">Escribe tu analisis</label>
+                <textarea id="word-analysis" class="analysis-input" rows="5" placeholder="Ejemplo: El mercado presenta una alta demanda, estabilidad comercial y buenas oportunidades para el cacao..." data-analysis-text></textarea>
+
+                <div class="rating-stars" data-rating-stars aria-label="Calificacion por estrellas" role="radiogroup">
+                    <button type="button" class="star-btn" data-value="1" aria-label="1 estrella"><i class="fas fa-star"></i></button>
+                    <button type="button" class="star-btn" data-value="2" aria-label="2 estrellas"><i class="fas fa-star"></i></button>
+                    <button type="button" class="star-btn" data-value="3" aria-label="3 estrellas"><i class="fas fa-star"></i></button>
+                    <button type="button" class="star-btn" data-value="4" aria-label="4 estrellas"><i class="fas fa-star"></i></button>
+                    <button type="button" class="star-btn" data-value="5" aria-label="5 estrellas"><i class="fas fa-star"></i></button>
+                </div>
+
+                <div class="rating-actions">
+                    <button type="button" class="btn-main rating-save" data-save-rating>Guardar calificacion</button>
+                    <button type="button" class="rating-delete" data-reset-rating>Eliminar</button>
+                </div>
+
+                <p class="rating-message" data-rating-message>Selecciona estrellas y guarda tu calificacion.</p>
+            </div>
+        </section>
     </main>
 
 </body>
