@@ -1,5 +1,5 @@
 /* =========================================
-   1. CONFIGURACIÓN BASE
+   1. CONFIGURACION BASE
    ========================================= */
 * {
     margin: 0;
@@ -16,7 +16,11 @@ body {
     background-color: #f5ebe0;
     color: #3d2b1f;
     line-height: 1.6;
-    overflow-x: hidden; /* CRÍTICO: Evita scroll horizontal por el banner */
+    overflow-x: hidden;
+}
+
+body.js-ready {
+    overflow-x: hidden;
 }
 
 /* =========================================
@@ -35,6 +39,12 @@ body {
     z-index: 2000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.navbar.scrolled {
+    background-color: rgba(61, 43, 31, 0.98);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 .logo {
@@ -55,13 +65,14 @@ body {
     color: #f5ebe0;
     text-decoration: none;
     font-size: 1rem;
-    transition: 0.3s;
+    transition: color 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.is-active {
     color: #d4a373;
 }
 
@@ -99,6 +110,9 @@ body {
     display: block;
 }
 
+/* =========================================
+   3. HERO
+   ========================================= */
 .hero {
     width: 100%;
     min-height: 100vh;
@@ -115,6 +129,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: background-position 0.2s ease-out;
 }
 
 .hero h1 {
@@ -148,8 +163,12 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-main:active {
+    transform: translateY(1px) scale(0.99);
+}
+
 /* =========================================
-   3. BANNER ANCHO TOTAL (LADO A LADO)
+   4. BANNER ANCHO TOTAL
    ========================================= */
 .banner-full-container {
     width: 100vw;
@@ -158,7 +177,7 @@ body {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    margin-top: 60px; /* Debajo de la navbar */
+    margin-top: 60px;
     background-color: #fff;
     border-bottom: 4px solid #d4a373;
 }
@@ -168,10 +187,11 @@ body {
     height: auto;
     display: block;
     object-fit: cover;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 /* =========================================
-   4. CONTENEDOR Y TARJETAS (SOMBRA SÓLIDA)
+   5. CONTENEDOR Y TARJETAS
    ========================================= */
 .container {
     width: min(100%, 900px);
@@ -221,14 +241,15 @@ body {
     margin-bottom: 0;
 }
 
-/* Estilo de tarjeta con sombra sólida café */
-details, .card-info {
+details,
+.card-info {
     background-color: #ffffff;
     margin-bottom: 25px;
     border-radius: 12px;
     border: 1px solid #e3d5ca;
-    box-shadow: 8px 8px 0px #d4a373; /* Sombra sólida estilo imagen */
+    box-shadow: 8px 8px 0 #d4a373;
     overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .info-section {
@@ -242,6 +263,7 @@ details, .card-info {
     border-radius: 16px;
     border: 1px solid #e3d5ca;
     box-shadow: 8px 8px 0 #d4a373;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .info-section-full {
@@ -294,6 +316,7 @@ details, .card-info {
     border-radius: 14px;
     border: 1px solid #e3d5ca;
     background-color: #f8f3ed;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 summary {
@@ -317,8 +340,12 @@ summary i {
     border-top: 1px solid #f5ebe0;
 }
 
+.details-highlight {
+    animation: detailPulse 1.2s ease;
+}
+
 /* =========================================
-   5. CANALES DE COMUNICACIÓN (NEGRO)
+   6. CANALES
    ========================================= */
 .social-channels {
     list-style: none;
@@ -329,7 +356,7 @@ summary i {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #000000 !important; /* Forzado a negro */
+    color: #000000 !important;
     margin-bottom: 15px;
     font-weight: 500;
 }
@@ -338,17 +365,18 @@ summary i {
     font-size: 1.3rem;
     margin-right: 15px;
     width: 30px;
-    color: #000000 !important; /* Iconos negros */
+    color: #000000 !important;
 }
 
 /* =========================================
-   6. ANÁLISIS TEST Y FIRMAS
+   7. ANALISIS Y FIRMAS
    ========================================= */
 .test-img {
     width: 100%;
     border-radius: 10px;
     margin: 15px 0;
     border: 1px solid #e3d5ca;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .signature-box {
@@ -369,8 +397,111 @@ summary i {
     margin-bottom: 5px;
 }
 
+details[open],
+.card-info:hover,
+.info-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 10px 10px 0 #c79261;
+}
+
+.info-section:hover .info-image,
+.test-img:hover,
+.banner-image:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 24px rgba(61, 43, 31, 0.14);
+}
+
 /* =========================================
-   7. RESPONSIVO
+   8. CAPA DINAMICA
+   ========================================= */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(212, 163, 115, 0.18);
+    z-index: 2600;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #d4a373, #bc8a5f);
+    transition: width 0.12s linear;
+}
+
+.back-to-top {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: #3d2b1f;
+    color: #f5ebe0;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease, background-color 0.25s ease;
+    z-index: 2400;
+}
+
+.back-to-top:hover {
+    background: #d4a373;
+    color: #3d2b1f;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.08s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.16s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.24s;
+}
+
+@keyframes detailPulse {
+    0% {
+        box-shadow: 0 0 0 rgba(212, 163, 115, 0);
+    }
+
+    35% {
+        box-shadow: 0 0 0 8px rgba(212, 163, 115, 0.18);
+    }
+
+    100% {
+        box-shadow: 0 0 0 rgba(212, 163, 115, 0);
+    }
+}
+
+/* =========================================
+   9. RESPONSIVO
    ========================================= */
 @media (max-width: 768px) {
     .nav-links {
@@ -427,6 +558,13 @@ summary i {
 
     .container {
         padding: 0 16px;
+    }
+
+    .back-to-top {
+        right: 14px;
+        bottom: 14px;
+        width: 44px;
+        height: 44px;
     }
 
     .info-section {
