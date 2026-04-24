@@ -340,6 +340,25 @@ summary i {
     border-top: 1px solid #f5ebe0;
 }
 
+.wide-image-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: 1px solid #e3d5ca;
+    border-radius: 14px;
+    background-color: #fcf8f3;
+    overflow-x: auto;
+}
+
+.responsive-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
 .details-highlight {
     animation: detailPulse 1.2s ease;
 }
@@ -380,19 +399,21 @@ summary i {
 }
 
 .signature-box {
-    text-align: right;
+    text-align: left;
     margin-top: 30px;
 }
 
 .signature-img {
     max-width: 180px;
-    margin-left: auto;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 .signature-line {
     border-top: 2px solid #3d2b1f;
     width: 200px;
-    margin-left: auto;
+    margin-left: 0;
+    margin-right: auto;
     margin-top: 5px;
     margin-bottom: 5px;
 }
