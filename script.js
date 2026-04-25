@@ -165,40 +165,168 @@ function setupHeroMotion() {
 function setupExcelGallery() {
     const input = document.querySelector('[data-excel-input]');
     const gallery = document.querySelector('[data-excel-gallery]');
+    const exportButton = document.querySelector('[data-export-excel]');
+    const clearButton = document.querySelector('[data-clear-excel]');
+    const storageKey = 'asocaval-economic-excel-gallery';
     if (!(input instanceof HTMLInputElement) || !gallery) return;
 
-    input.addEventListener('change', () => {
-        const files = [...(input.files || [])].filter((file) => file.type.startsWith('image/'));
+    let savedImages = loadSavedImages();
+
+    function loadSavedImages() {
+        try {
+            const raw = window.localStorage.getItem(storageKey);
+            return raw ? JSON.parse(raw) : [];
+        } catch {
+            return [];
+        }
+    }
+
+    function persistImages() {
+        try {
+            window.localStorage.setItem(storageKey, JSON.stringify(savedImages));
+            return true;
+        } catch {
+            gallery.innerHTML = '<div class="gallery-placeholder">No fue posible guardar las imagenes en el navegador. Intenta con menos archivos.</div>';
+            return false;
+        }
+    }
+
+    function renderGallery() {
         gallery.innerHTML = '';
 
-        if (!files.length) {
+        if (!savedImages.length) {
             gallery.innerHTML = '<div class="gallery-placeholder">Tus imagenes apareceran aqui ordenadas automaticamente.</div>';
             return;
         }
 
-        files
-            .sort((a, b) => a.name.localeCompare(b.name, 'es', { numeric: true }))
-            .forEach((file) => {
-                const card = document.createElement('figure');
-                card.className = 'excel-card';
+        savedImages.forEach((file) => {
+            const card = document.createElement('figure');
+            card.className = 'excel-card';
 
-                const image = document.createElement('img');
-                image.alt = file.name;
+            const image = document.createElement('img');
+            image.alt = file.name;
+            image.src = file.dataUrl;
 
-                const caption = document.createElement('span');
-                caption.textContent = file.name;
+            const caption = document.createElement('span');
+            caption.textContent = file.name;
 
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    image.src = event.target?.result;
-                };
-                reader.readAsDataURL(file);
+            card.appendChild(image);
+            card.appendChild(caption);
+            gallery.appendChild(card);
+        });
+    }
 
-                card.appendChild(image);
-                card.appendChild(caption);
-                gallery.appendChild(card);
-            });
+    function readFileAsDataUrl(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                resolve({
+                    name: file.name,
+                    dataUrl: String(event.target?.result || '')
+                });
+            };
+            reader.onerror = () => reject(new Error(`No se pudo leer ${file.name}`));
+            reader.readAsDataURL(file);
+        });
+    }
+
+    input.addEventListener('change', async () => {
+        const files = [...(input.files || [])].filter((file) => file.type.startsWith('image/'));
+        if (!files.length) return;
+
+        try {
+            const newImages = await Promise.all(
+                files
+                    .sort((a, b) => a.name.localeCompare(b.name, 'es', { numeric: true }))
+                    .map(readFileAsDataUrl)
+            );
+
+            savedImages = [...savedImages, ...newImages];
+            if (persistImages()) {
+                renderGallery();
+            }
+            input.value = '';
+        } catch {
+            gallery.innerHTML = '<div class="gallery-placeholder">Ocurrio un error al cargar las imagenes.</div>';
+        }
     });
+
+    if (exportButton instanceof HTMLButtonElement) {
+        exportButton.addEventListener('click', () => {
+            if (!savedImages.length) {
+                gallery.innerHTML = '<div class="gallery-placeholder">Primero sube imagenes para poder exportarlas.</div>';
+                return;
+            }
+
+            const rows = savedImages.map((file, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${escapeHtml(file.name)}</td>
+                    <td><img src="${file.dataUrl}" alt="${escapeHtml(file.name)}" style="max-width:320px; max-height:220px;"></td>
+                </tr>
+            `).join('');
+
+            const excelContent = `
+                <html xmlns:o="urn:schemas-microsoft-com:office:office"
+                      xmlns:x="urn:schemas-microsoft-com:office:excel"
+                      xmlns="http://www.w3.org/TR/REC-html40">
+                <head>
+                    <meta charset="UTF-8">
+                    <style>
+                        table { border-collapse: collapse; width: 100%; }
+                        th, td { border: 1px solid #c9a47a; padding: 12px; text-align: left; vertical-align: top; }
+                        th { background: #d4a373; color: #3d2b1f; }
+                        h1 { color: #3d2b1f; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Galeria de imagenes de Excel</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Imagen</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </body>
+                </html>
+            `;
+
+            const blob = new Blob([excelContent], { type: 'application/vnd.ms-excel' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'galeria-excel-asocaval.xls';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+        });
+    }
+
+    if (clearButton instanceof HTMLButtonElement) {
+        clearButton.addEventListener('click', () => {
+            savedImages = [];
+            try {
+                window.localStorage.removeItem(storageKey);
+            } catch {}
+            renderGallery();
+        });
+    }
+
+    renderGallery();
+}
+
+function escapeHtml(value) {
+    return value
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
 }
 
 function setupRatingPanel() {

@@ -550,6 +550,17 @@ summary i {
     gap: 18px;
 }
 
+.excel-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.excel-export {
+    box-shadow: none;
+}
+
 .upload-dropzone {
     display: grid;
     place-items: center;
@@ -660,20 +671,27 @@ summary i {
     border: none;
     border-radius: 50%;
     background: #f7ede3;
-    color: #d0b08a;
+    color: #c7a46e;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     font-size: 1.2rem;
 }
 
 .star-btn:hover {
     transform: translateY(-2px);
+    color: #e1ad21;
 }
 
 .star-btn.is-active,
 .star-btn.is-selected {
-    background: #ffe2b9;
-    color: #c67a15;
+    background: #fff1b3;
+    color: #f2b600;
+    box-shadow: 0 0 0 2px rgba(242, 182, 0, 0.2);
+}
+
+.star-btn:disabled {
+    opacity: 1;
+    cursor: default;
 }
 
 .rating-actions {
