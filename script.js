@@ -347,6 +347,10 @@ function setupRatingPanel() {
     let selectedRating = 0;
     let savedState = loadSavedState();
 
+    function formatStars(value) {
+        return value === 1 ? '1 estrella' : `${value} estrellas`;
+    }
+
     function paintStars(value) {
         starButtons.forEach((button) => {
             const buttonValue = Number(button.dataset.value || 0);
@@ -394,13 +398,13 @@ function setupRatingPanel() {
             selectedRating = savedState.rating;
             paintStars(selectedRating);
             setLockedState(true);
-            message.textContent = `Calificacion guardada con ${selectedRating} estrella(s). Si hubo un error, usa el boton eliminar.`;
+            message.textContent = `Calificacion guardada: ${formatStars(selectedRating)}. Si hubo un error, usa el boton eliminar.`;
             message.className = 'rating-message is-success';
         } else {
             selectedRating = 0;
             paintStars(0);
             setLockedState(false);
-            message.textContent = 'Selecciona estrellas y guarda tu calificacion.';
+            message.textContent = 'Selecciona una calificacion.';
             message.className = 'rating-message';
         }
     }
@@ -410,7 +414,7 @@ function setupRatingPanel() {
             if (savedState) return;
             selectedRating = Number(button.dataset.value || 0);
             paintStars(selectedRating);
-            message.textContent = `Seleccionaste ${selectedRating} estrella(s). Ahora puedes guardar.`;
+            message.textContent = `Calificacion seleccionada: ${formatStars(selectedRating)}.`;
             message.className = 'rating-message';
         });
     });
