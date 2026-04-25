@@ -524,7 +524,7 @@ summary i {
 }
 
 .country-figure-indonesia {
-    background: linear-gradient(180deg, #5f2f25 0%, #ffffff 55%, #fbf4ec 100%);
+    background: linear-gradient(180deg, #5f2f25 0%, #5f2f25 55%, #5f2f25 100%);
     border-color: #e39f90;
 }
 
