@@ -838,38 +838,84 @@ details[open],
     }
 }
 
-/* Contenedor que pone los elementos en fila */
-.portfolio-buttons-container {
-    display: flex;       /* Activa el modo flexible */
-    gap: 20px;          /* Espacio de separación entre los botones */
-    margin-bottom: 30px; /* Espacio con lo que haya debajo */
-    flex-wrap: wrap;    /* Si no caben en móvil, se bajan automáticamente */
+/* --- ESTILOS DE PORTAFOLIO DESPLEGABLE --- */
+
+.portfolio-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start; /* Evita que se estiren de forma desigual */
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 
-/* Estilo para los botones (basado en tu captura) */
-.btn-portfolio {
-    display: inline-block;
-    padding: 12px 35px;
-    background-color: #d4a373; /* Color café claro de tu imagen */
-    color: #3d2b1f;
-    text-decoration: none;
-    border-radius: 50px;      /* Bordes redondeados */
-    font-weight: bold;
-    box-shadow: 4px 4px 0px #bc8a5f; /* Sombra sólida que usas en el sitio */
-    transition: 0.3s;
-    min-width: 150px;         /* Ancho mínimo para que sean iguales */
+/* Redefinición de la tarjeta usando details */
+.portfolio-card {
+    background-color: #ffffff !important;
+    flex: 1;
+    min-width: 320px;
+    max-width: 480px;
+    border-radius: 15px !important;
+    border: 1px solid #e3d5ca !important;
+    box-shadow: 8px 8px 0px #d4a373 !important; /* Sombra sólida café */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding: 0 !important; /* Quita paddings internos del details */
+}
+
+/* Encabezado del desplegable (Summary) */
+.card-header {
+    background-color: #d4a373 !important;
+    color: #3d2b1f !important;
+    padding: 20px !important;
     text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    list-style: none; /* Quita la flecha por defecto */
 }
 
-.btn-portfolio:hover {
-    transform: translateY(-3px);
-    background-color: #bc8a5f;
+/* Quitar la flecha en navegadores Chrome/Safari */
+.card-header::-webkit-details-marker {
+    display: none;
 }
 
-/* Ajuste para móviles */
-@media (max-width: 480px) {
-    .portfolio-buttons-container {
-        justify-content: center; /* Centra los botones en pantallas pequeñas */
+/* Texto interno al abrirse */
+.portfolio-card .content {
+    padding: 25px;
+    background-color: #fff;
+    border-top: 1px solid #f5ebe0;
+    text-align: justify;
+}
+
+.portfolio-card .content ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.portfolio-card .content li {
+    margin-bottom: 10px;
+}
+
+/* Efecto hover */
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 12px 12px 0px #bc8a5f !important;
+}
+
+/* Ajuste móvil */
+@media (max-width: 700px) {
+    .portfolio-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .portfolio-card {
+        width: 100%;
     }
 }
 /* =========================================
