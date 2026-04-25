@@ -333,14 +333,14 @@ function setupRatingPanel() {
     const panel = document.querySelector('[data-rating-panel]');
     if (!panel) return;
 
-    const textArea = panel.querySelector('[data-analysis-text]');
+    const analysisBlock = panel.querySelector('[data-analysis-text]');
     const message = panel.querySelector('[data-rating-message]');
     const saveButton = panel.querySelector('[data-save-rating]');
     const resetButton = panel.querySelector('[data-reset-rating]');
     const starButtons = [...panel.querySelectorAll('.star-btn')];
     const storageKey = 'asocaval-economic-rating';
 
-    if (!(textArea instanceof HTMLTextAreaElement) || !(message instanceof HTMLElement) || !(saveButton instanceof HTMLButtonElement) || !(resetButton instanceof HTMLButtonElement)) {
+    if (!(analysisBlock instanceof HTMLElement) || !(message instanceof HTMLElement) || !(saveButton instanceof HTMLButtonElement) || !(resetButton instanceof HTMLButtonElement)) {
         return;
     }
 
@@ -356,7 +356,6 @@ function setupRatingPanel() {
     }
 
     function setLockedState(isLocked) {
-        textArea.readOnly = isLocked;
         saveButton.disabled = isLocked;
         starButtons.forEach((button) => {
             button.disabled = isLocked;
@@ -393,7 +392,6 @@ function setupRatingPanel() {
     function applySavedState() {
         if (savedState && savedState.rating) {
             selectedRating = savedState.rating;
-            textArea.value = savedState.analysis || '';
             paintStars(selectedRating);
             setLockedState(true);
             message.textContent = `Calificacion guardada con ${selectedRating} estrella(s). Si hubo un error, usa el boton eliminar.`;
@@ -418,7 +416,7 @@ function setupRatingPanel() {
     });
 
     saveButton.addEventListener('click', () => {
-        const text = textArea.value.trim();
+        const text = analysisBlock.textContent.trim();
 
         if (savedState) {
             message.textContent = 'Esta calificacion ya fue registrada. Si necesitas cambiarla, presiona eliminar.';
@@ -427,7 +425,7 @@ function setupRatingPanel() {
         }
 
         if (!text) {
-            message.textContent = 'Escribe primero el analisis de palabras.';
+            message.textContent = 'Agrega primero el analisis directamente en el codigo HTML.';
             message.className = 'rating-message is-error';
             return;
         }
@@ -449,7 +447,6 @@ function setupRatingPanel() {
     resetButton.addEventListener('click', () => {
         savedState = null;
         selectedRating = 0;
-        textArea.value = '';
         clearPersistedState();
         applySavedState();
     });

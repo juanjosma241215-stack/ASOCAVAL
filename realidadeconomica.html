@@ -22,7 +22,7 @@
 
     <main class="container economic-page">
         <section class="economic-block">
-            <div class="economic-heading">
+            <div class="economic-heading economic-heading-center">
                 <h3>PAISES</h3>
             </div>
 
@@ -82,8 +82,10 @@
             </div>
 
             <div class="rating-panel" data-rating-panel>
-                <label class="analysis-label" for="word-analysis">Escribe tu analisis</label>
-                <textarea id="word-analysis" class="analysis-input" rows="5" placeholder="Ejemplo: El cacao" data-analysis-text></textarea>
+                <div class="analysis-label">Analisis completo</div>
+                <div class="analysis-display" data-analysis-text>
+                    Aqui puedes colocar tu analisis completo directamente en el codigo HTML de esta pagina para que se muestre en pantalla, pero sin escribirlo desde la web.
+                </div>
 
                 <div class="rating-stars" data-rating-stars aria-label="Calificacion por estrellas" role="radiogroup">
                     <button type="button" class="star-btn" data-value="1" aria-label="1 estrella"><i class="fas fa-star"></i></button>

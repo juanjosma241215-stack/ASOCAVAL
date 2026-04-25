@@ -449,6 +449,10 @@ summary i {
     color: #3d2b1f;
 }
 
+.economic-heading-center {
+    text-align: center;
+}
+
 .economic-heading p {
     color: #6f4e37;
     max-width: 68ch;
@@ -640,9 +644,9 @@ summary i {
     margin-bottom: 10px;
 }
 
-.analysis-input {
+.analysis-input,
+.analysis-display {
     width: 100%;
-    resize: vertical;
     min-height: 140px;
     padding: 14px 16px;
     border: 1px solid #d8bda0;
@@ -651,6 +655,7 @@ summary i {
     color: #3d2b1f;
     font-size: 1rem;
     margin-bottom: 18px;
+    line-height: 1.7;
 }
 
 .analysis-input:focus {
@@ -661,20 +666,22 @@ summary i {
 .rating-stars {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
     margin-bottom: 18px;
 }
 
 .star-btn {
-    width: 50px;
-    height: 50px;
+    width: auto;
+    height: auto;
     border: none;
-    border-radius: 50%;
-    background: #f7ede3;
-    color: #c7a46e;
+    border-radius: 0;
+    background: transparent;
+    color: #ccb27d;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-    font-size: 1.2rem;
+    transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+    font-size: 2.2rem;
+    padding: 0;
+    line-height: 1;
 }
 
 .star-btn:hover {
@@ -684,9 +691,8 @@ summary i {
 
 .star-btn.is-active,
 .star-btn.is-selected {
-    background: #fff1b3;
     color: #f2b600;
-    box-shadow: 0 0 0 2px rgba(242, 182, 0, 0.2);
+    text-shadow: 0 0 12px rgba(242, 182, 0, 0.35);
 }
 
 .star-btn:disabled {
@@ -937,7 +943,6 @@ details[open],
     }
 
     .star-btn {
-        width: 44px;
-        height: 44px;
+        font-size: 1.9rem;
     }
 }
