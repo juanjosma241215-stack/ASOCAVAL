@@ -23,6 +23,13 @@ body.js-ready {
     overflow-x: hidden;
 }
 
+.economic-body {
+    background:
+        radial-gradient(circle at top right, rgba(181, 72, 50, 0.14), transparent 28%),
+        radial-gradient(circle at top left, rgba(212, 163, 115, 0.22), transparent 34%),
+        linear-gradient(180deg, #fff8f2 0%, #f7ecdf 52%, #f3e2cf 100%);
+}
+
 /* =========================================
    2. NAVBAR
    ========================================= */
@@ -423,12 +430,13 @@ summary i {
 }
 
 .economic-block {
-    background: #fffaf4;
+    background: rgba(255, 250, 244, 0.92);
     border: 1px solid #e3d5ca;
     border-radius: 20px;
     box-shadow: 8px 8px 0 #d4a373;
     padding: 28px;
     margin-bottom: 30px;
+    backdrop-filter: blur(3px);
 }
 
 .economic-heading {
@@ -463,6 +471,7 @@ summary i {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px;
+    align-items: stretch;
 }
 
 .country-card {
@@ -471,6 +480,9 @@ summary i {
     border-radius: 18px;
     padding: 20px;
     box-shadow: 0 14px 24px rgba(61, 43, 31, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .country-card-header {
@@ -489,7 +501,7 @@ summary i {
 
 .country-image-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
 }
 
@@ -505,6 +517,20 @@ summary i {
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
+}
+
+.country-figure-flag {
+    background: linear-gradient(180deg, #fffdfb 0%, #f8efe5 100%);
+}
+
+.country-figure-indonesia {
+    background: linear-gradient(180deg, #fdf3f1 0%, #fffdfa 100%);
+    border-color: #e8b6ae;
+}
+
+.country-image-flag {
+    object-fit: contain;
+    padding: 18px;
 }
 
 .country-figure figcaption {
@@ -818,6 +844,10 @@ details[open],
     }
 
     .country-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .country-image-grid {
         grid-template-columns: 1fr;
     }
 
