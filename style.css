@@ -838,6 +838,40 @@ details[open],
     }
 }
 
+/* Contenedor que pone los elementos en fila */
+.portfolio-buttons-container {
+    display: flex;       /* Activa el modo flexible */
+    gap: 20px;          /* Espacio de separación entre los botones */
+    margin-bottom: 30px; /* Espacio con lo que haya debajo */
+    flex-wrap: wrap;    /* Si no caben en móvil, se bajan automáticamente */
+}
+
+/* Estilo para los botones (basado en tu captura) */
+.btn-portfolio {
+    display: inline-block;
+    padding: 12px 35px;
+    background-color: #d4a373; /* Color café claro de tu imagen */
+    color: #3d2b1f;
+    text-decoration: none;
+    border-radius: 50px;      /* Bordes redondeados */
+    font-weight: bold;
+    box-shadow: 4px 4px 0px #bc8a5f; /* Sombra sólida que usas en el sitio */
+    transition: 0.3s;
+    min-width: 150px;         /* Ancho mínimo para que sean iguales */
+    text-align: center;
+}
+
+.btn-portfolio:hover {
+    transform: translateY(-3px);
+    background-color: #bc8a5f;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+    .portfolio-buttons-container {
+        justify-content: center; /* Centra los botones en pantallas pequeñas */
+    }
+}
 /* =========================================
    9. RESPONSIVO
    ========================================= */
