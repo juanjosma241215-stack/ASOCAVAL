@@ -440,12 +440,12 @@ summary i {
 }
 
 .economic-heading {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 }
 
 .economic-heading h3 {
     font-size: clamp(1.7rem, 3vw, 2.2rem);
-    margin-bottom: 10px;
+    margin-bottom: 0;
     color: #3d2b1f;
 }
 
@@ -501,7 +501,7 @@ summary i {
 
 .country-image-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
 }
 
@@ -515,8 +515,8 @@ summary i {
 .country-image {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
 }
 
 .country-figure-flag {
@@ -524,19 +524,25 @@ summary i {
 }
 
 .country-figure-indonesia {
-    background: linear-gradient(180deg, #fdf3f1 0%, #fffdfa 100%);
-    border-color: #e8b6ae;
+    background: linear-gradient(180deg, #f7d2ca 0%, #ffffff 55%, #fbf4ec 100%);
+    border-color: #e39f90;
 }
 
 .country-image-flag {
     object-fit: contain;
-    padding: 18px;
+    padding: 26px;
+}
+
+.country-figure .country-image {
+    min-height: 300px;
+    padding: 22px;
 }
 
 .country-figure figcaption {
-    padding: 12px 14px;
+    padding: 14px 16px 18px;
     color: #6f4e37;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    text-align: center;
 }
 
 .excel-uploader {
