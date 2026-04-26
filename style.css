@@ -388,3 +388,79 @@ details[open] summary::after { content: '\f146'; }
         text-align: center;
     }
 }
+/* =========================================
+   MEJORA RESPONSIVE ANÁLISIS TEST (PC)
+   ========================================= */
+
+@media (min-width: 1024px) {
+    /* Contenedor de la details para que use flexbox en escritorio */
+    #test .content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 análisis por fila */
+        gap: 30px;
+    }
+
+    /* Estilo del bloque individual de cada integrante */
+    .analysis-block {
+        display: flex;
+        flex-direction: column; /* Apila elementos internamente */
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border: 1px solid var(--bg-cream);
+        margin-bottom: 0; /* Usamos gap del grid */
+    }
+
+    
+
+    /* Estilo para el título del integrante */
+    .analysis-block h3 {
+        font-size: 1.5rem;
+        color: var(--primary-coffee);
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    /* Contenedor de la imagen del test */
+    .test-image-wrapper {
+        width: 100%;
+        margin: 0 0 20px 0;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    /* Imagen del test: Más responsive en PC */
+    .test-img {
+        width: 100%;
+        height: 250px; /* Altura fija para uniformidad */
+        object-fit: contain; /* No recorta la imagen, muestra el test completo */
+        background-color: #fcfcfc; /* Fondo neutro por si la imagen no llena */
+        transition: transform 0.3s ease;
+    }
+
+    .test-image-wrapper:hover .test-img {
+        transform: scale(1.05); /* Zoom suave al hover */
+    }
+
+    /* Texto del análisis */
+    .analysis-text {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: auto; /* Empuja la firma hacia abajo */
+        text-align: justify;
+    }
+
+    /* Caja de la firma */
+    .signature-box {
+        align-items: flex-end; /* Mantiene la firma a la derecha */
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+        margin-top: 20px;
+    }
+
+    /* Separador original: Se oculta en PC porque usamos grid y bordes */
+    #test hr.separator {
+        display: none;
+    }
+}
