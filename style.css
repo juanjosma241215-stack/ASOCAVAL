@@ -63,7 +63,7 @@ body {
 
 .nav-links a:hover { color: var(--accent-gold); }
 
-/* Dropdown para Introducción */
+/* Dropdown */
 .dropdown { position: relative; }
 .dropdown-content {
     display: none;
@@ -115,26 +115,13 @@ body {
     transition: 0.3s;
 }
 .btn-main:hover { background-color: var(--accent-dark-gold); transform: scale(1.05); }
+
 /* =========================================
-   ESTILOS ESPECÍFICOS PARA INTRODUCCIÓN
+   4. INTRODUCCIÓN (ACORDEONES)
    ========================================= */
+.section-title { text-align: center; font-size: 2.5rem; color: var(--primary-coffee); margin-bottom: 10px; }
+.section-subtitle { text-align: center; color: var(--accent-dark-gold); margin-bottom: 40px; font-style: italic; }
 
-/* Títulos de la página */
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--primary-coffee);
-    margin-bottom: 10px;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--accent-dark-gold);
-    margin-bottom: 40px;
-    font-style: italic;
-}
-
-/* Diseño de los Acordeones (Details) */
 details {
     background: var(--white);
     margin-bottom: 20px;
@@ -150,43 +137,22 @@ summary {
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    list-style: none; /* Quita la flecha por defecto */
+    list-style: none;
     display: flex;
     align-items: center;
     gap: 15px;
     background-color: var(--white);
-    transition: background 0.3s;
 }
 
-summary i {
-    color: var(--accent-dark-gold);
-    font-size: 1.4rem;
-}
-
-summary:hover {
-    background-color: #fffaf5;
-}
-
-/* Flecha personalizada */
 summary::after {
-    content: '\f0fe'; /* Icono de plus (+) de FontAwesome */
+    content: '\f0fe';
     font-family: "Font Awesome 6 Free";
     margin-left: auto;
     transition: transform 0.3s;
 }
 
-details[open] summary::after {
-    content: '\f146'; /* Icono de minus (-) */
-}
+details[open] summary::after { content: '\f146'; }
 
-/* Contenido dentro del acordeón */
-.content {
-    padding: 25px;
-    border-top: 1px solid var(--bg-cream);
-    background-color: #fffcf9;
-}
-
-/* Estilos de los canales de comunicación (Iconos) */
 .social-channels {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -205,84 +171,16 @@ details[open] summary::after {
     border-radius: 10px;
     background: var(--white);
     border: 1px solid var(--bg-cream);
-    transition: 0.3s;
 }
 
-.social-channels a:hover {
-    border-color: var(--accent-gold);
-    transform: translateY(-3px);
-    background: var(--bg-cream);
-}
-
-.social-channels i {
-    font-size: 2rem;
-    margin-bottom: 8px;
-    color: var(--accent-dark-gold);
-}
-
-/* Bloques de Análisis de Test y Firmas */
-.analysis-block {
-    margin-bottom: 50px;
-}
-
-.test-img {
-    width: 100%;
-    max-width: 600px;
-    display: block;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.analysis-text {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    text-align: justify;
-    margin: 20px 0;
-}
-
-.signature-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 20px;
-}
-
-.signature-img {
-    width: 180px;
-    height: auto;
-}
-
-.signature-line {
-    width: 200px;
-    height: 1px;
-    background: var(--primary-coffee);
-    margin: 5px 0;
-}
-
-.separator {
-    border: none;
-    border-top: 2px dashed var(--accent-gold);
-    margin: 40px 0;
-}
-
-/* Imagen del Cronograma */
-.responsive-img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
+.signature-box { display: flex; flex-direction: column; align-items: flex-end; margin-top: 20px; }
+.signature-img { width: 180px; height: auto; }
+.signature-line { width: 200px; height: 1px; background: var(--primary-coffee); margin: 5px 0; }
 
 /* =========================================
-   4. CONTENEDORES Y BLOQUES COMUNES
+   5. REALIDAD EMPRESARIAL (TU DISEÑO ORIGINAL)
    ========================================= */
-.container {
-    max-width: 1100px;
-    margin: 100px auto 40px;
-    padding: 0 20px;
-}
-
-.info-section, .economic-block {
+.info-section {
     background: var(--white);
     padding: 40px;
     margin-bottom: 40px;
@@ -290,7 +188,7 @@ details[open] summary::after {
     box-shadow: var(--shadow);
 }
 
-.info-title, .economic-heading h3 {
+.info-title {
     font-size: 2rem;
     border-bottom: 3px solid var(--accent-gold);
     display: inline-block;
@@ -298,136 +196,108 @@ details[open] summary::after {
     padding-bottom: 5px;
 }
 
-/* =========================================
-   5. REALIDAD ECONÓMICA (PÁISES Y EXCEL)
-   ========================================= */
-
-/* Cuadrícula de países */
-.country-grid {
+/* Grids de PDF */
+.pdf-grid-ltr {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-.country-card {
-    background: #fffaf5;
-    border: 1px solid var(--accent-gold);
-    border-radius: 12px;
-    overflow: hidden;
-    text-align: center;
-    transition: 0.3s;
+.diagnostic-card {
+    background: #fff; border: 1px solid #e3d5ca; border-radius: 12px;
+    padding: 15px; box-shadow: 6px 6px 0 #d4a373;
+    position: relative; transition: 0.3s ease; height: 350px; overflow: hidden;
 }
 
-.country-card:hover { transform: translateY(-5px); }
+.card-preview { width: 100%; height: 280px; border: none; pointer-events: none; }
 
-.country-card-header {
-    background: var(--primary-coffee);
-    color: white;
-    padding: 10px;
-    font-weight: bold;
+.iframe-overlay {
+    position: absolute; top: 50px; left: 15px; right: 15px; bottom: 15px;
+    background: rgba(212, 163, 115, 0.1); z-index: 5;
+    display: flex; align-items: center; justify-content: center; color: transparent;
 }
 
-.country-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    padding: 10px;
+.diagnostic-card:hover .iframe-overlay { color: #3d2b1f; background: rgba(212, 163, 115, 0.3); }
+
+/* Galería RTL */
+.gallery-grid-rtl {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; 
+    direction: rtl; 
 }
 
-/* Galería de Excel */
-.upload-dropzone {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    border: 2px dashed var(--accent-gold);
-    background: #fffcf9;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-bottom: 20px;
+.diagnostic-gallery-item { 
+    direction: ltr; 
+    background: #fff; padding: 15px; border-radius: 12px;
+    border: 1px solid #e3d5ca; box-shadow: 6px 6px 0 #d4a373;
 }
 
-.upload-dropzone i { font-size: 3rem; color: var(--accent-dark-gold); margin-bottom: 10px; }
+.gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
 
-.excel-input { display: none; }
-
-.excel-actions { display: flex; gap: 10px; margin-bottom: 20px; }
-
-.excel-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-    min-height: 100px;
-}
-
-/* Panel de Calificación */
-.rating-panel {
-    background: #fdf8f3;
-    padding: 30px;
-    border-radius: 10px;
-    border-left: 5px solid var(--accent-gold);
-}
-
-.analysis-display {
-    min-height: 100px;
-    background: white;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-}
-
-.star-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #ccc;
-    cursor: pointer;
-}
-.star-btn.active { color: #f1c40f; }
-
-.rating-delete {
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* =========================================
-   6. REALIDAD EMPRESARIAL (PDF Y GALERÍA)
-   ========================================= */
 .diagnostic-caption-box {
     width: 100%; min-height: 100px; border: 1px solid var(--accent-gold);
     border-radius: 8px; padding: 10px; font-size: 0.9rem;
     background: #fffaf5; margin-top: 10px; word-break: break-all;
 }
 
-.diagnostic-caption-box a { color: #0066cc; font-weight: bold; }
-
-.gallery-grid-rtl {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px; direction: rtl; 
-}
-.diagnostic-gallery-item { direction: ltr; }
+.diagnostic-caption-box a { color: #0066cc; font-weight: bold; text-decoration: underline; }
 
 /* =========================================
-   7. RESPONSIVE (CELULARES Y TABLETS)
+   6. REALIDAD ECONÓMICA (PAÍSES Y EXCEL)
+   ========================================= */
+.economic-block {
+    background: var(--white);
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.country-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.country-card {
+    background: #fffaf5; border: 1px solid var(--accent-gold);
+    border-radius: 12px; overflow: hidden; text-align: center;
+}
+
+.country-card-header { background: var(--primary-coffee); color: white; padding: 10px; }
+
+/* Fondo claro distintivo para banderas */
+.country-figure-flag {
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.country-image { width: 100%; height: auto; max-height: 150px; object-fit: contain; }
+
+/* Excel y Ratings */
+.upload-dropzone {
+    border: 2px dashed var(--accent-gold); padding: 40px;
+    text-align: center; cursor: pointer; border-radius: 10px;
+}
+
+.rating-panel {
+    background: #fdf8f3; padding: 30px; border-radius: 10px;
+    border-left: 5px solid var(--accent-gold);
+}
+
+.star-btn { background: none; border: none; font-size: 1.5rem; color: #ccc; cursor: pointer; }
+.star-btn.active { color: #f1c40f; }
+
+/* =========================================
+   7. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Ocultar menú en móvil para usar hamburguesa luego */
-    
+    .nav-links { display: none; }
     .hero h1 { font-size: 2.2rem; }
-    
     .container { margin-top: 80px; padding: 0 15px; }
-    
-    .info-section, .economic-block { padding: 20px; }
-    
-    .excel-actions { flex-direction: column; }
-    
     .gallery-grid-rtl { direction: ltr; }
-
-    .country-grid { grid-template-columns: 1fr; }
 }
