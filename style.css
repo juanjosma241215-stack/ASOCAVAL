@@ -1,185 +1,107 @@
-/* =========================================
-   BASE
-========================================= */
+/* CONFIGURACIÓN GENERAL */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
     font-family: 'Georgia', serif;
 }
 
-body {
-    background-color: #f5ebe0;
-    color: #3d2b1f;
-}
+body { background-color: #f5ebe0; color: #3d2b1f; padding-bottom: 50px; }
 
-/* =========================================
-   NAVBAR
-========================================= */
+/* NAVBAR */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(61, 43, 31, 0.95);
-    padding: 15px 5%;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+    display: flex; justify-content: space-between; align-items: center;
+    background-color: rgba(61, 43, 31, 0.98); padding: 15px 5%;
+    color: #fff; position: fixed; width: 100%; top: 0; z-index: 1000;
 }
 
-.logo {
-    color: #d4a373;
-    font-weight: bold;
-}
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; }
+.logo { color: #d4a373; font-weight: bold; }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
+/* BANNER */
+.banner-image { width: 100%; margin-top: 60px; display: block; }
 
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.nav-links a:hover {
-    color: #d4a373;
-}
-
-/* =========================================
-   BANNER
-========================================= */
-.banner-image {
-    width: 100%;
-    margin-top: 80px;
-}
-
-/* =========================================
-   SECCIONES
-========================================= */
+/* SECCIONES */
 .info-section {
-    display: flex;
-    gap: 30px;
-    padding: 40px;
-    background: #fff;
-    margin: 40px;
-    border-radius: 15px;
-    box-shadow: 8px 8px 0 #d4a373;
+    display: flex; gap: 30px; padding: 40px; background: #fff;
+    margin: 40px auto; border-radius: 15px; box-shadow: 8px 8px 0 #d4a373;
+    max-width: 1200px;
 }
 
-.info-text {
-    flex: 1;
+.column-layout { flex-direction: column; }
+
+.info-text { flex: 1; }
+.info-title { font-size: 2rem; margin-bottom: 15px; border-bottom: 2px solid #f5ebe0; padding-bottom: 10px; }
+
+.info-image { max-width: 400px; width: 100%; border-radius: 10px; }
+
+.bmc-iframe { width: 100%; height: 500px; border: 2px solid #d4a373; border-radius: 10px; }
+
+/* GRIDS */
+/* PDF: Izquierda a Derecha */
+.pdf-grid-ltr {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; width: 100%;
 }
 
-.info-title {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+/* Galería: Derecha a Izquierda */
+.gallery-grid-rtl {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; width: 100%;
+    direction: rtl; /* Empieza por la derecha */
 }
 
-.info-description {
-    color: #5f4633;
+/* TARJETAS PDF DINÁMICAS */
+.card-link { text-decoration: none; color: inherit; display: block; }
+
+.diagnostic-card {
+    background: #fff; border: 1px solid #e3d5ca; border-radius: 12px;
+    padding: 15px; box-shadow: 6px 6px 0 #d4a373;
+    position: relative; transition: 0.3s ease; height: 350px; overflow: hidden;
 }
 
-.info-image {
-    max-width: 400px;
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-}
+.diagnostic-card:hover { transform: translateY(-8px); box-shadow: 10px 10px 0 #bc8a5f; }
 
-/* =========================================
-   PDF (DERECHA → IZQUIERDA)
-========================================= */
-.diagnostic-pdf-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    direction: rtl; /* 🔥 clave */
-}
+.card-label { text-align: center; font-weight: bold; margin-bottom: 10px; color: #3d2b1f; }
 
-.diagnostic-pdf-link {
-    text-decoration: none;
-    color: inherit;
-    direction: ltr; /* evita que el texto se invierta */
-}
+.card-preview { width: 100%; height: 280px; border: none; pointer-events: none; }
 
-.diagnostic-pdf-card {
-    background: #fff;
-    border: 1px solid #e3d5ca;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 6px 6px 0 #d4a373;
-    transition: transform 0.3s ease;
+/* Capa para detectar el toque/clic sobre el PDF */
+.iframe-overlay {
+    position: absolute; top: 50px; left: 15px; right: 15px; bottom: 15px;
+    background: rgba(212, 163, 115, 0.1); z-index: 5;
+    display: flex; align-items: center; justify-content: center;
+    color: transparent; font-weight: bold; border-radius: 8px;
 }
+.diagnostic-card:hover .iframe-overlay { color: #3d2b1f; background: rgba(212, 163, 115, 0.3); }
 
-.diagnostic-pdf-card:hover {
-    transform: translateY(-5px);
-}
-
-.diagnostic-pdf-label {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.diagnostic-pdf-view {
-    width: 100%;
-    height: 250px;
-    border: none;
-}
-
-/* =========================================
-   GALERÍA (DERECHA → IZQUIERDA + TEXTO)
-========================================= */
-.diagnostic-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    direction: rtl; /* 🔥 clave */
-}
-
+/* GALERÍA DE IMÁGENES */
 .diagnostic-gallery-item {
-    background: #fff;
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid #e3d5ca;
-    box-shadow: 6px 6px 0 #d4a373;
-    display: flex;
-    flex-direction: column;
-    direction: ltr; /* normaliza contenido */
+    background: #fff; padding: 15px; border-radius: 12px;
+    border: 1px solid #e3d5ca; box-shadow: 6px 6px 0 #d4a373;
+    display: flex; flex-direction: column; direction: ltr; /* normaliza texto dentro */
 }
 
-.diagnostic-gallery-image {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    background: #f8f3ed;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
+.image-link { position: relative; display: block; overflow: hidden; border-radius: 8px; margin-bottom: 10px; }
 
-/* 🔥 CAJA DE TEXTO LARGO */
+.gallery-img { width: 100%; height: 200px; object-fit: cover; transition: 0.4s; }
+
+.image-link:hover .gallery-img { transform: scale(1.1); }
+
+.img-zoom-hint {
+    position: absolute; bottom: 0; background: rgba(61, 43, 31, 0.7);
+    width: 100%; color: #fff; text-align: center; font-size: 0.8rem;
+    padding: 5px; opacity: 0; transition: 0.3s;
+}
+.image-link:hover .img-zoom-hint { opacity: 1; }
+
 .diagnostic-caption {
-    width: 100%;
-    min-height: 100px;
-    resize: vertical;
-    border: 1px solid #d4a373;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 0.95rem;
-    background: #fffaf5;
-    color: #3d2b1f;
+    width: 100%; min-height: 80px; border: 1px solid #d4a373;
+    border-radius: 8px; padding: 10px; font-size: 0.9rem;
+    background: #fffaf5; resize: none;
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .info-section {
-        flex-direction: column;
-    }
+    .info-section { flex-direction: column; margin: 15px; padding: 20px; }
+    .gallery-grid-rtl { direction: ltr; } /* En móvil mejor normal */
 }

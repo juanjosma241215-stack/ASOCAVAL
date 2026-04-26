@@ -2,157 +2,107 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASOCAVAL - Realidad Empresarial</title>
-
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<nav class="navbar">
-    <div class="logo">ASOCAVAL</div>
-    <ul class="nav-links">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="introduccion.html">Introducción</a></li>
-        <li><a href="realidadempresarial.html">Realidad Empresarial</a></li>
-        <li><a href="realidadeconomica.html">Realidad Económica</a></li>
-    </ul>
-</nav>
+    <nav class="navbar">
+        <div class="logo">ASOCAVAL</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="introduccion.html">Introducción</a></li>
+            <li><a href="realidadempresarial.html">Realidad Empresarial</a></li>
+            <li><a href="realidadeconomica.html">Realidad Económica</a></li>
+        </ul>
+    </nav>
 
-<img src="img/logo.jpg" class="banner-image">
+    <img src="img/logo.jpg" class="banner-image" alt="Banner">
 
-<!-- DESCRIPCIÓN -->
-<section class="info-section">
-    <div class="info-text">
-        <h2 class="info-title">Descripcion</h2>
-        <p class="info-description">
-            Somos una organizacion de 74 familias en Valdivia, Antioquia,
-            comprometidas con la transformacion social.
-            Con mas de 15 anos de trayectoria, lideramos la sustitucion
-            de cultivos ilicitos mediante la produccion de cacao sostenible.
-        </p>
-    </div>
+    <section class="info-section">
+        <div class="info-text">
+            <h2 class="info-title">Descripción</h2>
+            <p class="info-description">
+                Somos una organización de 74 familias en Valdivia, Antioquia, comprometidas con la transformación social. 
+                Lideramos la sustitución de cultivos ilícitos mediante la producción de cacao sostenible.
+            </p>
+        </div>
+        <img src="img/descripcionima.jpg" class="info-image" alt="Descripción">
+    </section>
 
-    <img src="img/descripcionima.jpg" class="info-image">
-</section>
+    <section class="info-section">
+        <div class="info-text">
+            <h2 class="info-title">Business Model Canvas</h2>
+            <p class="info-description">Estructura estratégica del modelo de negocio.</p>
+        </div>
+        <iframe src="docs/BMC.pdf" class="bmc-iframe"></iframe>
+    </section>
 
-<!-- BMC -->
-<section class="info-section">
-    <div class="info-text">
-        <h2 class="info-title">Business Model Canvas</h2>
-     
-    </div>
+    <section class="info-section column-layout">
+        <h2 class="info-title">Diagnóstico de Internacionalización</h2>
+        <div class="pdf-grid-ltr">
+            <a href="docs/Cuestionario.pdf" target="_blank" class="card-link">
+                <div class="diagnostic-card">
+                    <div class="card-label"><i class="fas fa-file-pdf"></i> Cuestionario</div>
+                    <div class="iframe-overlay">Toca para abrir documento</div>
+                    <iframe src="docs/Cuestionario.pdf" class="card-preview"></iframe>
+                </div>
+            </a>
 
-    <iframe src="docs/BMC.pdf" style="width:100%; height:500px;"></iframe>
-</section>
+            <a href="docs/Ponderación.pdf" target="_blank" class="card-link">
+                <div class="diagnostic-card">
+                    <div class="card-label"><i class="fas fa-file-pdf"></i> Ponderación</div>
+                    <div class="iframe-overlay">Toca para abrir documento</div>
+                    <iframe src="docs/Ponderación.pdf" class="card-preview"></iframe>
+                </div>
+            </a>
 
-<!-- PDF -->
-<section class="info-section">
-    <div class="info-text">
-        <h2 class="info-title">Diagnostico de potencialidades de internacionalizacion</h2>
-        <p class="info-description">
-            Analisis detallado de la capacidad exportadora.
-        </p>
-    </div>
+            <a href="docs/Resultados.pdf" target="_blank" class="card-link">
+                <div class="diagnostic-card">
+                    <div class="card-label"><i class="fas fa-file-pdf"></i> Resultados</div>
+                    <div class="iframe-overlay">Toca para abrir documento</div>
+                    <iframe src="docs/Resultados.pdf" class="card-preview"></iframe>
+                </div>
+            </a>
+        </div>
+    </section>
 
-    <div class="diagnostic-pdf-grid">
-
-        <a href="docs/Cuestionario.pdf" target="_blank" class="diagnostic-pdf-link">
-            <div class="diagnostic-pdf-card">
-                <div class="diagnostic-pdf-label">Cuestionario</div>
-                <iframe src="docs/Cuestionario.pdf" class="diagnostic-pdf-view"></iframe>
+    <section class="info-section column-layout">
+        <h2 class="info-title">Evidencias Fotográficas</h2>
+        <div class="gallery-grid-rtl">
+            <div class="diagnostic-gallery-item">
+                <a href="img/foto1.jpg" target="_blank" class="image-link">
+                    <img src="img/foto1.jpg" class="gallery-img">
+                    <div class="img-zoom-hint">Ver pantalla completa</div>
+                </a>
+                <textarea class="diagnostic-caption" placeholder="Escribe descripción..."></textarea>
             </div>
-        </a>
 
-        <a href="docs/Ponderación.pdf" target="_blank" class="diagnostic-pdf-link">
-            <div class="diagnostic-pdf-card">
-                <div class="diagnostic-pdf-label">Ponderación</div>
-                <iframe src="docs/Ponderación.pdf" class="diagnostic-pdf-view"></iframe>
+            <div class="diagnostic-gallery-item">
+                <a href="img/foto2.jpg" target="_blank" class="image-link">
+                    <img src="img/foto2.jpg" class="gallery-img">
+                </a>
+                <textarea class="diagnostic-caption"></textarea>
             </div>
-        </a>
 
-        <a href="docs/Resultados.pdf" target="_blank" class="diagnostic-pdf-link">
-            <div class="diagnostic-pdf-card">
-                <div class="diagnostic-pdf-label">Resultados</div>
-                <iframe src="docs/Resultados.pdf" class="diagnostic-pdf-view"></iframe>
+            <div class="diagnostic-gallery-item">
+                <a href="img/foto3.jpg" target="_blank" class="image-link">
+                    <img src="img/foto3.jpg" class="gallery-img">
+                </a>
+                <textarea class="diagnostic-caption"></textarea>
             </div>
-        </a>
-
-    </div>
-</section>
-
-<!-- GALERÍA -->
-<section class="info-section">
-    <div class="info-text">
-        <h2 class="info-title">Evidencias Fotograficas</h2>
-    </div>
-
-    <div class="diagnostic-gallery-grid">
-
-        <!-- REPETIR ESTE BLOQUE -->
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto1.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption" placeholder="Escribe una descripción detallada..."></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto2.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto3.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto4.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto5.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto6.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto7.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto8.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto9.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto10.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto11.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-        <div class="diagnostic-gallery-item">
-            <img src="img/foto12.jpg" class="diagnostic-gallery-image">
-            <textarea class="diagnostic-caption"></textarea>
-        </div>
-
-    </div>
-</section>
+            
+            <div class="diagnostic-gallery-item">
+                <a href="img/foto4.jpg" target="_blank" class="image-link">
+                    <img src="img/foto4.jpg" class="gallery-img">
+                </a>
+                <textarea class="diagnostic-caption"></textarea>
+            </div>
+            
+            </div>
+    </section>
 
 </body>
 </html>
