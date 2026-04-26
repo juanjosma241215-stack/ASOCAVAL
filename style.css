@@ -942,24 +942,26 @@ details[open],
     padding: 18px;
 }
 
-.diagnostic-upload-label {
+.diagnostic-pdf-label {
     display: flex;
     align-items: center;
     gap: 12px;
-    cursor: pointer;
     color: #7a5638;
     font-weight: bold;
+    margin-bottom: 12px;
 }
 
-.diagnostic-upload-label i {
+.diagnostic-pdf-label i {
     color: #b04832;
     font-size: 1.4rem;
 }
 
-.diagnostic-file-input {
-    display: block;
+.diagnostic-pdf-view {
     width: 100%;
-    margin-top: 12px;
+    height: 220px;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
 }
 
 .diagnostic-gallery-wrapper {
@@ -982,7 +984,7 @@ details[open],
 
 .diagnostic-gallery-image {
     width: 100%;
-    height: 190px;
+    height: 160px;
     object-fit: cover;
     border-radius: 10px;
     display: block;
@@ -991,7 +993,7 @@ details[open],
 
 .diagnostic-caption {
     width: 100%;
-    min-height: 86px;
+    min-height: 74px;
     resize: vertical;
     border: 1px solid #d8bda0;
     border-radius: 10px;
@@ -1197,6 +1199,6 @@ details[open],
     }
 
     .diagnostic-gallery-image {
-        height: 210px;
+        height: 180px;
     }
 }
