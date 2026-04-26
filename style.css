@@ -1,131 +1,320 @@
-/* CONFIGURACIÓN GENERAL */
+/* =========================================
+   1. CONFIGURACIÓN GENERAL Y VARIABLES
+   ========================================= */
 * {
-    margin: 0; padding: 0; box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Georgia', serif;
 }
 
-body { background-color: #f5ebe0; color: #3d2b1f; padding-bottom: 50px; }
-
-/* NAVBAR */
-.navbar {
-    display: flex; justify-content: space-between; align-items: center;
-    background-color: rgba(61, 43, 31, 0.98); padding: 15px 5%;
-    color: #fff; position: fixed; width: 100%; top: 0; z-index: 1000;
+:root {
+    --primary-coffee: #3d2b1f;
+    --accent-gold: #d4a373;
+    --accent-dark-gold: #bc8a5f;
+    --bg-cream: #f5ebe0;
+    --white: #ffffff;
+    --shadow: 8px 8px 0px var(--accent-gold);
 }
 
-.nav-links { display: flex; list-style: none; gap: 20px; }
-.nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; }
-.logo { color: #d4a373; font-weight: bold; }
+body {
+    background-color: var(--bg-cream);
+    color: var(--primary-coffee);
+    line-height: 1.6;
+    padding-bottom: 50px;
+}
 
-/* BANNER */
-.banner-image { width: 100%; margin-top: 60px; display: block; }
+/* =========================================
+   2. NAVBAR Y MENÚ DESPLEGABLE (DROPDOWN)
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(61, 43, 31, 0.98);
+    padding: 15px 5%;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
+}
 
-/* SECCIONES */
+.logo {
+    color: var(--accent-gold);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent-gold); }
+
+/* Estilos Dropdown */
+.dropdown { position: relative; }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--white);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: var(--primary-coffee) !important;
+    padding: 12px 16px;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content a:hover { background-color: var(--bg-cream); }
+.dropdown:hover .dropdown-content { display: block; }
+
+/* =========================================
+   3. SECCIÓN HERO (PÁGINA INICIO)
+   ========================================= */
+header {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/hero-bg.jpg'); /* Agrega una imagen de fondo si deseas */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero {
+    text-align: center;
+    color: white;
+    padding: 0 10%;
+    margin-top: 60px;
+}
+
+.hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+.hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; }
+
+.btn-main {
+    background-color: var(--accent-gold);
+    color: var(--primary-coffee);
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    background-color: var(--accent-dark-gold);
+    transform: scale(1.05);
+}
+
+/* =========================================
+   4. ESTRUCTURA DE CONTENEDORES Y SECCIONES
+   ========================================= */
+.container {
+    max-width: 1100px;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+}
+
 .info-section {
     display: flex; gap: 30px; padding: 40px; background: #fff;
-    margin: 40px auto; border-radius: 15px; box-shadow: 8px 8px 0 #d4a373;
-    max-width: 1200px;
+    margin: 40px auto; border-radius: 15px; box-shadow: var(--shadow);
+    max-width: 1200px; align-items: center;
 }
 
-.column-layout { flex-direction: column; }
+.column-layout { flex-direction: column; align-items: flex-start; }
 
-.info-text { flex: 1; }
-.info-title { font-size: 2rem; margin-bottom: 15px; border-bottom: 2px solid #f5ebe0; padding-bottom: 10px; }
+.info-title { 
+    font-size: 2rem; 
+    margin-bottom: 15px; 
+    border-bottom: 3px solid var(--accent-gold); 
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; }
+.section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
 
 .info-image { max-width: 400px; width: 100%; border-radius: 10px; }
+.banner-image { width: 100%; margin-top: 60px; display: block; }
+.bmc-iframe { width: 100%; height: 550px; border: 2px solid var(--accent-gold); border-radius: 10px; }
 
-.bmc-iframe { width: 100%; height: 500px; border: 2px solid #d4a373; border-radius: 10px; }
+/* =========================================
+   5. ACORDEONES (DETAILS / SUMMARY)
+   ========================================= */
+details {
+    background: var(--white);
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0px var(--accent-gold);
+    border: 1px solid #e3d5ca;
+    overflow: hidden;
+}
 
-/* GRIDS */
-/* PDF: Izquierda a Derecha */
+summary {
+    padding: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--white);
+    transition: 0.3s;
+}
+
+summary:hover { background-color: #faf3eb; }
+summary i { color: var(--accent-dark-gold); font-size: 1.2rem; }
+
+.content { padding: 25px; border-top: 1px solid #eee; }
+
+/* Canales de comunicación */
+.social-channels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    list-style: none;
+    margin-top: 15px;
+}
+
+.social-channels a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: var(--bg-cream);
+    text-decoration: none;
+    color: var(--primary-coffee);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.social-channels a:hover { background: var(--accent-gold); color: white; }
+.social-channels i { font-size: 1.5rem; margin-bottom: 10px; }
+
+/* =========================================
+   6. ANÁLISIS DE TEST (BLOQUES Y FIRMAS)
+   ========================================= */
+.analysis-block { margin-bottom: 40px; }
+.test-image-wrapper { margin: 20px 0; text-align: center; }
+.test-img { max-width: 100%; border: 1px solid #ddd; border-radius: 5px; }
+
+.signature-box {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.signature-img { width: 150px; height: auto; margin-bottom: 5px; }
+.signature-line { width: 200px; height: 1px; background: #333; }
+
+.responsive-img { width: 100%; height: auto; border-radius: 10px; }
+
+/* =========================================
+   7. GRIDS (PDF Y GALERÍA)
+   ========================================= */
 .pdf-grid-ltr {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px; width: 100%;
 }
 
-/* Galería: Derecha a Izquierda */
 .gallery-grid-rtl {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px; width: 100%;
-    direction: rtl; /* Empieza por la derecha */
+    direction: rtl; 
 }
 
-/* TARJETAS PDF DINÁMICAS */
-.card-link { text-decoration: none; color: inherit; display: block; }
+.diagnostic-gallery-item {
+    background: #fff; padding: 15px; border-radius: 12px;
+    border: 1px solid #e3d5ca; box-shadow: 6px 6px 0 var(--accent-gold);
+    display: flex; flex-direction: column; direction: ltr; 
+}
 
+.gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+
+.diagnostic-caption-box {
+    width: 100%; min-height: 100px; border: 1px solid var(--accent-gold);
+    border-radius: 8px; padding: 10px; font-size: 0.9rem;
+    background: #fffaf5; margin-top: 10px; word-break: break-all;
+}
+
+/* Capa PDF */
 .diagnostic-card {
     background: #fff; border: 1px solid #e3d5ca; border-radius: 12px;
-    padding: 15px; box-shadow: 6px 6px 0 #d4a373;
-    position: relative; transition: 0.3s ease; height: 350px; overflow: hidden;
+    padding: 15px; box-shadow: 6px 6px 0 var(--accent-gold);
+    position: relative; height: 350px; overflow: hidden;
 }
-
-.diagnostic-card:hover { transform: translateY(-8px); box-shadow: 10px 10px 0 #bc8a5f; }
-
-.card-label { text-align: center; font-weight: bold; margin-bottom: 10px; color: #3d2b1f; }
 
 .card-preview { width: 100%; height: 280px; border: none; pointer-events: none; }
 
-/* Capa para detectar el toque/clic sobre el PDF */
 .iframe-overlay {
     position: absolute; top: 50px; left: 15px; right: 15px; bottom: 15px;
-    background: rgba(212, 163, 115, 0.1); z-index: 5;
-    display: flex; align-items: center; justify-content: center;
+    z-index: 5; display: flex; align-items: center; justify-content: center;
     color: transparent; font-weight: bold; border-radius: 8px;
 }
 .diagnostic-card:hover .iframe-overlay { color: #3d2b1f; background: rgba(212, 163, 115, 0.3); }
 
-/* GALERÍA DE IMÁGENES */
-.diagnostic-gallery-item {
-    background: #fff; padding: 15px; border-radius: 12px;
-    border: 1px solid #e3d5ca; box-shadow: 6px 6px 0 #d4a373;
-    display: flex; flex-direction: column; direction: ltr; /* normaliza texto dentro */
+/* =========================================
+   8. MEDIA QUERIES (RESPONSIVE)
+   ========================================= */
+
+/* TABLETS */
+@media (max-width: 1024px) {
+    .hero h1 { font-size: 2.8rem; }
+    .info-section { margin: 20px; }
 }
 
-.image-link { position: relative; display: block; overflow: hidden; border-radius: 8px; margin-bottom: 10px; }
-
-.gallery-img { width: 100%; height: 200px; object-fit: cover; transition: 0.4s; }
-
-.image-link:hover .gallery-img { transform: scale(1.1); }
-
-.img-zoom-hint {
-    position: absolute; bottom: 0; background: rgba(61, 43, 31, 0.7);
-    width: 100%; color: #fff; text-align: center; font-size: 0.8rem;
-    padding: 5px; opacity: 0; transition: 0.3s;
-}
-.image-link:hover .img-zoom-hint { opacity: 1; }
-
-.diagnostic-caption {
-    width: 100%; min-height: 80px; border: 1px solid #d4a373;
-    border-radius: 8px; padding: 10px; font-size: 0.9rem;
-    background: #fffaf5; resize: none;
-}
-/* Estilo para que el DIV parezca un textarea */
-.diagnostic-caption-box {
-    width: 100%;
-    min-height: 100px;
-    border: 1px solid #d4a373;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 0.9rem;
-    background: #fffaf5;
-    color: #3d2b1f;
-    overflow-y: auto;
-    word-break: break-all; /* Para que los links largos no se salgan */
-    text-align: left; /* Para que el texto se lea bien */
-}
-
-/* Estilo para los links dentro de esa caja */
-.diagnostic-caption-box a {
-    color: #0066cc;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.diagnostic-caption-box a:hover {
-    color: #003366;
-}
-/* RESPONSIVE */
+/* CELULARES */
 @media (max-width: 768px) {
-    .info-section { flex-direction: column; margin: 15px; padding: 20px; }
-    .gallery-grid-rtl { direction: ltr; } /* En móvil mejor normal */
+    .navbar { padding: 10px 5%; }
+    
+    .nav-links {
+        display: none; /* Aquí podrías implementar un menú hamburguesa con JS */
+    }
+
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+
+    .info-section { 
+        flex-direction: column; 
+        padding: 20px;
+        text-align: center;
+    }
+
+    .info-image { max-width: 100%; }
+    
+    .gallery-grid-rtl { direction: ltr; } /* Normalizar dirección en móviles */
+    
+    .signature-box { align-items: center; }
+
+    .section-title { font-size: 1.8rem; }
+    
+    .pdf-grid-ltr { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .btn-main { width: 100%; padding: 12px; }
+    .logo { font-size: 1rem; }
 }
