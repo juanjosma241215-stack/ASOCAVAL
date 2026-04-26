@@ -327,9 +327,63 @@ details[open] summary::after { content: '\f146'; }
 /* =========================================
    7. RESPONSIVE
    ========================================= */
+
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero h1 { font-size: 2.2rem; }
-    .container { margin-top: 80px; padding: 0 15px; }
-    .gallery-grid-rtl { direction: ltr; }
+    
+    /* 1. Asegura que ninguna imagen se desborde */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        margin: 0 auto; /* Centra las imágenes en móviles */
+    }
+
+    /* 2. Ajuste para los bloques de información (Realidad Empresarial) */
+    .info-section, .economic-block, .container {
+        padding: 15px !important;
+        margin: 10px auto !important;
+        width: 95% !important;
+    }
+
+    /* 3. Ajuste para el Business Model Canvas (PDF) */
+    .pdf-container, .bmc-iframe {
+        height: 450px !important; /* Altura cómoda para leer en vertical */
+        width: 100% !important;
+    }
+
+    /* 4. Grids de Galería y Países (Una sola columna en celular) */
+    .gallery-grid-rtl, 
+    .pdf-grid-ltr, 
+    .country-grid,
+    .social-channels {
+        grid-template-columns: 1fr !important; /* Fuerza una sola columna */
+        gap: 15px !important;
+        direction: ltr !important; /* Evita problemas de lectura en móviles */
+    }
+
+    /* 5. Ajuste para los análisis de integrantes */
+    .test-img {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* 6. Ajuste para las firmas */
+    .signature-box {
+        align-items: center !important; /* Centra la firma en el celular */
+        margin-top: 15px;
+    }
+    
+    .signature-line {
+        width: 150px !important;
+    }
+
+    /* 7. Ajuste para los Títulos */
+    .hero h1 {
+        font-size: 2rem !important;
+    }
+    
+    .info-title, .section-title {
+        font-size: 1.5rem !important;
+        text-align: center;
+    }
 }
