@@ -1,22 +1,26 @@
-/* RESET */
+/* =========================================
+   BASE
+========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Georgia', serif;
 }
 
 body {
     background-color: #f5ebe0;
-    font-family: Georgia, serif;
     color: #3d2b1f;
 }
 
-/* NAVBAR */
+/* =========================================
+   NAVBAR
+========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #3d2b1f;
+    background-color: rgba(61, 43, 31, 0.95);
     padding: 15px 5%;
     color: #fff;
     position: fixed;
@@ -26,18 +30,18 @@ body {
 }
 
 .logo {
-    font-weight: bold;
     color: #d4a373;
+    font-weight: bold;
 }
 
 .nav-links {
     display: flex;
-    gap: 20px;
     list-style: none;
+    gap: 20px;
 }
 
 .nav-links a {
-    color: white;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -45,71 +49,120 @@ body {
     color: #d4a373;
 }
 
-/* BANNER */
+/* =========================================
+   BANNER
+========================================= */
 .banner-image {
     width: 100%;
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
-/* SECCIONES */
+/* =========================================
+   SECCIONES
+========================================= */
 .info-section {
     display: flex;
     gap: 30px;
     padding: 40px;
     background: #fff;
     margin: 40px;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 0 #d4a373;
 }
 
 .info-text {
     flex: 1;
 }
 
-.info-image {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 10px;
+.info-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
 }
 
-/* PDF */
+.info-description {
+    color: #5f4633;
+}
+
+.info-image {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* =========================================
+   PDF
+========================================= */
 .diagnostic-pdf-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+}
+
+.diagnostic-pdf-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.diagnostic-pdf-card {
+    background: #fff;
+    border: 1px solid #e3d5ca;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 6px 6px 0 #d4a373;
+    transition: transform 0.3s ease;
+}
+
+.diagnostic-pdf-card:hover {
+    transform: translateY(-5px);
+}
+
+.diagnostic-pdf-label {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .diagnostic-pdf-view {
     width: 100%;
-    height: 300px;
+    height: 250px;
+    border: none;
 }
 
-/* GALERÍA */
+/* =========================================
+   GALERÍA (GRÁFICAS GRANDES)
+========================================= */
 .diagnostic-gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
 .diagnostic-gallery-item {
     background: #fff;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e3d5ca;
+    box-shadow: 6px 6px 0 #d4a373;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .diagnostic-gallery-image {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
+    background: #f8f3ed;
+    padding: 10px;
+    border-radius: 8px;
 }
 
-/* RESPONSIVE */
+/* =========================================
+   RESPONSIVE
+========================================= */
 @media (max-width: 768px) {
     .info-section {
         flex-direction: column;
-    }
-
-    .diagnostic-pdf-grid,
-    .diagnostic-gallery-grid {
-        grid-template-columns: 1fr;
     }
 }
