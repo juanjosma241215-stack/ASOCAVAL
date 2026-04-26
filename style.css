@@ -904,6 +904,108 @@ details[open],
     box-shadow: 12px 12px 0px #bc8a5f !important;
 }
 
+.diagnostic-section {
+    display: block;
+}
+
+.diagnostic-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 34px;
+}
+
+.diagnostic-pdf-panel {
+    background: #fcf7f1;
+    border: 1px solid #e3d5ca;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 6px 6px 0 #d4a373;
+}
+
+.diagnostic-side-title {
+    font-size: 1.3rem;
+    color: #3d2b1f;
+    margin-bottom: 16px;
+}
+
+.diagnostic-pdf-grid {
+    display: grid;
+    gap: 14px;
+}
+
+.diagnostic-pdf-card {
+    background: #ffffff;
+    border: 1px dashed #c79a6a;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.diagnostic-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    color: #7a5638;
+    font-weight: bold;
+}
+
+.diagnostic-upload-label i {
+    color: #b04832;
+    font-size: 1.4rem;
+}
+
+.diagnostic-file-input {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.diagnostic-gallery-wrapper {
+    width: 100%;
+}
+
+.diagnostic-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.diagnostic-gallery-item {
+    background: #fff;
+    border: 1px solid #e3d5ca;
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 5px 5px 0 #d4a373;
+}
+
+.diagnostic-gallery-image {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.diagnostic-caption {
+    width: 100%;
+    min-height: 86px;
+    resize: vertical;
+    border: 1px solid #d8bda0;
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: #fffcf8;
+    color: #3d2b1f;
+    font-size: 0.95rem;
+}
+
+.diagnostic-caption:focus {
+    outline: 2px solid rgba(212, 163, 115, 0.35);
+    border-color: #c79261;
+}
+
 /* Ajuste móvil */
 @media (max-width: 700px) {
     .portfolio-grid {
@@ -1020,6 +1122,14 @@ details[open],
     .economic-block {
         padding: 22px;
     }
+
+    .diagnostic-top {
+        grid-template-columns: 1fr;
+    }
+
+    .diagnostic-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 480px) {
@@ -1080,5 +1190,13 @@ details[open],
 
     .star-btn {
         font-size: 1.9rem;
+    }
+
+    .diagnostic-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .diagnostic-gallery-image {
+        height: 210px;
     }
 }
