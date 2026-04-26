@@ -91,17 +91,19 @@ body {
 }
 
 /* =========================================
-   PDF
+   PDF (DERECHA → IZQUIERDA)
 ========================================= */
 .diagnostic-pdf-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+    direction: rtl; /* 🔥 clave */
 }
 
 .diagnostic-pdf-link {
     text-decoration: none;
     color: inherit;
+    direction: ltr; /* evita que el texto se invierta */
 }
 
 .diagnostic-pdf-card {
@@ -130,12 +132,13 @@ body {
 }
 
 /* =========================================
-   GALERÍA (GRÁFICAS GRANDES)
+   GALERÍA (DERECHA → IZQUIERDA + TEXTO)
 ========================================= */
 .diagnostic-gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
+    direction: rtl; /* 🔥 clave */
 }
 
 .diagnostic-gallery-item {
@@ -146,7 +149,7 @@ body {
     box-shadow: 6px 6px 0 #d4a373;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    direction: ltr; /* normaliza contenido */
 }
 
 .diagnostic-gallery-image {
@@ -156,6 +159,20 @@ body {
     background: #f8f3ed;
     padding: 10px;
     border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* 🔥 CAJA DE TEXTO LARGO */
+.diagnostic-caption {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    border: 1px solid #d4a373;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.95rem;
+    background: #fffaf5;
+    color: #3d2b1f;
 }
 
 /* =========================================
