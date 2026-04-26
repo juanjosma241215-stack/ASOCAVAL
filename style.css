@@ -115,6 +115,163 @@ body {
     transition: 0.3s;
 }
 .btn-main:hover { background-color: var(--accent-dark-gold); transform: scale(1.05); }
+/* =========================================
+   ESTILOS ESPECÍFICOS PARA INTRODUCCIÓN
+   ========================================= */
+
+/* Títulos de la página */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-coffee);
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--accent-dark-gold);
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+/* Diseño de los Acordeones (Details) */
+details {
+    background: var(--white);
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--accent-gold);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+summary {
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none; /* Quita la flecha por defecto */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--white);
+    transition: background 0.3s;
+}
+
+summary i {
+    color: var(--accent-dark-gold);
+    font-size: 1.4rem;
+}
+
+summary:hover {
+    background-color: #fffaf5;
+}
+
+/* Flecha personalizada */
+summary::after {
+    content: '\f0fe'; /* Icono de plus (+) de FontAwesome */
+    font-family: "Font Awesome 6 Free";
+    margin-left: auto;
+    transition: transform 0.3s;
+}
+
+details[open] summary::after {
+    content: '\f146'; /* Icono de minus (-) */
+}
+
+/* Contenido dentro del acordeón */
+.content {
+    padding: 25px;
+    border-top: 1px solid var(--bg-cream);
+    background-color: #fffcf9;
+}
+
+/* Estilos de los canales de comunicación (Iconos) */
+.social-channels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.social-channels a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-coffee);
+    padding: 15px;
+    border-radius: 10px;
+    background: var(--white);
+    border: 1px solid var(--bg-cream);
+    transition: 0.3s;
+}
+
+.social-channels a:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-3px);
+    background: var(--bg-cream);
+}
+
+.social-channels i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: var(--accent-dark-gold);
+}
+
+/* Bloques de Análisis de Test y Firmas */
+.analysis-block {
+    margin-bottom: 50px;
+}
+
+.test-img {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.analysis-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 20px 0;
+}
+
+.signature-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+
+.signature-img {
+    width: 180px;
+    height: auto;
+}
+
+.signature-line {
+    width: 200px;
+    height: 1px;
+    background: var(--primary-coffee);
+    margin: 5px 0;
+}
+
+.separator {
+    border: none;
+    border-top: 2px dashed var(--accent-gold);
+    margin: 40px 0;
+}
+
+/* Imagen del Cronograma */
+.responsive-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 
 /* =========================================
    4. CONTENEDORES Y BLOQUES COMUNES
