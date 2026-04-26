@@ -2,131 +2,73 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASOCAVAL - Realidad Empresarial</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>ASOCAVAL</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
 
-    <nav class="navbar">
-        <div class="logo">ASOCAVAL</div>
-        <ul class="nav-links">
-            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-            <li><a href="introduccion.html"><i class="fas fa-info-circle"></i> Introduccion</a></li>
-            <li><a href="realidadempresarial.html"><i class="fas fa-building"></i> Realidad Empresarial</a></li>
-            <li><a href="realidadeconomica.html"><i class="fas fa-chart-line"></i> Realidad Economica</a></li>
-        </ul>
-    </nav>
+<nav class="navbar">
+    <div class="logo">ASOCAVAL</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="introduccion.html">Introducción</a></li>
+        <li><a href="realidadempresarial.html">Realidad Empresarial</a></li>
+    </ul>
+</nav>
 
-    <div class="banner-full-container">
-        <img src="img/logo.jpg" alt="Banner Asocaval" class="banner-image">
+<img src="img/logo.jpg" class="banner-image">
+
+<!-- DESCRIPCIÓN -->
+<section class="info-section">
+    <div class="info-text">
+        <h2>Descripción</h2>
+        <p>
+            Somos una organización de 74 familias en Valdivia, Antioquia,
+            enfocadas en cacao sostenible.
+        </p>
+    </div>
+    <img src="img/descripcionima.jpg" class="info-image">
+</section>
+
+<!-- PDF -->
+<section class="info-section">
+    <div class="info-text">
+        <h2>Business Model Canvas</h2>
     </div>
 
-    <main class="enterprise-layout">
-        <section class="info-section info-section-full">
-            <div class="info-text">
-                <h2 class="info-title">Descripcion</h2>
-                <p class="info-description">
-                    Somos una organizacion de 74 familias en Valdivia, Antioquia, comprometidas con la transformacion social. Con mas de 15 anos de trayectoria, lideramos la sustitucion de cultivos ilicitos mediante la produccion de cacao sostenible.
-                </p>
-            </div>
-            <div class="info-media">
-                <img src="img/descripcionima.jpg" alt="Imagen descriptiva 1" class="info-image">
-            </div>
-        </section>
+    <iframe src="docs/BMC.pdf" style="width:100%; height:500px;"></iframe>
+</section>
 
-        <section class="info-section info-section-full">
-            <div class="info-text">
-                <h2 class="info-title">Business Model Canvas</h2>
-                <p class="info-description">Estructura estratégica del modelo de negocio de ASOCAVAL.</p>
-            </div>
-            <div class="diagnostic-pdf-card" style="width: 100%; margin-top: 20px;">
-                <div class="diagnostic-pdf-label"><i class="fas fa-file-pdf"></i><span>Ver BMC Completo</span></div>
-                <iframe src="docs/BMC.pdf" style="width: 100%; height: 600px; border-radius: 12px; border: 1px solid #d4a373;"></iframe>
-            </div>
-        </section>
+<!-- DIAGNÓSTICO -->
+<section class="info-section">
+    <div class="info-text">
+        <h2>Diagnóstico</h2>
+    </div>
 
-        <section class="info-section info-section-full diagnostic-section">
-            <div class="info-text">
-                <h2 class="info-title">Diagnostico de potencialidades de internacionalizacion</h2>
-                <p class="info-description">Analisis detallado de la capacidad exportadora.</p>
-            </div>
+    <div class="diagnostic-pdf-grid">
+        <iframe src="docs/Cuestionario.pdf" class="diagnostic-pdf-view"></iframe>
+        <iframe src="docs/Ponderación.pdf" class="diagnostic-pdf-view"></iframe>
+        <iframe src="docs/Resultados.pdf" class="diagnostic-pdf-view"></iframe>
+    </div>
+</section>
 
-            <div class="diagnostic-pdf-panel">
-                <h3 class="diagnostic-side-title">Documentacion de Analisis</h3>
-                <div class="diagnostic-pdf-grid">
-                    <div class="diagnostic-pdf-card">
-                        <div class="diagnostic-pdf-label"><i class="fas fa-file-pdf"></i><span>Cuestionario</span></div>
-                        <iframe src="docs/Cuestionario.pdf" class="diagnostic-pdf-view"></iframe>
-                    </div>
-                    <div class="diagnostic-pdf-card">
-                        <div class="diagnostic-pdf-label"><i class="fas fa-file-pdf"></i><span>Ponderacion</span></div>
-                        <iframe src="docs/Ponderación.pdf" class="diagnostic-pdf-view"></iframe>
-                    </div>
-                    <div class="diagnostic-pdf-card">
-                        <div class="diagnostic-pdf-label"><i class="fas fa-file-pdf"></i><span>Resultados</span></div>
-                        <iframe src="docs/Resultados.pdf" class="diagnostic-pdf-view"></iframe>
-                    </div>
-                </div>
-            </div>
+<!-- GALERÍA -->
+<section class="info-section">
+    <div class="info-text">
+        <h2>Evidencias</h2>
+    </div>
 
-            <div class="diagnostic-gallery-wrapper">
-                <h3 class="diagnostic-side-title">Evidencias Fotograficas</h3>
-                <div class="diagnostic-gallery-grid">
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto1.jpg" alt="Evidencia 1" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 1"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto2.jpg" alt="Evidencia 2" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 2"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto3.jpg" alt="Evidencia 3" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 3"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto4.jpg" alt="Evidencia 4" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 4"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto5.jpg" alt="Evidencia 5" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 5"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto6.jpg" alt="Evidencia 6" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 6"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto7.jpg" alt="Evidencia 7" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 7"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto8.jpg" alt="Evidencia 8" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 8"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto9.jpg" alt="Evidencia 9" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 9"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto10.jpg" alt="Evidencia 10" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 10"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto11.jpg" alt="Evidencia 11" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 11"></textarea>
-                    </div>
-                    <div class="diagnostic-gallery-item">
-                        <img src="img/foto12.jpg" alt="Evidencia 12" class="diagnostic-gallery-image">
-                        <textarea class="diagnostic-caption" rows="2" placeholder="Descripcion 12"></textarea>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div class="diagnostic-gallery-grid">
+        <img src="img/foto1.jpg" class="diagnostic-gallery-image">
+        <img src="img/foto2.jpg" class="diagnostic-gallery-image">
+        <img src="img/foto3.jpg" class="diagnostic-gallery-image">
+        <img src="img/foto4.jpg" class="diagnostic-gallery-image">
+        <img src="img/foto5.jpg" class="diagnostic-gallery-image">
+        <img src="img/foto6.jpg" class="diagnostic-gallery-image">
+    </div>
+</section>
 
 </body>
 </html>
