@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupScrollProgress();
     setupBackToTop();
     setupNavbarState();
+    setupMobileMenu();
     setupActiveLinks();
     setupRevealAnimations();
     setupDetailsBehavior();
@@ -32,6 +33,58 @@ function setupScrollProgress() {
     updateProgress();
     window.addEventListener('scroll', updateProgress, { passive: true });
     window.addEventListener('resize', updateProgress);
+}
+
+function setupMobileMenu() {
+    const navbar = document.querySelector('.navbar');
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    const dropdownToggle = document.querySelector('.dropdown > .dropbtn');
+    const dropdown = document.querySelector('.dropdown');
+    if (!navbar || !(toggle instanceof HTMLButtonElement) || !links) return;
+
+    const closeMenu = () => {
+        navbar.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        const icon = toggle.querySelector('i');
+        if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    };
+
+    toggle.addEventListener('click', () => {
+        const isOpen = navbar.classList.toggle('menu-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        const icon = toggle.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-bars', !isOpen);
+            icon.classList.toggle('fa-times', isOpen);
+        }
+    });
+
+    links.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+                closeMenu();
+            }
+        });
+    });
+
+    if (dropdownToggle && dropdown) {
+        dropdownToggle.addEventListener('click', (event) => {
+            if (window.innerWidth > 900) return;
+            event.preventDefault();
+            dropdown.classList.toggle('is-open');
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) {
+            closeMenu();
+            if (dropdown) dropdown.classList.remove('is-open');
+        }
+    });
 }
 
 function setupBackToTop() {

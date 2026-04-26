@@ -24,6 +24,11 @@ body {
     padding-bottom: 50px;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* =========================================
    2. NAVBAR Y NAVEGACIÓN
    ========================================= */
@@ -45,6 +50,17 @@ body {
     font-weight: bold;
     font-size: 1.2rem;
     letter-spacing: 1px;
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(212, 163, 115, 0.6);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .nav-links {
@@ -83,6 +99,11 @@ body {
 }
 .dropdown:hover .dropdown-content { display: block; }
 
+.container {
+    width: min(1100px, 92%);
+    margin: 110px auto 0;
+}
+
 /* =========================================
    3. HERO (PÁGINA DE INICIO)
    ========================================= */
@@ -90,7 +111,7 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/cacao.webp');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 92vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,9 +121,11 @@ body {
     text-align: center;
     color: white;
     padding: 0 20px;
+    width: min(900px, 92%);
 }
 
 .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+.hero p { max-width: 760px; margin: 0 auto 22px; }
 
 .btn-main {
     background-color: var(--accent-gold);
@@ -144,6 +167,10 @@ summary {
     background-color: var(--white);
 }
 
+.content {
+    padding: 0 20px 20px;
+}
+
 summary::after {
     content: '\f0fe';
     font-family: "Font Awesome 6 Free";
@@ -176,6 +203,26 @@ details[open] summary::after { content: '\f146'; }
 .signature-box { display: flex; flex-direction: column; align-items: flex-end; margin-top: 20px; }
 .signature-img { width: 180px; height: auto; }
 .signature-line { width: 200px; height: 1px; background: var(--primary-coffee); margin: 5px 0; }
+
+.wide-image-container {
+    width: min(900px, 100%);
+    margin: 0 auto;
+}
+
+.responsive-img,
+.banner-image,
+.info-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.info-section {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    align-items: center;
+}
 
 /* =========================================
    5. REALIDAD EMPRESARIAL (TU DISEÑO ORIGINAL)
@@ -379,13 +426,72 @@ details[open] summary::after { content: '\f146'; }
     }
 
     /* 7. Ajuste para los Títulos */
+    .navbar {
+        padding: 12px 4%;
+        flex-wrap: wrap;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding-top: 10px;
+    }
+
+    .navbar.menu-open .nav-links {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        background: rgba(255, 255, 255, 0.07);
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
+
+    .dropdown-content {
+        position: static;
+        margin-top: 6px;
+        box-shadow: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+
+    .dropdown.is-open .dropdown-content {
+        display: block;
+    }
+
+    .hero-header {
+        min-height: 80vh;
+        padding-top: 72px;
+    }
+
     .hero h1 {
         font-size: 2rem !important;
+    }
+
+    .hero p {
+        font-size: 0.98rem;
     }
     
     .info-title, .section-title {
         font-size: 1.5rem !important;
         text-align: center;
+    }
+
+    .info-section {
+        grid-template-columns: 1fr;
+        padding: 20px;
     }
 }
 /* =========================================
