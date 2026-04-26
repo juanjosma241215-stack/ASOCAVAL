@@ -99,7 +99,31 @@ body { background-color: #f5ebe0; color: #3d2b1f; padding-bottom: 50px; }
     border-radius: 8px; padding: 10px; font-size: 0.9rem;
     background: #fffaf5; resize: none;
 }
+/* Estilo para que el DIV parezca un textarea */
+.diagnostic-caption-box {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid #d4a373;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.9rem;
+    background: #fffaf5;
+    color: #3d2b1f;
+    overflow-y: auto;
+    word-break: break-all; /* Para que los links largos no se salgan */
+    text-align: left; /* Para que el texto se lea bien */
+}
 
+/* Estilo para los links dentro de esa caja */
+.diagnostic-caption-box a {
+    color: #0066cc;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.diagnostic-caption-box a:hover {
+    color: #003366;
+}
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .info-section { flex-direction: column; margin: 15px; padding: 20px; }
