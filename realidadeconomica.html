@@ -6,6 +6,7 @@
     <title>ASOCAVAL - Realidad Económica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="economia.css">
     <script src="script.js" defer></script>
 
     <style>
@@ -569,13 +570,29 @@
 
     <main class="container">
         <img src="img/logo.jpg" class="banner-image" alt="Banner Asocaval">
-        
-        <section class="info-section description-layout">
-            <div class="info-text">
-                <h2 class="info-title">5 Indicadores</h2>
-                <p class="info-description">
-                   Somos una organización de 74 familias en Valdivia, Antioquia, comprometidas con la transformación social. Con más de 15 años de trayectoria, lideramos la sustitución de cultivos ilícitos mediante la producción de cacao sostenible, consolidando una economía de paz y resiliencia a orillas del Río Cauca.
-                </p>
+
+        <section class="economic-block indicators-block">
+            <div class="economic-heading economic-heading-center">
+                <h3>5 Indicadores</h3>
+            </div>
+            <div class="indicators-grid">
+                <figure class="indicator-item">
+                    <img src="https://via.placeholder.com/900x540?text=Indicador+1" alt="Indicador 1" data-zoomable>
+                </figure>
+                <figure class="indicator-item">
+                    <img src="https://via.placeholder.com/900x540?text=Indicador+2" alt="Indicador 2" data-zoomable>
+                </figure>
+                <figure class="indicator-item">
+                    <img src="https://via.placeholder.com/900x540?text=Indicador+3" alt="Indicador 3" data-zoomable>
+                </figure>
+                <figure class="indicator-item">
+                    <img src="https://via.placeholder.com/900x540?text=Indicador+4" alt="Indicador 4" data-zoomable>
+                </figure>
+                <figure class="indicator-item">
+                    <img src="https://via.placeholder.com/900x540?text=Indicador+5" alt="Indicador 5" data-zoomable>
+                </figure>
+            </div>
+        </section>
 
         <!-- PAÍSES -->
         <section class="economic-block">
@@ -610,7 +627,7 @@
             </div>
         </section>
 
-        <!-- GALERÍA DE IMÁGENES DE EXCEL -->
+        <!-- GALERÍA DE IMÁGENES DE EXCEL
         <section class="economic-block">
             <div class="economic-heading">
                 <h3>Galería ordenada de imágenes de Excel</h3>
@@ -640,7 +657,7 @@
                     <div class="excel-img-grid" id="excel-img-grid" style="display:none;"></div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- ANÁLISIS E INTERPRETACIÓN -->
         <section class="economic-block">
@@ -709,21 +726,14 @@
             });
         })();
 
-        /* ===== GALERÍA DE IMÁGENES ===== */
+        /* ===== ZOOM DE IMÁGENES ===== */
         (function(){
-            const input       = document.getElementById('excel-images');
-            const grid        = document.getElementById('excel-img-grid');
-            const placeholder = document.getElementById('gallery-placeholder');
-            const btnClear    = document.getElementById('btn-clear');
-            const btnExport   = document.getElementById('btn-export');
-            const modal       = document.getElementById('image-modal');
-            const modalImg    = document.getElementById('image-modal-content');
-            const modalClose  = document.getElementById('image-modal-close');
-            const maxImages   = 10;
-            let files         = [];
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('image-modal-content');
+            const modalClose = document.getElementById('image-modal-close');
+            if(!modal || !modalImg) return;
 
             function openModal(src, alt) {
-                if(!modal || !modalImg) return;
                 modalImg.src = src;
                 modalImg.alt = alt || 'Imagen ampliada';
                 modal.classList.add('open');
@@ -731,40 +741,67 @@
             }
 
             function closeModal() {
-                if(!modal || !modalImg) return;
                 modal.classList.remove('open');
                 modal.setAttribute('aria-hidden', 'true');
                 modalImg.src = '';
             }
 
+            document.addEventListener('click', (event) => {
+                const image = event.target.closest('[data-zoomable]');
+                if(!image) return;
+                openModal(image.src, image.alt);
+            });
+
+            if(modalClose){
+                modalClose.addEventListener('click', closeModal);
+            }
+
+            modal.addEventListener('click', (event) => {
+                if(event.target === modal){
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if(event.key === 'Escape'){
+                    closeModal();
+                }
+            });
+        })();
+
+        /* ===== GALERÍA DE IMÁGENES DE EXCEL ===== */
+        (function(){
+            const input = document.getElementById('excel-images');
+            const grid = document.getElementById('excel-img-grid');
+            const placeholder = document.getElementById('gallery-placeholder');
+            const btnClear = document.getElementById('btn-clear');
+            const btnExport = document.getElementById('btn-export');
+            const dropzone = document.querySelector('.upload-dropzone');
+            if(!input || !grid || !placeholder || !btnClear || !btnExport || !dropzone) return;
+
+            let files = [];
+
             function renderGrid() {
+                if(files.length === 0){
+                    grid.style.display = 'none';
+                    placeholder.style.display = '';
+                    return;
+                }
                 placeholder.style.display = 'none';
                 grid.style.display = '';
                 grid.innerHTML = '';
-                files.slice(0, maxImages).forEach((f, idx) => {
-                    const url  = URL.createObjectURL(f);
+                files.forEach((f, idx) => {
+                    const url = URL.createObjectURL(f);
                     const item = document.createElement('div');
                     item.className = 'excel-img-item';
-                    item.innerHTML = `<img src="${url}" alt="${f.name}"><div class="excel-img-caption">${idx+1}. ${f.name}</div>`;
-                    const image = item.querySelector('img');
-                    if(image){
-                        image.addEventListener('click', () => openModal(url, f.name));
-                    }
+                    item.innerHTML = `<img src="${url}" alt="${f.name}" data-zoomable><div class="excel-img-caption">${idx+1}. ${f.name}</div>`;
                     grid.appendChild(item);
                 });
-
-                const missingSlots = Math.max(0, maxImages - files.length);
-                for(let i = 0; i < missingSlots; i++){
-                    const slot = document.createElement('div');
-                    slot.className = 'excel-img-item empty-slot';
-                    slot.innerHTML = `<div class="empty-slot-label">Espacio ${files.length + i + 1} de ${maxImages}</div>`;
-                    grid.appendChild(slot);
-                }
             }
 
             input.addEventListener('change', () => {
                 const nuevos = [...input.files].sort((a,b) => a.name.localeCompare(b.name));
-                files = [...files, ...nuevos].slice(0, maxImages);
+                files = [...files, ...nuevos];
                 renderGrid();
                 input.value = '';
             });
@@ -780,37 +817,15 @@
                 alert(`Se exportarían ${files.length} imagen(es) a Excel.\n(Integra una librería como SheetJS para exportar con imágenes reales.)`);
             });
 
-            /* Drag & drop */
-            const dropzone = document.querySelector('.upload-dropzone');
             dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.style.background = 'var(--crema-oscura)'; });
             dropzone.addEventListener('dragleave', () => { dropzone.style.background = ''; });
             dropzone.addEventListener('drop', e => {
                 e.preventDefault();
                 dropzone.style.background = '';
                 const dropped = [...e.dataTransfer.files].filter(f => f.type.startsWith('image/'));
-                files = [...files, ...dropped].sort((a,b) => a.name.localeCompare(b.name)).slice(0, maxImages);
+                files = [...files, ...dropped].sort((a,b) => a.name.localeCompare(b.name));
                 renderGrid();
             });
-
-            if(modalClose){
-                modalClose.addEventListener('click', closeModal);
-            }
-
-            if(modal){
-                modal.addEventListener('click', (event) => {
-                    if(event.target === modal){
-                        closeModal();
-                    }
-                });
-            }
-
-            document.addEventListener('keydown', (event) => {
-                if(event.key === 'Escape'){
-                    closeModal();
-                }
-            });
-
-            renderGrid();
         })();
     </script>
 
