@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupRevealAnimations();
     setupDetailsBehavior();
     setupHeroMotion();
+    setupBusinessDescriptionToggles();
     setupExcelGallery();
     setupRatingPanel();
 });
@@ -213,6 +214,25 @@ function setupHeroMotion() {
 
     updateHero();
     window.addEventListener('scroll', updateHero, { passive: true });
+}
+
+function setupBusinessDescriptionToggles() {
+    const toggleButtons = document.querySelectorAll('[data-toggle-target]');
+    if (!toggleButtons.length) return;
+
+    toggleButtons.forEach((button) => {
+        if (!(button instanceof HTMLButtonElement)) return;
+        button.addEventListener('click', () => {
+            const targetId = button.dataset.toggleTarget;
+            if (!targetId) return;
+            const content = document.getElementById(targetId);
+            if (!content) return;
+
+            const isHidden = content.hasAttribute('hidden');
+            content.toggleAttribute('hidden', !isHidden);
+            button.classList.toggle('is-open', isHidden);
+        });
+    });
 }
 
 function setupExcelGallery() {

@@ -31,6 +31,17 @@ img {
     height: auto;       /* Mantiene la proporción original */
 }
 
+.banner-image {
+    display: block;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: 72px;
+    border-radius: 0;
+    max-height: 430px;
+    object-fit: cover;
+}
+
 /* =========================================
    2. NAVBAR Y NAVEGACIÓN
    ========================================= */
@@ -303,6 +314,42 @@ details[open] summary::after {
     padding-bottom: 5px; 
 }
 
+.business-toggle-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.business-toggle-btn {
+    background: var(--accent-gold);
+    color: var(--primary-coffee);
+    border: 1px solid var(--accent-dark-gold);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.business-toggle-btn:hover,
+.business-toggle-btn.is-open {
+    background: var(--accent-dark-gold);
+    color: #fff;
+}
+
+.business-toggle-content {
+    margin-top: 12px;
+    background: #fffaf5;
+    border: 1px solid var(--accent-gold);
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.business-toggle-content p {
+    margin: 0;
+}
+
 /* Grids para miniaturas de PDFs */
 .pdf-grid-ltr {
     display: grid; 
@@ -479,6 +526,11 @@ details[open] summary::after {
     }
 
     .hero h1 { font-size: 2rem !important; } /* Título más pequeño */
+
+    .banner-image {
+        margin-top: 64px;
+        max-height: 280px;
+    }
 }
 
 /* =========================================
