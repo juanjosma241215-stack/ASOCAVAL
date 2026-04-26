@@ -1,276 +1,155 @@
 /* =========================================
-   1. CONFIGURACIÓN GENERAL Y VARIABLES
+   1. CONFIGURACIÓN GENERAL
    ========================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
     font-family: 'Georgia', serif;
 }
 
-:root {
-    --primary-coffee: #3d2b1f;
-    --accent-gold: #d4a373;
-    --accent-dark-gold: #bc8a5f;
-    --bg-cream: #f5ebe0;
-    --white: #ffffff;
-    --shadow: 8px 8px 0px var(--accent-gold);
-}
-
-body {
-    background-color: var(--bg-cream);
-    color: var(--primary-coffee);
-    line-height: 1.6;
-    padding-bottom: 50px;
-}
+body { background-color: #f5ebe0; color: #3d2b1f; padding-bottom: 50px; }
 
 /* =========================================
-   2. NAVBAR Y NAVEGACIÓN
+   2. NAVBAR Y DROPDOWN (SIN CAMBIOS EN LINKS)
    ========================================= */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(61, 43, 31, 0.98);
-    padding: 15px 5%;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 2000;
+    display: flex; justify-content: space-between; align-items: center;
+    background-color: rgba(61, 43, 31, 0.98); padding: 15px 5%;
+    color: #fff; position: fixed; width: 100%; top: 0; z-index: 1000;
 }
 
-.logo {
-    color: var(--accent-gold);
-    font-weight: bold;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-}
+.nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
+.nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; }
+.logo { color: #d4a373; font-weight: bold; }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    align-items: center;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
-
-.nav-links a:hover { color: var(--accent-gold); }
-
-/* Dropdown para Introducción */
+/* Estilo Dropdown para la página de Inicio */
 .dropdown { position: relative; }
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--white);
-    min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 8px;
-    margin-top: 10px;
+    display: none; position: absolute; background-color: #fff;
+    min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1; border-radius: 8px; margin-top: 10px;
 }
-.dropdown-content a {
-    color: var(--primary-coffee) !important;
-    padding: 12px 16px;
-    display: block;
-    border-bottom: 1px solid #eee;
-}
+.dropdown-content a { color: #3d2b1f !important; padding: 12px 16px; display: block; border-bottom: 1px solid #eee; }
 .dropdown:hover .dropdown-content { display: block; }
 
 /* =========================================
-   3. HERO (PÁGINA DE INICIO)
+   3. HERO E INICIO
    ========================================= */
 .hero-header {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/cacao.webp');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/cacao.webp');
+    background-size: cover; background-position: center;
+    height: 100vh; display: flex; align-items: center; justify-content: center;
 }
-
-.hero {
-    text-align: center;
-    color: white;
-    padding: 0 20px;
-}
-
+.hero { text-align: center; color: white; padding: 0 20px; }
 .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
-
 .btn-main {
-    background-color: var(--accent-gold);
-    color: var(--primary-coffee);
-    padding: 12px 30px;
-    border: none;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    background-color: #d4a373; color: #3d2b1f; padding: 12px 30px;
+    border: none; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s;
 }
-.btn-main:hover { background-color: var(--accent-dark-gold); transform: scale(1.05); }
+.btn-main:hover { background-color: #bc8a5f; transform: scale(1.05); }
 
 /* =========================================
-   4. CONTENEDORES Y BLOQUES COMUNES
+   4. REALIDAD EMPRESARIAL (TU CÓDIGO ORIGINAL)
    ========================================= */
-.container {
-    max-width: 1100px;
-    margin: 100px auto 40px;
-    padding: 0 20px;
+.banner-image { width: 100%; margin-top: 60px; display: block; }
+
+.info-section {
+    display: flex; gap: 30px; padding: 40px; background: #fff;
+    margin: 40px auto; border-radius: 15px; box-shadow: 8px 8px 0 #d4a373;
+    max-width: 1200px;
 }
+.column-layout { flex-direction: column; }
+.info-text { flex: 1; }
+.info-title { font-size: 2rem; margin-bottom: 15px; border-bottom: 2px solid #f5ebe0; padding-bottom: 10px; }
+.info-image { max-width: 400px; width: 100%; border-radius: 10px; }
+.bmc-iframe { width: 100%; height: 500px; border: 2px solid #d4a373; border-radius: 10px; }
 
-.info-section, .economic-block {
-    background: var(--white);
-    padding: 40px;
-    margin-bottom: 40px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
+/* Grids Realidad Empresarial */
+.pdf-grid-ltr {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; width: 100%;
 }
-
-.info-title, .economic-heading h3 {
-    font-size: 2rem;
-    border-bottom: 3px solid var(--accent-gold);
-    display: inline-block;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
-}
-
-/* =========================================
-   5. REALIDAD ECONÓMICA (PÁISES Y EXCEL)
-   ========================================= */
-
-/* Cuadrícula de países */
-.country-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.country-card {
-    background: #fffaf5;
-    border: 1px solid var(--accent-gold);
-    border-radius: 12px;
-    overflow: hidden;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.country-card:hover { transform: translateY(-5px); }
-
-.country-card-header {
-    background: var(--primary-coffee);
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-}
-
-.country-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    padding: 10px;
-}
-
-/* Galería de Excel */
-.upload-dropzone {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    border: 2px dashed var(--accent-gold);
-    background: #fffcf9;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.upload-dropzone i { font-size: 3rem; color: var(--accent-dark-gold); margin-bottom: 10px; }
-
-.excel-input { display: none; }
-
-.excel-actions { display: flex; gap: 10px; margin-bottom: 20px; }
-
-.excel-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-    min-height: 100px;
-}
-
-/* Panel de Calificación */
-.rating-panel {
-    background: #fdf8f3;
-    padding: 30px;
-    border-radius: 10px;
-    border-left: 5px solid var(--accent-gold);
-}
-
-.analysis-display {
-    min-height: 100px;
-    background: white;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-}
-
-.star-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #ccc;
-    cursor: pointer;
-}
-.star-btn.active { color: #f1c40f; }
-
-.rating-delete {
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* =========================================
-   6. REALIDAD EMPRESARIAL (PDF Y GALERÍA)
-   ========================================= */
-.diagnostic-caption-box {
-    width: 100%; min-height: 100px; border: 1px solid var(--accent-gold);
-    border-radius: 8px; padding: 10px; font-size: 0.9rem;
-    background: #fffaf5; margin-top: 10px; word-break: break-all;
-}
-
-.diagnostic-caption-box a { color: #0066cc; font-weight: bold; }
-
 .gallery-grid-rtl {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px; direction: rtl; 
+    gap: 25px; width: 100%; direction: rtl; 
 }
-.diagnostic-gallery-item { direction: ltr; }
+
+/* Tarjetas PDF */
+.card-link { text-decoration: none; color: inherit; display: block; }
+.diagnostic-card {
+    background: #fff; border: 1px solid #e3d5ca; border-radius: 12px;
+    padding: 15px; box-shadow: 6px 6px 0 #d4a373;
+    position: relative; transition: 0.3s ease; height: 350px; overflow: hidden;
+}
+.card-label { text-align: center; font-weight: bold; margin-bottom: 10px; }
+.card-preview { width: 100%; height: 280px; border: none; pointer-events: none; }
+.iframe-overlay {
+    position: absolute; top: 50px; left: 15px; right: 15px; bottom: 15px;
+    background: rgba(212, 163, 115, 0.1); z-index: 5;
+    display: flex; align-items: center; justify-content: center; color: transparent;
+}
+.diagnostic-card:hover .iframe-overlay { color: #3d2b1f; background: rgba(212, 163, 115, 0.3); }
+
+/* Galería y Captions (CON LINKS VISIBLES) */
+.diagnostic-gallery-item {
+    background: #fff; padding: 15px; border-radius: 12px;
+    border: 1px solid #e3d5ca; box-shadow: 6px 6px 0 #d4a373;
+    display: flex; flex-direction: column; direction: ltr; 
+}
+.gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
+
+.diagnostic-caption-box {
+    width: 100%; min-height: 100px; border: 1px solid #d4a373;
+    border-radius: 8px; padding: 10px; font-size: 0.9rem;
+    background: #fffaf5; color: #3d2b1f; overflow-y: auto;
+    word-break: break-all; text-align: left; margin-top: 10px;
+}
+.diagnostic-caption-box a { color: #0066cc; text-decoration: underline; font-weight: bold; }
 
 /* =========================================
-   7. RESPONSIVE (CELULARES Y TABLETS)
+   5. PÁGINA INTRODUCCIÓN (ACORDEONES)
+   ========================================= */
+.container { max-width: 1100px; margin: 100px auto 40px; padding: 0 20px; }
+details { background: #fff; margin-bottom: 15px; border-radius: 10px; box-shadow: 4px 4px 0 #d4a373; border: 1px solid #e3d5ca; }
+summary { padding: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 15px; }
+.content { padding: 25px; border-top: 1px solid #eee; }
+.test-img { max-width: 100%; border-radius: 5px; margin: 15px 0; }
+.signature-box { display: flex; flex-direction: column; align-items: flex-end; margin-top: 20px; }
+.signature-img { width: 150px; }
+
+/* =========================================
+   6. REALIDAD ECONÓMICA (PAÍSES CON FONDO CLARO)
+   ========================================= */
+.economic-block { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 8px 8px 0 #d4a373; margin-bottom: 40px; }
+.country-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+.country-card { background: #fffaf5; border: 1px solid #d4a373; border-radius: 12px; overflow: hidden; }
+.country-card-header { background: #3d2b1f; color: #fff; padding: 10px; text-align: center; }
+
+/* Contenedor de bandera con fondo claro distintivo */
+.country-figure-flag {
+    background-color: #ffffff; /* Fondo blanco puro para resaltar la bandera */
+    margin: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Sombra interna suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.country-image { max-width: 100%; height: auto; display: block; }
+
+/* Estilos de Calificación y Excel */
+.upload-dropzone { border: 2px dashed #d4a373; padding: 30px; text-align: center; border-radius: 10px; cursor: pointer; }
+.rating-panel { background: #fffaf5; padding: 20px; border-radius: 10px; border-left: 5px solid #d4a373; }
+.star-btn { background: none; border: none; font-size: 1.5rem; color: #ccc; cursor: pointer; }
+.star-btn.active { color: #f1c40f; }
+
+/* =========================================
+   7. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Ocultar menú en móvil para usar hamburguesa luego */
-    
-    .hero h1 { font-size: 2.2rem; }
-    
-    .container { margin-top: 80px; padding: 0 15px; }
-    
-    .info-section, .economic-block { padding: 20px; }
-    
-    .excel-actions { flex-direction: column; }
-    
+    .info-section { flex-direction: column; margin: 15px; padding: 20px; }
     .gallery-grid-rtl { direction: ltr; }
-
-    .country-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.2rem; }
 }
