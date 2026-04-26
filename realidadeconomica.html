@@ -3,13 +3,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASOCAVAL - Realidad Economica</title>
+    <title>ASOCAVAL - Realidad Económica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="economica.css">
-    <script src="script.js" defer></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ===== VARIABLES ===== */
+        :root {
+            --cafe-oscuro:  #3d2007;
+            --cafe-medio:   #6b3a1f;
+            --cafe-suave:   #9b6240;
+            --cafe-claro:   #c89a6a;
+            --dorado:       #d4a843;
+            --crema-oscura: #e2cda8;
+            --crema-media:  #f0e2c4;
+            --crema-clara:  #faf3e0;
+            --blanco:       #fffdf7;
+            --texto-oscuro: #2a1505;
+            --texto-medio:  #5a3820;
+            --texto-claro:  #8a6a48;
+            --sombra:       rgba(61,32,7,.13);
+            --verde-ok:     #3a7d44;
+            --rojo-del:     #9b2226;
+            --r-md: 10px;
+            --r-lg: 16px;
+            --r-xl: 22px;
+        }
+
+        /* ===== BASE ===== */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--crema-clara);
+            color: var(--texto-oscuro);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: var(--cafe-oscuro);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .6rem;
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            border-bottom: 3px solid var(--dorado);
+            box-shadow: 0 2px 14px rgba(0,0,0,.3);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--crema-clara);
+            letter-spacing: 4px;
+        }
+
+        .logo span { color: var(--dorado); }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: .35rem;
+        }
+
+        .nav-links a {
+            color: var(--crema-media);
+            text-decoration: none;
+            font-size: .86rem;
+            font-weight: 700;
+            letter-spacing: .4px;
+            text-transform: uppercase;
+            padding: .38rem .85rem;
+            border-radius: 50px;
+            border: 1.5px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            transition: all .22s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--dorado);
+            color: var(--cafe-oscuro);
+            border-color: var(--dorado);
+        }
+
+        .nav-links a i { font-size: .8rem; }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* ===== BLOCK ===== */
+        .economic-block {
+            background: var(--blanco);
+            border: 1px solid var(--crema-oscura);
+            border-radius: var(--r-xl);
+            padding: 2rem;
+            box-shadow: 0 4px 20px var(--sombra);
+        }
+
+        /* ===== HEADINGS ===== */
+        .economic-heading {
+            margin-bottom: 1.5rem;
+        }
+
+        .economic-heading h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--cafe-oscuro);
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+        }
+
+        .economic-heading h3::before {
+            content: '';
+            display: block;
+            width: 5px;
+            height: 1.4rem;
+            background: var(--dorado);
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .economic-heading-center { text-align: center; }
+        .economic-heading-center h3 { justify-content: center; }
+
+        /* ===== COUNTRY GRID ===== */
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .country-card {
+            background: var(--crema-media);
+            border: 1.5px solid var(--crema-oscura);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            transition: transform .22s, box-shadow .22s;
+        }
+
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 28px var(--sombra);
+        }
+
+        .country-card-header {
+            background: var(--cafe-medio);
+            padding: .7rem 1.25rem;
+        }
+
+        .country-card-header h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--crema-clara);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .country-image-grid {
+            padding: 1.25rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .country-figure { margin: 0; width: 100%; }
+
+        .country-image {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: var(--r-md);
+            display: block;
+            border: 2px solid var(--crema-oscura);
+        }
+
+        /* ===== EXCEL UPLOADER ===== */
+        .upload-dropzone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            border: 2.5px dashed var(--cafe-claro);
+            border-radius: var(--r-lg);
+            padding: 2.5rem 1.5rem;
+            cursor: pointer;
+            background: var(--crema-media);
+            transition: background .2s, border-color .2s;
+            text-align: center;
+        }
+
+        .upload-dropzone:hover {
+            background: var(--crema-oscura);
+            border-color: var(--cafe-medio);
+        }
+
+        .upload-dropzone i {
+            font-size: 2.5rem;
+            color: var(--cafe-suave);
+        }
+
+        .upload-dropzone span {
+            font-size: .98rem;
+            font-weight: 700;
+            color: var(--texto-medio);
+        }
+
+        .upload-dropzone small {
+            font-size: .82rem;
+            color: var(--texto-claro);
+        }
+
+        .excel-input { display: none; }
+
+        .excel-actions {
+            display: flex;
+            gap: .85rem;
+            margin: 1.1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-main {
+            background: var(--cafe-medio);
+            color: var(--crema-clara);
+            border: none;
+            padding: .55rem 1.3rem;
+            border-radius: 50px;
+            font-size: .9rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            transition: background .2s, transform .15s;
+        }
+
+        .btn-main:hover { background: var(--cafe-oscuro); transform: scale(1.03); }
+
+        .btn-danger {
+            background: transparent;
+            color: var(--rojo-del);
+            border: 1.5px solid var(--rojo-del);
+            padding: .55rem 1.3rem;
+            border-radius: 50px;
+            font-size: .9rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            transition: background .2s, color .2s, transform .15s;
+        }
+
+        .btn-danger:hover {
+            background: var(--rojo-del);
+            color: #fff;
+            transform: scale(1.03);
+        }
+
+        /* ===== EXCEL GALLERY ===== */
+        .excel-gallery {
+            margin-top: .5rem;
+        }
+
+        .gallery-placeholder {
+            text-align: center;
+            color: var(--texto-claro);
+            font-size: .9rem;
+            padding: 1.5rem;
+            border: 1px dashed var(--crema-oscura);
+            border-radius: var(--r-md);
+            font-style: italic;
+        }
+
+        .excel-img-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .excel-img-item {
+            background: var(--crema-media);
+            border: 1.5px solid var(--crema-oscura);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .excel-img-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 22px var(--sombra);
+        }
+
+        .excel-img-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .excel-img-caption {
+            padding: .5rem .75rem;
+            font-size: .78rem;
+            color: var(--texto-medio);
+            font-weight: 700;
+            border-top: 1px solid var(--crema-oscura);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ===== ANÁLISIS ===== */
+        .analysis-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--cafe-suave);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: .75rem;
+        }
+
+        .analysis-display {
+            background: var(--crema-media);
+            border: 1.5px solid var(--crema-oscura);
+            border-radius: var(--r-lg);
+            padding: 1.5rem;
+            min-height: 100px;
+            color: var(--texto-medio);
+            font-size: .97rem;
+            line-height: 1.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .analysis-display:empty::before {
+            content: 'El análisis e interpretación aparecerá aquí.';
+            color: var(--texto-claro);
+            font-style: italic;
+        }
+
+        /* ===== STAR RATING ===== */
+        .star-section {
+            margin-top: 1.75rem;
+            padding-top: 1.5rem;
+            border-top: 1.5px dashed var(--crema-oscura);
+            text-align: center;
+        }
+
+        .star-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cafe-oscuro);
+            margin-bottom: .35rem;
+        }
+
+        .star-desc {
+            color: var(--texto-claro);
+            font-size: .95rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: .45rem;
+            margin-bottom: .75rem;
+        }
+
+        .star {
+            font-size: 2.6rem;
+            cursor: pointer;
+            color: var(--crema-oscura);
+            transition: color .18s, transform .15s;
+            user-select: none;
+            line-height: 1;
+        }
+
+        .star.hovered { color: var(--cafe-claro); transform: scale(1.18); }
+        .star.selected { color: var(--dorado); transform: scale(1.1); }
+
+        .star-label {
+            font-size: .98rem;
+            color: var(--texto-claro);
+            min-height: 1.5rem;
+            font-style: italic;
+            transition: color .2s;
+        }
+
+        .star-label.active {
+            color: var(--cafe-medio);
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--cafe-oscuro);
+            color: var(--crema-media);
+            text-align: center;
+            padding: 1.25rem;
+            font-size: .85rem;
+            border-top: 3px solid var(--dorado);
+            margin-top: 1rem;
+        }
+
+        footer span { color: var(--dorado); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 760px) {
+            .navbar { padding: .85rem 1rem; gap: .5rem; }
+            .logo { font-size: 1.35rem; letter-spacing: 2px; }
+            .nav-links a { font-size: .76rem; padding: .32rem .6rem; }
+
+            .container { padding: 1.25rem .9rem; gap: 1.75rem; }
+            .economic-block { padding: 1.4rem 1.1rem; border-radius: var(--r-lg); }
+
+            .country-grid { grid-template-columns: 1fr; }
+            .country-image { height: 180px; }
+
+            .excel-actions { flex-direction: column; }
+            .btn-main, .btn-danger { justify-content: center; }
+
+            .excel-img-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .75rem; }
+            .excel-img-item img { height: 115px; }
+
+            .star { font-size: 2.1rem; }
+        }
+
+        @media (max-width: 420px) {
+            .nav-links { gap: .25rem; }
+            .nav-links a { font-size: .72rem; padding: .28rem .5rem; }
+            .excel-img-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
-<body class="economic-body">
+<body>
 
     <nav class="navbar">
         <div class="logo">ASOCAVAL</div>
@@ -21,10 +470,12 @@
         </ul>
     </nav>
 
-    <main class="container economic-page">
+    <main class="container">
+
+        <!-- PAÍSES -->
         <section class="economic-block">
             <div class="economic-heading economic-heading-center">
-                <h3>PAÍSES</h3>
+                <h3>Países</h3>
             </div>
 
             <div class="country-grid">
@@ -33,9 +484,9 @@
                         <h4>Malasia</h4>
                     </div>
                     <div class="country-image-grid">
-                        <figure class="country-figure country-figure-flag">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Malaysia.svg/1280px-Flag_of_Malaysia.svg.png" alt="Imagen de Malasia" class="country-image">
-                           
+                        <figure class="country-figure">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Malaysia.svg/1280px-Flag_of_Malaysia.svg.png"
+                                 alt="Bandera de Malasia" class="country-image">
                         </figure>
                     </div>
                 </article>
@@ -45,64 +496,167 @@
                         <h4>Indonesia</h4>
                     </div>
                     <div class="country-image-grid">
-                        <figure class="country-figure country-figure-flag ">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Bandera de Indonesia" class="country-image country-image-flag">
-                            
+                        <figure class="country-figure">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg"
+                                 alt="Bandera de Indonesia" class="country-image">
                         </figure>
                     </div>
                 </article>
             </div>
         </section>
 
+        <!-- GALERÍA DE IMÁGENES DE EXCEL -->
         <section class="economic-block">
             <div class="economic-heading">
-                <h3>Galeria ordenada de imagenes de Excel</h3>
+                <h3>Galería ordenada de imágenes de Excel</h3>
             </div>
 
-            <div class="excel-uploader" data-excel-uploader>
+            <div>
                 <label for="excel-images" class="upload-dropzone">
                     <i class="fas fa-file-excel"></i>
-                    <span>Haz clic aqui para subir imagenes de Excel</span>
+                    <span>Haz clic aquí para subir imágenes de Excel</span>
                     <small>Puedes seleccionar varias a la vez</small>
                 </label>
-                <input id="excel-images" class="excel-input" type="file" accept="image/*" multiple data-excel-input>
+                <input id="excel-images" class="excel-input" type="file" accept="image/*" multiple>
+
                 <div class="excel-actions">
-                    <button type="button" class="btn-main excel-export" data-export-excel>Exportar a Excel</button>
-                    <button type="button" class="rating-delete excel-clear" data-clear-excel>Eliminar imagenes</button>
+                    <button type="button" class="btn-main" id="btn-export">
+                        <i class="fas fa-file-download"></i> Exportar a Excel
+                    </button>
+                    <button type="button" class="btn-danger" id="btn-clear">
+                        <i class="fas fa-trash-alt"></i> Eliminar imágenes
+                    </button>
                 </div>
-                <div class="excel-gallery" data-excel-gallery>
-                    <div class="gallery-placeholder">Tus imagenes apareceran aqui ordenadas automaticamente.</div>
+
+                <div class="excel-gallery" id="excel-gallery">
+                    <div class="gallery-placeholder" id="gallery-placeholder">
+                        Tus imágenes aparecerán aquí ordenadas automáticamente.
+                    </div>
+                    <div class="excel-img-grid" id="excel-img-grid" style="display:none;"></div>
                 </div>
             </div>
         </section>
 
+        <!-- ANÁLISIS E INTERPRETACIÓN -->
         <section class="economic-block">
             <div class="economic-heading">
-
-                <h3>Analisis e interpretación</h3>
+                <h3>Análisis e interpretación</h3>
             </div>
 
-            <div class="rating-panel" data-rating-panel>
-                <div class="analysis-label">Analisis completo</div>
-                <div class="analysis-display" data-analysis-text>
-                   
+            <div class="analysis-label">Análisis completo</div>
+            <div class="analysis-display" id="analysis-text"></div>
+
+            <!-- CALIFICACIÓN -->
+            <div class="star-section">
+                <p class="star-title">Califica esta página</p>
+                <p class="star-desc">¿Qué tan útil te pareció la información?</p>
+                <div class="stars-wrapper" role="radiogroup" aria-label="Calificación de la página">
+                    <span class="star" tabindex="0" role="radio" aria-label="1 estrella">★</span>
+                    <span class="star" tabindex="0" role="radio" aria-label="2 estrellas">★</span>
+                    <span class="star" tabindex="0" role="radio" aria-label="3 estrellas">★</span>
+                    <span class="star" tabindex="0" role="radio" aria-label="4 estrellas">★</span>
+                    <span class="star" tabindex="0" role="radio" aria-label="5 estrellas">★</span>
                 </div>
+                <p class="star-label" id="star-label"></p>
+            </div>
+        </section>
 
-              <section class="star-rating-section">
-    <h2 class="info-title">Califica esta página</h2>
-    <p class="info-description">¿Qué tan útil te pareció la información?</p>
-    <div class="stars-wrapper" role="radiogroup" aria-label="Calificación">
-        <span class="star">&#9733;</span>
-        <span class="star">&#9733;</span>
-        <span class="star">&#9733;</span>
-        <span class="star">&#9733;</span>
-        <span class="star">&#9733;</span>
-    </div>
-    <p class="star-label"></p>
-</section>
-
-<script src="stars.js"></script>
     </main>
+
+    <footer>
+        <p>© 2026 <span>ASOCAVAL</span> — Valdivia, Antioquia · Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        /* ===== NAVBAR activo ===== */
+        (function(){
+            const page = location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                if(a.getAttribute('href') === page) a.classList.add('active');
+            });
+        })();
+
+        /* ===== ESTRELLAS ===== */
+        (function(){
+            const etiquetas = ['','Una estrella — Necesita mejorar','Dos estrellas — Regular','Tres estrellas — Bueno','Cuatro estrellas — Muy bueno','Cinco estrellas — Excelente'];
+            const stars = [...document.querySelectorAll('.star')];
+            const lbl   = document.getElementById('star-label');
+            let actual  = 0;
+
+            function pintar(n, cls) {
+                stars.forEach((s,i) => {
+                    s.classList.remove('hovered','selected');
+                    if(i < n) s.classList.add(cls);
+                });
+            }
+
+            stars.forEach((s,i) => {
+                const v = i + 1;
+                s.addEventListener('mouseenter', () => { pintar(v,'hovered'); lbl.textContent = etiquetas[v]; lbl.className = 'star-label active'; });
+                s.addEventListener('mouseleave', () => { pintar(actual,'selected'); lbl.textContent = actual ? etiquetas[actual] : ''; lbl.className = 'star-label' + (actual ? ' active' : ''); });
+                s.addEventListener('click',      () => { actual = v; pintar(v,'selected'); lbl.textContent = etiquetas[v]; lbl.className = 'star-label active'; });
+                s.addEventListener('keydown', e  => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); s.click(); } });
+            });
+        })();
+
+        /* ===== GALERÍA DE IMÁGENES ===== */
+        (function(){
+            const input       = document.getElementById('excel-images');
+            const grid        = document.getElementById('excel-img-grid');
+            const placeholder = document.getElementById('gallery-placeholder');
+            const btnClear    = document.getElementById('btn-clear');
+            const btnExport   = document.getElementById('btn-export');
+            let files         = [];
+
+            function renderGrid() {
+                if(files.length === 0){
+                    grid.style.display = 'none';
+                    placeholder.style.display = '';
+                    return;
+                }
+                placeholder.style.display = 'none';
+                grid.style.display = '';
+                grid.innerHTML = '';
+                files.forEach((f, idx) => {
+                    const url  = URL.createObjectURL(f);
+                    const item = document.createElement('div');
+                    item.className = 'excel-img-item';
+                    item.innerHTML = `<img src="${url}" alt="${f.name}"><div class="excel-img-caption">${idx+1}. ${f.name}</div>`;
+                    grid.appendChild(item);
+                });
+            }
+
+            input.addEventListener('change', () => {
+                const nuevos = [...input.files].sort((a,b) => a.name.localeCompare(b.name));
+                files = [...files, ...nuevos];
+                renderGrid();
+                input.value = '';
+            });
+
+            btnClear.addEventListener('click', () => {
+                files = [];
+                grid.innerHTML = '';
+                renderGrid();
+            });
+
+            btnExport.addEventListener('click', () => {
+                if(files.length === 0){ alert('No hay imágenes para exportar.'); return; }
+                alert(`Se exportarían ${files.length} imagen(es) a Excel.\n(Integra una librería como SheetJS para exportar con imágenes reales.)`);
+            });
+
+            /* Drag & drop */
+            const dropzone = document.querySelector('.upload-dropzone');
+            dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.style.background = 'var(--crema-oscura)'; });
+            dropzone.addEventListener('dragleave', () => { dropzone.style.background = ''; });
+            dropzone.addEventListener('drop', e => {
+                e.preventDefault();
+                dropzone.style.background = '';
+                const dropped = [...e.dataTransfer.files].filter(f => f.type.startsWith('image/'));
+                files = [...files, ...dropped].sort((a,b) => a.name.localeCompare(b.name));
+                renderGrid();
+            });
+        })();
+    </script>
 
 </body>
 </html>
