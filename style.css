@@ -1250,3 +1250,50 @@ details[open],
         height: 220px;
     }
 }
+/* Correcciones de visualización */
+.diagnostic-pdf-view {
+    width: 100%;
+    height: 300px; /* Tamaño estándar para previsualizar */
+    border: none;
+    background: #eee;
+}
+
+.diagnostic-pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.diagnostic-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.diagnostic-gallery-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0 #d4a373;
+    border: 1px solid #e3d5ca;
+}
+
+.diagnostic-gallery-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.diagnostic-caption {
+    width: 100%;
+    border: 1px solid #d4a373;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 0.9rem;
+    resize: none;
+    height: 60px;
+}
