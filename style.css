@@ -180,6 +180,38 @@ details[open] summary::after { content: '\f146'; }
 /* =========================================
    5. REALIDAD EMPRESARIAL (TU DISEÑO ORIGINAL)
    ========================================= */
+
+   /* Ajuste para que la sección del BMC sea más ancha */
+.section-full-width {
+    max-width: 100% !important; /* Rompe el límite del container si es necesario */
+    width: 100%;
+    padding: 20px;
+}
+
+/* Contenedor del PDF */
+.pdf-container {
+    width: 100%;
+    height: 80vh; /* Ocupa el 80% de la altura de la pantalla */
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Estilo del Iframe para que parezca un visor real */
+.bmc-iframe {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent-gold);
+    border-radius: 10px;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .pdf-container {
+        height: 500px; /* Altura fija en celulares para mejor navegación */
+    }
+}
 .info-section {
     background: var(--white);
     padding: 40px;
