@@ -5,472 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASOCAVAL - Realidad Empresarial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* ===== RESET ===== */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        /* ===== VARIABLES ===== */
-        :root {
-            --cafe-oscuro:  #3d2007;
-            --cafe-medio:   #6b3a1f;
-            --cafe-suave:   #9b6240;
-            --cafe-claro:   #c89a6a;
-            --dorado:       #d4a843;
-            --crema-oscura: #e2cda8;
-            --crema-media:  #f0e2c4;
-            --crema-clara:  #faf3e0;
-            --blanco:       #fffdf7;
-            --texto-oscuro: #2a1505;
-            --texto-medio:  #5a3820;
-            --texto-claro:  #8a6a48;
-            --sombra-cafe:  rgba(61,32,7,.13);
-            --r-md: 10px;
-            --r-lg: 16px;
-            --r-xl: 22px;
-        }
-
-        /* ===== BASE ===== */
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--crema-clara);
-            color: var(--texto-oscuro);
-            line-height: 1.75;
-            font-size: 16px;
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            background: var(--cafe-oscuro);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: .6rem;
-            padding: 1rem 1.5rem;
-            position: sticky;
-            top: 0;
-            z-index: 200;
-            border-bottom: 3px solid var(--dorado);
-            box-shadow: 0 2px 14px rgba(0,0,0,.3);
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: var(--crema-clara);
-            letter-spacing: 4px;
-            text-align: center;
-        }
-
-        .logo span {
-            color: var(--dorado);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: .35rem;
-        }
-
-        .nav-links a {
-            color: var(--crema-media);
-            text-decoration: none;
-            font-size: .88rem;
-            font-weight: 700;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-            padding: .4rem .9rem;
-            border-radius: 50px;
-            border: 1.5px solid transparent;
-            transition: all .22s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: var(--dorado);
-            color: var(--cafe-oscuro);
-            border-color: var(--dorado);
-        }
-
-        /* ===== BANNER ===== */
-        .banner-wrap {
-            position: relative;
-            width: 100%;
-            max-height: 340px;
-            overflow: hidden;
-        }
-
-        .banner-image {
-            width: 100%;
-            height: 340px;
-            object-fit: cover;
-            display: block;
-            filter: brightness(.85) saturate(.9);
-        }
-
-        .banner-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 60%;
-            background: linear-gradient(transparent, rgba(61,32,7,.55));
-        }
-
-        /* ===== CONTAINER ===== */
-        .container {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 2.5rem 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        /* ===== SECTION BASE ===== */
-        .info-section {
-            background: var(--blanco);
-            border: 1px solid var(--crema-oscura);
-            border-radius: var(--r-xl);
-            padding: 2rem;
-            box-shadow: 0 4px 20px var(--sombra-cafe);
-        }
-
-        /* ===== SECTION TITLE ===== */
-        .info-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--cafe-oscuro);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: .65rem;
-        }
-
-        .info-title::before {
-            content: '';
-            display: block;
-            width: 5px;
-            height: 1.5rem;
-            background: var(--dorado);
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-
-        /* ===== DESCRIPCION ===== */
-        .section-descripcion {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .info-text { flex: 1 1 0; }
-
-        .info-description {
-            color: var(--texto-medio);
-            font-size: 1rem;
-            line-height: 1.85;
-        }
-
-        .info-image {
-            width: 280px;
-            height: 210px;
-            object-fit: cover;
-            border-radius: var(--r-lg);
-            border: 3px solid var(--crema-oscura);
-            flex-shrink: 0;
-            box-shadow: 0 4px 16px var(--sombra-cafe);
-        }
-
-        /* ===== BMC ===== */
-        .section-bmc { display: flex; flex-direction: column; }
-
-        .pdf-container { margin-top: 1rem; width: 100%; }
-
-        .bmc-iframe {
-            width: 100%;
-            height: 540px;
-            border: 1.5px solid var(--crema-oscura);
-            border-radius: var(--r-lg);
-            background: var(--crema-clara);
-        }
-
-        /* ===== PDF CARDS ===== */
-        .section-diagnostico { display: flex; flex-direction: column; }
-
-        .pdf-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
-            margin-top: 1rem;
-        }
-
-        .card-link { text-decoration: none; color: inherit; }
-
-        .diagnostic-card {
-            background: var(--crema-media);
-            border: 1.5px solid var(--crema-oscura);
-            border-radius: var(--r-lg);
-            overflow: hidden;
-            position: relative;
-            transition: transform .22s, box-shadow .22s;
-            cursor: pointer;
-        }
-
-        .diagnostic-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 28px var(--sombra-cafe);
-        }
-
-        .card-label {
-            background: var(--cafe-medio);
-            color: var(--crema-clara);
-            padding: .55rem 1rem;
-            font-size: .88rem;
-            font-weight: 700;
-            letter-spacing: .3px;
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-        }
-
-        .card-label i { color: var(--dorado); font-size: 1rem; }
-
-        .card-preview {
-            width: 100%;
-            height: 230px;
-            border: none;
-            pointer-events: none;
-            display: block;
-        }
-
-        .iframe-overlay {
-            position: absolute;
-            inset: 2.5rem 0 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(61,32,7,.07);
-            color: var(--cafe-oscuro);
-            font-size: .82rem;
-            font-weight: 700;
-            opacity: 0;
-            transition: opacity .2s;
-            letter-spacing: .3px;
-        }
-
-        .diagnostic-card:hover .iframe-overlay { opacity: 1; }
-
-        /* ===== GALLERY ===== */
-        .section-gallery { display: flex; flex-direction: column; }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 1.25rem;
-            margin-top: 1rem;
-        }
-
-        .gallery-item {
-            background: var(--crema-media);
-            border: 1.5px solid var(--crema-oscura);
-            border-radius: var(--r-lg);
-            overflow: hidden;
-            transition: transform .22s, box-shadow .22s;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 28px var(--sombra-cafe);
-        }
-
-        .image-link {
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-img {
-            width: 100%;
-            height: 170px;
-            object-fit: cover;
-            display: block;
-            transition: transform .35s;
-        }
-
-        .gallery-item:hover .gallery-img { transform: scale(1.06); }
-
-        .img-hint {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: rgba(61,32,7,.62);
-            color: #fffdf7;
-            font-size: .78rem;
-            font-weight: 700;
-            text-align: center;
-            padding: .4rem;
-            opacity: 0;
-            transition: opacity .2s;
-            letter-spacing: .3px;
-        }
-
-        .image-link:hover .img-hint { opacity: 1; }
-
-        .caption {
-            padding: .7rem 1rem;
-            font-size: .82rem;
-            color: var(--texto-medio);
-            line-height: 1.55;
-            border-top: 1px solid var(--crema-oscura);
-        }
-
-        .caption a {
-            display: inline-block;
-            margin-top: .3rem;
-            color: var(--cafe-suave);
-            font-weight: 700;
-            text-decoration: none;
-            font-size: .8rem;
-            transition: color .18s;
-        }
-
-        .caption a:hover { color: var(--cafe-oscuro); text-decoration: underline; }
-
-        /* ===== STAR RATING ===== */
-        .section-stars {
-            text-align: center;
-        }
-
-        .stars-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: .4rem;
-            margin: 1.25rem 0 .75rem;
-        }
-
-        .star {
-            font-size: 2.6rem;
-            cursor: pointer;
-            color: var(--crema-oscura);
-            transition: color .18s, transform .15s;
-            user-select: none;
-            line-height: 1;
-        }
-
-        .star.hovered { color: var(--cafe-claro); transform: scale(1.18); }
-        .star.selected { color: var(--dorado); transform: scale(1.1); }
-
-        .star-label {
-            font-size: .98rem;
-            color: var(--texto-claro);
-            min-height: 1.5rem;
-            font-style: italic;
-            transition: color .2s;
-        }
-
-        .star-label.active {
-            color: var(--cafe-medio);
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--cafe-oscuro);
-            color: var(--crema-media);
-            text-align: center;
-            padding: 1.25rem;
-            font-size: .85rem;
-            border-top: 3px solid var(--dorado);
-            margin-top: 1rem;
-        }
-
-        footer span { color: var(--dorado); }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 760px) {
-            .navbar { padding: .85rem 1rem; gap: .5rem; }
-            .logo { font-size: 1.35rem; letter-spacing: 2px; }
-            .nav-links a { font-size: .78rem; padding: .35rem .65rem; }
-
-            .banner-image { height: 200px; }
-
-            .container { padding: 1.5rem .9rem; gap: 1.75rem; }
-
-            .info-section { padding: 1.4rem 1.1rem; border-radius: var(--r-lg); }
-
-            .section-descripcion { flex-direction: column; gap: 1.25rem; }
-            .info-image { width: 100%; height: 200px; border-radius: var(--r-md); }
-
-            .bmc-iframe { height: 380px; }
-
-            .pdf-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: .9rem; }
-            .gallery-img { height: 130px; }
-
-            .star { font-size: 2.1rem; }
-        }
-
-        @media (max-width: 420px) {
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
-            .gallery-img { height: 115px; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">ASOCA<span>VAL</span></div>
+   <nav class="navbar">
+        <div class="logo">ASOCAVAL</div>
         <ul class="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="introduccion.html">Introducción</a></li>
-            <li><a href="realidadempresarial.html" class="active">Realidad Empresarial</a></li>
-            <li><a href="realidadeconomica.html">Realidad Económica</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="introduccion.html"><i class="fas fa-info-circle"></i> Introduccion</a></li>
+            <li><a href="realidadempresarial.html"><i class="fas fa-building"></i> Realidad Empresarial</a></li>
+            <li><a href="realidadeconomica.html"><i class="fas fa-chart-line"></i> Realidad Economica</a></li>
         </ul>
     </nav>
 
-    <!-- BANNER -->
-    <div class="banner-wrap">
-        <img src="img/logo.jpg" class="banner-image" alt="Banner Asocaval">
-        <div class="banner-overlay"></div>
-    </div>
+    <img src="img/logo.jpg" class="banner-image" alt="Banner Asocaval">
 
     <main class="container">
-
-        <!-- DESCRIPCIÓN -->
-        <section class="info-section section-descripcion">
+        
+        <section class="info-section">
             <div class="info-text">
                 <h2 class="info-title">Descripción</h2>
                 <p class="info-description">
-                    Somos una organización de 74 familias en Valdivia, Antioquia, comprometidas con la transformación social.
+                    Somos una organización de 74 familias en Valdivia, Antioquia, comprometidas con la transformación social. 
                     Lideramos la sustitución de cultivos ilícitos mediante la producción de cacao sostenible con más de 15 años de trayectoria.
                 </p>
             </div>
             <img src="img/descripcionima.jpg" class="info-image" alt="Descripción Asocaval">
         </section>
+<section class="info-section section-full-width">
+    <div class="info-text">
+        <h2 class="info-title">Business Model Canvas</h2>
+        
+    </div>
+    <div class="pdf-container">
+        <iframe src="docs/BMC.pdf" class="bmc-iframe"></iframe>
+    </div>
+</section>
 
-        <!-- BUSINESS MODEL CANVAS -->
-        <section class="info-section section-bmc">
-            <h2 class="info-title">Business Model Canvas</h2>
-            <div class="pdf-container">
-                <iframe src="docs/BMC.pdf" class="bmc-iframe" title="Business Model Canvas"></iframe>
-            </div>
-        </section>
-
-        <!-- DIAGNÓSTICO DE INTERNACIONALIZACIÓN -->
-        <section class="info-section section-diagnostico">
+        <section class="info-section column-layout">
             <h2 class="info-title">Diagnóstico de Internacionalización</h2>
-            <div class="pdf-grid">
-
+            <div class="pdf-grid-ltr">
+                
                 <a href="docs/Cuestionario.pdf" target="_blank" class="card-link">
                     <div class="diagnostic-card">
                         <div class="card-label"><i class="fas fa-file-pdf"></i> Cuestionario</div>
                         <div class="iframe-overlay">Toca para abrir</div>
-                        <iframe src="docs/Cuestionario.pdf" class="card-preview" title="Cuestionario"></iframe>
+                        <iframe src="docs/Cuestionario.pdf" class="card-preview"></iframe>
                     </div>
                 </a>
 
@@ -478,7 +59,7 @@
                     <div class="diagnostic-card">
                         <div class="card-label"><i class="fas fa-file-pdf"></i> Ponderación</div>
                         <div class="iframe-overlay">Toca para abrir</div>
-                        <iframe src="docs/Ponderación.pdf" class="card-preview" title="Ponderación"></iframe>
+                        <iframe src="docs/Ponderación.pdf" class="card-preview"></iframe>
                     </div>
                 </a>
 
@@ -486,128 +67,102 @@
                     <div class="diagnostic-card">
                         <div class="card-label"><i class="fas fa-file-pdf"></i> Resultados</div>
                         <div class="iframe-overlay">Toca para abrir</div>
-                        <iframe src="docs/Resultados.pdf" class="card-preview" title="Resultados"></iframe>
+                        <iframe src="docs/Resultados.pdf" class="card-preview"></iframe>
                     </div>
                 </a>
 
             </div>
         </section>
 
-        <!-- EVIDENCIAS FOTOGRÁFICAS -->
-        <section class="info-section section-gallery">
+        <section class="info-section column-layout">
             <h2 class="info-title">Evidencias Fotográficas</h2>
-            <div class="gallery-grid">
-
-                <div class="gallery-item">
+            <div class="gallery-grid-rtl">
+                
+                <div class="diagnostic-gallery-item">
                     <a href="img/grafica1.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica1.jpg" class="gallery-img" alt="Gráfica 1">
-                        <div class="img-hint"><i class="fas fa-expand-alt"></i> Ver completa</div>
+                        <img src="img/grafica1.jpg" class="gallery-img">
+                        <div class="img-zoom-hint">Ver pantalla completa</div>
                     </a>
-                    <div class="caption">
-                        Universidad Ceipa (2026). Ceipa center OIER<br>
-                        <a href="https://app.powerbi.com/view?r=eyJrIjoiNjQ5YWFlYTItNjdmMC00OGNlLTllNzUtZjQ0ODUwMDE0OTc0IiwidCI6IjcxZDNhMjRlLTRmNjItNGRlYS05YjI1LTczZmUzOTA2MDAwZSIsImMiOjR9&pageName=6aecc902073086ab508a" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Power BI</a>
+                    <div class="diagnostic-caption-box">
+                        Universidad Ceipa (2026). Ceipa center OIER <br>
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiNjQ5YWFlYTItNjdmMC00OGNlLTllNzUtZjQ0ODUwMDE0OTc0IiwidCI6IjcxZDNhMjRlLTRmNjItNGRlYS05YjI1LTczZmUzOTA2MDAwZSIsImMiOjR9&pageName=6aecc902073086ab508a" target="_blank">Ver Power BI</a>
                     </div>
                 </div>
 
-                <div class="gallery-item">
+                <div class="diagnostic-gallery-item">
                     <a href="img/grafica2.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica2.jpg" class="gallery-img" alt="Gráfica 2">
-                        <div class="img-hint"><i class="fas fa-expand-alt"></i> Ver completa</div>
+                        <img src="img/grafica2.jpg" class="gallery-img">
                     </a>
-                    <div class="caption">
-                        Legiscomex — Inteligencia comercial<br>
-                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank"><i class="fas fa-external-link-alt"></i> Acceder a Legiscomex</a>
+                    <div class="diagnostic-caption-box">
+                        Legiscomex - Inteligencia comercial <br>
+                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank">Acceder a Legiscomex</a>
                     </div>
                 </div>
 
-                <div class="gallery-item">
+                <div class="diagnostic-gallery-item">
                     <a href="img/grafica3.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica3.jpg" class="gallery-img" alt="Gráfica 3">
-                        <div class="img-hint"><i class="fas fa-expand-alt"></i> Ver completa</div>
+                        <img src="img/grafica3.jpg" class="gallery-img">
                     </a>
-                    <div class="caption">
-                        Estadísticas Legiscomex<br>
-                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver fuente</a>
+                    <div class="diagnostic-caption-box">
+                        Estadísticas Legiscomex <br>
+                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank">Ver fuente</a>
                     </div>
                 </div>
 
-                <div class="gallery-item">
+                <div class="diagnostic-gallery-item">
                     <a href="img/grafica4.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica4.jpg" class="gallery-img" alt="Gráfica 4">
-                        <div class="img-hint"><i class="fas fa-expand-alt"></i> Ver completa</div>
+                        <img src="img/grafica4.jpg" class="gallery-img">
                     </a>
-                    <div class="caption">
-                        Análisis de mercado<br>
-                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver enlace</a>
+                    <div class="diagnostic-caption-box">
+                        Análisis de mercado <br>
+                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank">Ver enlace</a>
                     </div>
                 </div>
-
-                <div class="gallery-item">
+                   <div class="diagnostic-gallery-item">
                     <a href="img/grafica5.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica5.jpg" class="gallery-img" alt="Gráfica 5">
-                        <div class="img-hint"><i class="fas fa-expand-alt"></i> Ver completa</div>
+                        <img src="img/grafica5.jpg" class="gallery-img">
                     </a>
-                    <div class="caption">
-                        Indicadores Económicos<br>
-                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank"><i class="fas fa-external-link-alt"></i> Ver enlace</a>
+                    <div class="diagnostic-caption-box">
+                     Indicadores Economicos<br>
+                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/
+                    " target="_blank">Ver enlace</a>
                     </div>
                 </div>
 
-                <div class="gallery-item">
+
+                <div class="diagnostic-gallery-item">
                     <a href="img/grafica6.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica6.jpg" class="gallery-img" alt="Gráfica 6">
-                        <div class="img-hint"><i class="fas fa-expand-alt"></i> Ver completa</div>
+                        <img src="img/grafica6.jpg" class="gallery-img">
                     </a>
-                    <div class="caption">
-                        International Trade Centre (2026). Trade Map<br>
-                        <a href="https://www.trademap.org/Index.aspx" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Trade Map</a>
+                    <div class="diagnostic-caption-box">
+                        International Trade Centre. (2026). Trade Map: Trade statistics <br>
+                        <a href="https://www.trademap.org/Index.aspx" target="_blank">Ver Trade Map</a>
                     </div>
                 </div>
 
-                <div class="gallery-item">
+                <div class="diagnostic-gallery-item">
                     <a href="img/grafica7.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica7.jpg" class="gallery-img" alt="Gráfica 7">
-                        <div class="img-hint"><i class="fas fa-expand-alt"></i> Ver completa</div>
+                        <img src="img/grafica7.jpg" class="gallery-img">
                     </a>
-                    <div class="caption">
-                        Trade Map — Negocios internacionales<br>
-                        <a href="https://www.trademap.org/Index.aspx" target="_blank"><i class="fas fa-external-link-alt"></i> Ver fuente</a>
+                    <div class="diagnostic-caption-box">
+                        Trade Map - Desarrollo de negocios internacionales <br>
+                        <a href="https://www.trademap.org/Index.aspx" target="_blank">Ver fuente</a>
                     </div>
                 </div>
 
-                <div class="gallery-item">
+                <div class="diagnostic-gallery-item">
                     <a href="img/grafica8.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica8.jpg" class="gallery-img" alt="Gráfica 8">
-                        <div class="img-hint"><i class="fas fa-expand-alt"></i> Ver completa</div>
+                        <img src="img/grafica8.jpg" class="gallery-img">
                     </a>
-                    <div class="caption">
-                        Estadísticas ITC<br>
-                        <a href="https://www.trademap.org/Index.aspx" target="_blank"><i class="fas fa-external-link-alt"></i> Ver sitio oficial</a>
+                    <div class="diagnostic-caption-box">
+                        Estadísticas ITC <br>
+                        <a href="https://www.trademap.org/Index.aspx" target="_blank">Ver sitio oficial</a>
                     </div>
                 </div>
 
             </div>
         </section>
-
-       
-
     </main>
-
-    <footer>
-        <p>© 2026 <span>ASOCAVAL</span> — Valdivia, Antioquia · Todos los derechos reservados</p>
-    </footer>
-
-    <script>
-       
-
-        /* ===== NAVBAR activo por página ===== */
-        (function(){
-            const page = location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.nav-links a').forEach(a => {
-                if(a.getAttribute('href') === page) a.classList.add('active');
-            });
-        })();
-    </script>
 
 </body>
 </html>
