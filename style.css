@@ -1,618 +1,522 @@
 /* =========================================
    1. CONFIGURACIÓN GENERAL Y VARIABLES
    ========================================= */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Georgia', serif;
+    margin: 0;                /* Resetea márgenes externos */
+    padding: 0;               /* Resetea rellenos internos */
+    box-sizing: border-box;   /* El ancho incluye padding y bordes (evita desbordes) */
+    font-family: 'Georgia', serif; /* Fuente elegante y legible para el proyecto */
 }
 
 :root {
-    --primary-coffee: #3d2b1f;
-    --accent-gold: #d4a373;
-    --accent-dark-gold: #bc8a5f;
-    --bg-cream: #f5ebe0;
-    --white: #ffffff;
-    --shadow: 8px 8px 0px var(--accent-gold);
+    /* Paleta de colores basada en el cacao y la elegancia */
+    --primary-coffee: #3d2b1f;    /* Café oscuro (Textos y Fondos) */
+    --accent-gold: #d4a373;       /* Dorado (Acentos y resaltado) */
+    --accent-dark-gold: #bc8a5f;  /* Dorado oscuro (Para estados Hover) */
+    --bg-cream: #f5ebe0;          /* Crema (Fondo general del sitio) */
+    --white: #ffffff;             /* Blanco puro (Tarjetas y contenedores) */
+    --shadow: 8px 8px 0px var(--accent-gold); /* Sombra rígida estilo editorial */
 }
 
 body {
-    background-color: var(--bg-cream);
-    color: var(--primary-coffee);
-    line-height: 1.6;
-    padding-bottom: 50px;
+    background-color: var(--bg-cream); /* Fondo cremoso para reducir fatiga visual */
+    color: var(--primary-coffee);      /* Texto principal café oscuro */
+    line-height: 1.6;                  /* Espaciado de línea cómodo para lectura */
+    padding-bottom: 50px;              /* Margen final para que no corte el contenido */
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+    max-width: 100%;    /* Las imágenes nunca serán más anchas que su contenedor */
+    height: auto;       /* Mantiene la proporción original */
 }
 
 /* =========================================
    2. NAVBAR Y NAVEGACIÓN
    ========================================= */
+
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(61, 43, 31, 0.98);
-    padding: 15px 5%;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 2000;
+    display: flex;                      /* Alineación horizontal de logo y menú */
+    justify-content: space-between;     /* Logo a la izquierda, links a la derecha */
+    align-items: center;                /* Centrado vertical de los elementos */
+    background-color: rgba(61, 43, 31, 0.98); /* Café con 98% opacidad */
+    padding: 15px 5%;                   /* Espaciado interno de la barra */
+    color: #fff;                        /* Texto blanco */
+    position: fixed;                    /* Siempre visible arriba al hacer scroll */
+    width: 100%;                        /* Ocupa todo el ancho de la ventana */
+    top: 0;                             /* Pegada al borde superior */
+    z-index: 2000;                      /* Prioridad de visualización máxima */
 }
 
 .logo {
-    color: var(--accent-gold);
-    font-weight: bold;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+    color: var(--accent-gold);          /* Logo en color dorado */
+    font-weight: bold;                  /* Texto grueso */
+    font-size: 1.2rem;                  /* Tamaño de fuente del logo */
+    letter-spacing: 1px;                /* Separación entre letras */
 }
 
 .nav-toggle {
-    display: none;
-    background: transparent;
-    border: 1px solid rgba(212, 163, 115, 0.6);
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    cursor: pointer;
+    display: none;                      /* Oculto por defecto (solo aparece en móviles) */
+    background: transparent;            /* Sin fondo */
+    border: 1px solid rgba(212, 163, 115, 0.6); /* Borde dorado transparente */
+    color: #fff;                        /* Icono blanco */
+    width: 40px;                        /* Ancho fijo del botón */
+    height: 40px;                       /* Alto fijo del botón */
+    border-radius: 8px;                 /* Bordes un poco redondos */
+    cursor: pointer;                    /* Indica que se puede hacer clic */
 }
 
 .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    align-items: center;
+    display: flex;                      /* Links en fila */
+    list-style: none;                   /* Quita los puntos de la lista */
+    gap: 20px;                          /* Espacio entre cada link */
+    align-items: center;                /* Centrado vertical */
 }
 
 .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: 0.3s;
+    color: #fff;                        /* Texto blanco */
+    text-decoration: none;              /* Quita el subrayado */
+    font-size: 0.9rem;                  /* Tamaño de letra */
+    transition: 0.3s;                   /* Suaviza el cambio de color al pasar el mouse */
 }
 
-.nav-links a:hover { color: var(--accent-gold); }
+.nav-links a:hover { 
+    color: var(--accent-gold);          /* Cambia a dorado al pasar el mouse */
+}
 
-/* Dropdown */
-.dropdown { position: relative; }
+/* Estilos del Dropdown (Menú desplegable) */
+.dropdown { 
+    position: relative;                 /* Referencia para el contenido absoluto */
+}
+
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--white);
-    min-width: 200px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 8px;
-    margin-top: 10px;
+    display: none;                      /* Oculto hasta el hover */
+    position: absolute;                 /* Flota sobre el contenido */
+    background-color: var(--white);     /* Fondo blanco */
+    min-width: 200px;                   /* Ancho mínimo de la cajita */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Sombra suave para profundidad */
+    z-index: 1;                         /* Encima de otros elementos */
+    border-radius: 8px;                 /* Bordes redondos */
+    margin-top: 10px;                   /* Separación del menú superior */
 }
+
 .dropdown-content a {
-    color: var(--primary-coffee) !important;
-    padding: 12px 16px;
-    display: block;
-    border-bottom: 1px solid #eee;
+    color: var(--primary-coffee) !important; /* Texto café oscuro */
+    padding: 12px 16px;                 /* Relleno de cada link interno */
+    display: block;                     /* Cada link ocupa una línea */
+    border-bottom: 1px solid #eee;      /* Línea separadora */
 }
-.dropdown:hover .dropdown-content { display: block; }
+
+.dropdown:hover .dropdown-content { 
+    display: block;                     /* Se muestra al pasar el ratón */
+}
 
 .container {
-    width: min(1100px, 92%);
-    margin: 110px auto 0;
+    width: min(1100px, 92%);            /* Máximo 1100px, o 92% en pantallas pequeñas */
+    margin: 110px auto 0;               /* Centra y da espacio por la navbar fija */
 }
 
 /* =========================================
    3. HERO (PÁGINA DE INICIO)
    ========================================= */
+
 .hero-header {
+    /* Superposición oscura sobre imagen de cacao para legibilidad */
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/cacao.webp');
-    background-size: cover;
-    background-position: center;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-size: cover;             /* Imagen cubre todo el fondo */
+    background-position: center;        /* Imagen centrada */
+    min-height: 92vh;                   /* Altura casi total de la pantalla */
+    display: flex;                      /* Permite centrado del contenido */
+    align-items: center;                /* Centrado vertical */
+    justify-content: center;            /* Centrado horizontal */
 }
 
 .hero {
-    text-align: center;
-    color: white;
-    padding: 0 20px;
-    width: min(900px, 92%);
+    text-align: center;                 /* Texto centrado */
+    color: white;                       /* Color de fuente blanco */
+    padding: 0 20px;                    /* Relleno lateral */
+    width: min(900px, 92%);             /* Ancho controlado del texto */
 }
 
-.hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
-.hero p { max-width: 760px; margin: 0 auto 22px; }
+.hero h1 { 
+    font-size: 3.5rem;                  /* Título impactante */
+    margin-bottom: 20px;                /* Espacio bajo el título */
+}
+
+.hero p { 
+    max-width: 760px;                   /* Limita el ancho del párrafo */
+    margin: 0 auto 22px;                /* Centrado horizontal y margen inferior */
+}
 
 .btn-main {
-    background-color: var(--accent-gold);
-    color: var(--primary-coffee);
-    padding: 12px 30px;
-    border: none;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    background-color: var(--accent-gold); /* Fondo dorado */
+    color: var(--primary-coffee);       /* Texto café */
+    padding: 12px 30px;                 /* Relleno del botón */
+    border: none;                       /* Sin bordes */
+    border-radius: 50px;                /* Bordes totalmente redondos */
+    font-weight: bold;                  /* Texto en negrita */
+    cursor: pointer;                    /* Icono de mano al pasar el mouse */
+    transition: 0.3s;                   /* Animación de hover */
 }
-.btn-main:hover { background-color: var(--accent-dark-gold); transform: scale(1.05); }
+
+.btn-main:hover { 
+    background-color: var(--accent-dark-gold); /* Dorado más oscuro */
+    transform: scale(1.05);             /* Crece un 5% */
+}
 
 /* =========================================
    4. INTRODUCCIÓN (ACORDEONES)
    ========================================= */
-.section-title { text-align: center; font-size: 2.5rem; color: var(--primary-coffee); margin-bottom: 10px; }
-.section-subtitle { text-align: center; color: var(--accent-dark-gold); margin-bottom: 40px; font-style: italic; }
+
+.section-title { 
+    text-align: center;                 /* Título centrado */
+    font-size: 2.5rem;                  /* Tamaño de fuente */
+    color: var(--primary-coffee);       /* Color café */
+    margin-bottom: 10px;                /* Espacio inferior */
+}
+
+.section-subtitle { 
+    text-align: center;                 /* Subtítulo centrado */
+    color: var(--accent-dark-gold);     /* Color dorado oscuro */
+    margin-bottom: 40px;                /* Espacio inferior */
+    font-style: italic;                 /* Letra cursiva */
+}
 
 details {
-    background: var(--white);
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--accent-gold);
-    overflow: hidden;
-    transition: all 0.3s ease;
+    background: var(--white);           /* Fondo blanco para el acordeón */
+    margin-bottom: 20px;                /* Espacio entre cada caja */
+    border-radius: 12px;                /* Bordes redondos */
+    box-shadow: var(--shadow);          /* Sombra rígida dorada */
+    border: 1px solid var(--accent-gold); /* Borde dorado fino */
+    overflow: hidden;                   /* Mantiene el contenido dentro de la caja */
+    transition: all 0.3s ease;          /* Animación de apertura */
 }
 
 summary {
-    padding: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: var(--white);
+    padding: 20px;                      /* Relleno del encabezado del acordeón */
+    font-size: 1.2rem;                  /* Tamaño de letra */
+    font-weight: bold;                  /* Texto negrita */
+    cursor: pointer;                    /* Indica clic */
+    list-style: none;                   /* Quita flecha nativa de Chrome */
+    display: flex;                      /* Flex para alinear texto e icono */
+    align-items: center;                /* Centrado vertical */
+    gap: 15px;                          /* Espacio entre texto e icono */
+    background-color: var(--white);     /* Fondo blanco */
 }
 
 .content {
-    padding: 0 20px 20px;
+    padding: 0 20px 20px;               /* Relleno del cuerpo del acordeón */
 }
 
+/* Icono personalizado usando Font Awesome en el Pseudo-elemento */
 summary::after {
-    content: '\f0fe';
-    font-family: "Font Awesome 6 Free";
-    margin-left: auto;
-    transition: transform 0.3s;
+    content: '\f0fe';                   /* Código Unicode del signo '+' */
+    font-family: "Font Awesome 6 Free"; /* Fuente de iconos */
+    margin-left: auto;                  /* Empuja el icono al final a la derecha */
+    transition: transform 0.3s;         /* Animación suave */
 }
 
-details[open] summary::after { content: '\f146'; }
+/* Cambio de icono al abrir el acordeón */
+details[open] summary::after { 
+    content: '\f146';                   /* Código Unicode del signo '-' */
+}
 
 .social-channels {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    list-style: none;
-    margin-top: 20px;
+    display: grid;                      /* Grid para los iconos sociales */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Columnas responsivas */
+    gap: 15px;                          /* Espacio entre cajitas */
+    list-style: none;                   /* Sin puntos */
+    margin-top: 20px;                   /* Margen superior */
 }
 
 .social-channels a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: var(--primary-coffee);
-    padding: 15px;
-    border-radius: 10px;
-    background: var(--white);
-    border: 1px solid var(--bg-cream);
+    display: flex;                      /* Alineación interna */
+    flex-direction: column;             /* Icono arriba, texto abajo */
+    align-items: center;                /* Centrado horizontal */
+    text-decoration: none;              /* Sin subrayado */
+    color: var(--primary-coffee);       /* Texto café */
+    padding: 15px;                      /* Relleno de la caja */
+    border-radius: 10px;                /* Esquinas redondas */
+    background: var(--white);           /* Fondo blanco */
+    border: 1px solid var(--bg-cream);  /* Borde sutil */
 }
 
-.signature-box { display: flex; flex-direction: column; align-items: flex-end; margin-top: 20px; }
-.signature-img { width: 180px; height: auto; }
-.signature-line { width: 200px; height: 1px; background: var(--primary-coffee); margin: 5px 0; }
-
-.wide-image-container {
-    width: min(900px, 100%);
-    margin: 0 auto;
+/* Estilos para firmas al final de documentos */
+.signature-box { 
+    display: flex; 
+    flex-direction: column;             /* Apila línea y nombre */
+    align-items: flex-end;              /* Alinea a la derecha */
+    margin-top: 20px; 
 }
 
-.responsive-img,
-.banner-image,
-.info-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+.signature-img { 
+    width: 180px;                       /* Ancho de la firma */
+    height: auto; 
 }
 
-.info-section {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 24px;
-    align-items: center;
+.signature-line { 
+    width: 200px;                       /* Ancho de la línea de firma */
+    height: 1px;                        /* Grosor de la línea */
+    background: var(--primary-coffee);  /* Color de la línea café */
+    margin: 5px 0;                      /* Margen vertical */
 }
 
 /* =========================================
-   5. REALIDAD EMPRESARIAL (TU DISEÑO ORIGINAL)
+   5. REALIDAD EMPRESARIAL (BMC Y PDF)
    ========================================= */
 
-   /* Ajuste para que la sección del BMC sea más ancha */
 .section-full-width {
-    max-width: 100% !important; /* Rompe el límite del container si es necesario */
+    max-width: 100% !important;         /* Ignora el ancho del container para expandirse */
     width: 100%;
     padding: 20px;
 }
 
-/* Contenedor del PDF */
 .pdf-container {
-    width: 100%;
-    height: 88vh; /* Visor grande en escritorio */
-    margin-top: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;                        /* Ancho total del área */
+    height: 88vh;                       /* Altura de pantalla para ver el PDF cómodo */
+    margin-top: 20px; 
+    border-radius: 10px;                /* Bordes redondos del visor */
+    overflow: hidden;                   /* Oculta lo que sobresalga de los bordes */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra elegante */
 }
 
-/* Estilo del Iframe para que parezca un visor real */
 .bmc-iframe {
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--accent-gold);
+    width: 100%;                        /* Iframe ocupa todo el ancho */
+    height: 100%;                       /* Iframe ocupa todo el alto */
+    border: 2px solid var(--accent-gold); /* Marco dorado para el PDF */
     border-radius: 10px;
 }
 
-/* Ajuste para móviles */
-@media (max-width: 768px) {
-    .pdf-container {
-        height: 500px; /* Altura fija en celulares para mejor navegación */
-    }
-}
 .info-section {
-    background: var(--white);
-    padding: 40px;
-    margin-bottom: 40px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
+    background: var(--white);           /* Fondo blanco */
+    padding: 40px;                      /* Relleno interno */
+    margin-bottom: 40px;                /* Espacio bajo la sección */
+    border-radius: 15px;                /* Esquinas suaves */
+    box-shadow: var(--shadow);          /* Sombra de la marca */
 }
 
 .info-title {
-    font-size: 2rem;
-    border-bottom: 3px solid var(--accent-gold);
-    display: inline-block;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
+    font-size: 2rem;                    /* Título de sección */
+    border-bottom: 3px solid var(--accent-gold); /* Línea dorada bajo el texto */
+    display: inline-block;              /* Ajusta la línea al ancho del texto */
+    margin-bottom: 20px; 
+    padding-bottom: 5px; 
 }
 
-/* Grids de PDF */
+/* Grids para miniaturas de PDFs */
 .pdf-grid-ltr {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    display: grid; 
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columnas iguales */
+    gap: 20px; 
 }
 
 .diagnostic-card {
-    background: #fff; border: 1px solid #e3d5ca; border-radius: 12px;
-    padding: 15px; box-shadow: 6px 6px 0 #d4a373;
-    position: relative; transition: 0.3s ease; height: 350px; overflow: hidden;
+    background: #fff; 
+    border: 1px solid #e3d5ca; 
+    border-radius: 12px; 
+    padding: 15px; 
+    box-shadow: 6px 6px 0 #d4a373;      /* Sombra lateral dorada */
+    position: relative; 
+    transition: 0.3s ease; 
+    height: 350px;                      /* Altura uniforme de tarjetas */
+    overflow: hidden; 
 }
 
-.card-preview { width: 100%; height: 280px; border: none; pointer-events: none; }
+.card-preview { 
+    width: 100%; 
+    height: 280px; 
+    border: none; 
+    pointer-events: none;               /* Desactiva clics dentro del PDF miniatura */
+}
 
 .iframe-overlay {
-    position: absolute; top: 50px; left: 15px; right: 15px; bottom: 15px;
-    background: rgba(212, 163, 115, 0.1); z-index: 5;
-    display: flex; align-items: center; justify-content: center; color: transparent;
+    position: absolute;                 /* Capa que flota sobre el PDF */
+    top: 50px; left: 15px; right: 15px; bottom: 15px; 
+    background: rgba(212, 163, 115, 0.1); /* Tinte dorado suave */
+    z-index: 5; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: transparent; 
 }
 
-.diagnostic-card:hover .iframe-overlay { color: #3d2b1f; background: rgba(212, 163, 115, 0.3); }
+.diagnostic-card:hover .iframe-overlay { 
+    color: #3d2b1f;                     /* Muestra texto al pasar mouse */
+    background: rgba(212, 163, 115, 0.3); /* Se oscurece al hover */
+}
 
-/* Galería RTL */
+/* Galería de imágenes en Realidad Empresarial */
 .gallery-grid-rtl {
     display: grid; 
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4 imágenes por fila */
     gap: 25px; 
-    direction: ltr; 
+    direction: ltr;                     /* Asegura orden de izquierda a derecha */
 }
 
-.diagnostic-gallery-item { 
-    direction: ltr; 
-    background: #fff; padding: 15px; border-radius: 12px;
-    border: 1px solid #e3d5ca; box-shadow: 6px 6px 0 #d4a373;
+.gallery-img { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover;                  /* Recorta para que no se deforme la foto */
+    border-radius: 8px; 
 }
-
-/* Ajustes puntuales para Realidad Empresarial en escritorio */
-.section-full-width {
-    display: block;
-}
-
-.section-full-width .info-text {
-    margin-bottom: 8px;
-}
-
-.section-full-width .pdf-container {
-    width: 100%;
-}
-
-.gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
 
 .diagnostic-caption-box {
-    width: 100%; min-height: 100px; border: 1px solid var(--accent-gold);
-    border-radius: 8px; padding: 10px; font-size: 0.9rem;
-    background: #fffaf5; margin-top: 10px; word-break: break-all;
-}
-
-.diagnostic-caption-box a { color: #0066cc; font-weight: bold; text-decoration: underline; }
-
-/* Secciones de diagnostico y evidencias con titulo arriba */
-.info-section.column-layout {
-    display: block;
-}
-
-.info-section.column-layout .info-title {
-    display: block;
-    width: fit-content;
-    margin: 0 auto 26px;
-    text-align: center;
-}
-
-.info-section.column-layout .pdf-grid-ltr,
-.info-section.column-layout .gallery-grid-rtl {
-    margin-top: 8px;
+    width: 100%; 
+    min-height: 100px; 
+    border: 1px solid var(--accent-gold); 
+    border-radius: 8px; 
+    padding: 10px; 
+    font-size: 0.9rem; 
+    background: #fffaf5; 
+    margin-top: 10px; 
+    word-break: break-all;              /* Evita que links rompan la caja */
 }
 
 /* =========================================
-   6. REALIDAD ECONÓMICA (PAÍSES Y EXCEL)
+   6. REALIDAD ECONÓMICA (PAÍSES Y RATINGS)
    ========================================= */
+
 .economic-block {
-    background: var(--white);
-    padding: 40px;
-    margin-bottom: 40px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
+    background: var(--white); 
+    padding: 40px; 
+    margin-bottom: 40px; 
+    border-radius: 15px; 
+    box-shadow: var(--shadow); 
 }
 
 .country-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px; 
 }
 
 .country-card {
-    background: #fffaf5; border: 1px solid var(--accent-gold);
-    border-radius: 12px; overflow: hidden; text-align: center;
+    background: #fffaf5; 
+    border: 1px solid var(--accent-gold); 
+    border-radius: 12px; 
+    overflow: hidden; 
+    text-align: center; 
 }
 
-.country-card-header { background: var(--primary-coffee); color: white; padding: 10px; }
+.country-card-header { 
+    background: var(--primary-coffee);  /* Encabezado café */
+    color: white; 
+    padding: 10px; 
+}
 
-/* Fondo claro distintivo para banderas */
 .country-figure-flag {
-    background-color: #ffffff;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #eee;
+    background-color: #ffffff;          /* Fondo blanco para banderas */
+    margin: 10px; 
+    padding: 15px; 
+    border-radius: 8px; 
+    border: 1px solid #eee; 
 }
 
-.country-image { width: 100%; height: auto; max-height: 150px; object-fit: contain; }
-
-/* Excel y Ratings */
-.upload-dropzone {
-    border: 2px dashed var(--accent-gold); padding: 40px;
-    text-align: center; cursor: pointer; border-radius: 10px;
+.country-image { 
+    width: 100%; 
+    height: auto; 
+    max-height: 150px; 
+    object-fit: contain;                /* Bandera siempre completa sin cortes */
 }
 
 .rating-panel {
-    background: #fdf8f3; padding: 30px; border-radius: 10px;
-    border-left: 5px solid var(--accent-gold);
+    background: #fdf8f3; 
+    padding: 30px; 
+    border-radius: 10px; 
+    border-left: 5px solid var(--accent-gold); /* Detalle lateral dorado */
 }
 
-.star-btn { background: none; border: none; font-size: 1.5rem; color: #ccc; cursor: pointer; }
-.star-btn.active { color: #f1c40f; }
+.star-btn { 
+    background: none; border: none; 
+    font-size: 1.5rem; 
+    color: #ccc;                        /* Estrellas apagadas en gris */
+    cursor: pointer; 
+}
 
+.star-btn.active { 
+    color: #f1c40f;                     /* Estrellas encendidas en amarillo */
+}
 
 /* =========================================
-   7. RESPONSIVE
+   7. RESPONSIVE (CELULARES)
    ========================================= */
 
 @media (max-width: 768px) {
-    
-    /* 1. Asegura que ninguna imagen se desborde */
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-        display: block;
-        margin: 0 auto; /* Centra las imágenes en móviles */
-    }
-
-    /* 2. Ajuste para los bloques de información (Realidad Empresarial) */
+    /* Ajustes generales de espaciado en móviles */
     .info-section, .economic-block, .container {
-        padding: 15px !important;
-        margin: 10px auto !important;
-        width: 95% !important;
+        padding: 15px !important; 
+        margin: 10px auto !important; 
+        width: 95% !important; 
     }
 
-    /* 3. Ajuste para el Business Model Canvas (PDF) */
+    /* Reducción de altura del visor de PDF para móviles */
     .pdf-container, .bmc-iframe {
-        height: 450px !important; /* Altura cómoda para leer en vertical */
-        width: 100% !important;
+        height: 450px !important; 
     }
 
-    /* 4. Grids de Galería y Países (Una sola columna en celular) */
-    .gallery-grid-rtl, 
-    .pdf-grid-ltr, 
-    .country-grid,
-    .social-channels {
-        grid-template-columns: 1fr !important; /* Fuerza una sola columna */
-        gap: 15px !important;
-        direction: ltr !important; /* Evita problemas de lectura en móviles */
+    /* Todas las rejillas pasan a ser de 1 sola columna */
+    .gallery-grid-rtl, .pdf-grid-ltr, .country-grid, .social-channels {
+        grid-template-columns: 1fr !important; 
+        gap: 15px !important; 
     }
 
-    /* 5. Ajuste para los análisis de integrantes */
-    .test-img {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* 6. Ajuste para las firmas */
-    .signature-box {
-        align-items: center !important; /* Centra la firma en el celular */
-        margin-top: 15px;
-    }
-    
-    .signature-line {
-        width: 150px !important;
-    }
-
-    /* 7. Ajuste para los Títulos */
-    .navbar {
-        padding: 12px 4%;
-        flex-wrap: wrap;
-    }
-
+    /* Comportamiento del menú hamburguesa */
     .nav-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-flex;           /* Se muestra el botón de menú */
+        align-items: center; 
+        justify-content: center; 
     }
 
     .nav-links {
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-        padding-top: 10px;
+        width: 100%; 
+        display: none;                  /* Oculto por defecto en móvil */
+        flex-direction: column;         /* Links apilados verticalmente */
+        padding-top: 10px; 
     }
 
     .navbar.menu-open .nav-links {
-        display: flex;
+        display: flex;                  /* Aparece al abrir menú */
     }
 
-    .nav-links a {
-        display: block;
-        background: rgba(255, 255, 255, 0.07);
-        padding: 10px 12px;
-        border-radius: 8px;
-    }
-
-    .dropdown-content {
-        position: static;
-        margin-top: 6px;
-        box-shadow: none;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: none;
-    }
-
-    .dropdown.is-open .dropdown-content {
-        display: block;
-    }
-
-    .hero-header {
-        min-height: 80vh;
-        padding-top: 72px;
-    }
-
-    .hero h1 {
-        font-size: 2rem !important;
-    }
-
-    .hero p {
-        font-size: 0.98rem;
-    }
-    
-    .info-title, .section-title {
-        font-size: 1.5rem !important;
-        text-align: center;
-    }
-
-    .info-section {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
+    .hero h1 { font-size: 2rem !important; } /* Título más pequeño */
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
-    .gallery-grid-rtl {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .pdf-grid-ltr {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-@media (min-width: 1201px) {
-    .info-section.column-layout .gallery-grid-rtl {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-}
 /* =========================================
-   MEJORA RESPONSIVE ANÁLISIS TEST (PC)
+   8. MEJORA ANÁLISIS TEST (VISTA PC)
    ========================================= */
 
 @media (min-width: 1024px) {
-    /* Contenedor de la details para que use flexbox en escritorio */
     #test .content {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 análisis por fila */
-        gap: 30px;
+        display: grid;                  /* Grid para los resultados de tests */
+        grid-template-columns: repeat(2, 1fr); /* 2 personas por fila */
+        gap: 30px; 
     }
 
-    /* Estilo del bloque individual de cada integrante */
     .analysis-block {
-        display: flex;
-        flex-direction: column; /* Apila elementos internamente */
-        background: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        border: 1px solid var(--bg-cream);
-        margin-bottom: 0; /* Usamos gap del grid */
+        display: flex; 
+        flex-direction: column; 
+        background: #fff; 
+        padding: 30px; 
+        border-radius: 12px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra suave */
+        border: 1px solid var(--bg-cream); 
     }
 
-    
-
-    /* Estilo para el título del integrante */
-    .analysis-block h3 {
-        font-size: 1.5rem;
-        color: var(--primary-coffee);
-        margin-bottom: 15px;
-        text-align: center;
-    }
-
-    /* Contenedor de la imagen del test */
-    .test-image-wrapper {
-        width: 100%;
-        margin: 0 0 20px 0;
-        overflow: hidden;
-        border-radius: 8px;
-    }
-
-    /* Imagen del test: Más responsive en PC */
     .test-img {
-        width: 100%;
-        height: 250px; /* Altura fija para uniformidad */
-        object-fit: contain; /* No recorta la imagen, muestra el test completo */
-        background-color: #fcfcfc; /* Fondo neutro por si la imagen no llena */
-        transition: transform 0.3s ease;
+        width: 100%; 
+        height: 250px;                  /* Altura uniforme para los pantallazos */
+        object-fit: contain;            /* Muestra el pantallazo completo sin zoom */
+        background-color: #fcfcfc; 
+        transition: transform 0.3s ease; 
     }
 
     .test-image-wrapper:hover .test-img {
-        transform: scale(1.05); /* Zoom suave al hover */
+        transform: scale(1.05);         /* Efecto lupa suave */
     }
 
-    /* Texto del análisis */
     .analysis-text {
+        text-align: justify;            /* Alineación estética del texto */
+        line-height: 1.7; 
         font-size: 1rem;
-        line-height: 1.7;
-        margin-bottom: auto; /* Empuja la firma hacia abajo */
-        text-align: justify;
-    }
-
-    /* Caja de la firma */
-    .signature-box {
-        align-items: flex-end; /* Mantiene la firma a la derecha */
-        border-top: 1px solid #eee;
-        padding-top: 15px;
-        margin-top: 20px;
-    }
-
-    /* Separador original: Se oculta en PC porque usamos grid y bordes */
-    #test hr.separator {
-        display: none;
     }
 }
