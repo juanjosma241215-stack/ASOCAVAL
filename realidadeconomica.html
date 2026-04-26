@@ -43,6 +43,19 @@
             font-size: 16px;
         }
 
+        .banner-image {
+            display: block;
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-top: 72px;
+            max-height: 430px;
+            object-fit: cover;
+            border-radius: 0;
+            border-bottom: 4px solid var(--dorado);
+            box-shadow: 0 8px 22px var(--sombra);
+        }
+
         /* ===== NAVBAR ===== */
        .navbar {
     display: flex;
@@ -332,6 +345,7 @@
             height: 150px;
             object-fit: cover;
             display: block;
+            cursor: zoom-in;
         }
 
         .excel-img-caption {
@@ -343,6 +357,60 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        .excel-img-item.empty-slot {
+            border: 1.5px dashed var(--crema-oscura);
+            background: var(--blanco);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 190px;
+        }
+
+        .empty-slot-label {
+            font-size: .9rem;
+            color: var(--texto-claro);
+            font-style: italic;
+        }
+
+        .image-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 4000;
+        }
+
+        .image-modal.open {
+            display: flex;
+        }
+
+        .image-modal-content {
+            max-width: min(1000px, 96vw);
+            max-height: 88vh;
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid var(--dorado);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #3d2b1f;
         }
 
         /* ===== ANÁLISIS ===== */
@@ -463,6 +531,7 @@
 
             .container { padding: 1.25rem .9rem; gap: 1.75rem; }
             .economic-block { padding: 1.4rem 1.1rem; border-radius: var(--r-lg); }
+            .banner-image { margin-top: 64px; max-height: 280px; }
 
             .country-grid { grid-template-columns: 1fr; }
             .country-image { height: 180px; }
@@ -499,6 +568,14 @@
     </nav>
 
     <main class="container">
+        <img src="img/logo.jpg" class="banner-image" alt="Banner Asocaval">
+        
+        <section class="info-section description-layout">
+            <div class="info-text">
+                <h2 class="info-title">5 Indicadores</h2>
+                <p class="info-description">
+                   Somos una organización de 74 familias en Valdivia, Antioquia, comprometidas con la transformación social. Con más de 15 años de trayectoria, lideramos la sustitución de cultivos ilícitos mediante la producción de cacao sostenible, consolidando una economía de paz y resiliencia a orillas del Río Cauca.
+                </p>
 
         <!-- PAÍSES -->
         <section class="economic-block">
@@ -595,6 +672,11 @@
         <p>© 2026 <span>ASOCAVAL</span> — Valdivia, Antioquia · Todos los derechos reservados</p>
     </footer>
 
+    <div class="image-modal" id="image-modal" aria-hidden="true">
+        <button type="button" class="image-modal-close" id="image-modal-close" aria-label="Cerrar imagen">×</button>
+        <img src="" alt="Vista ampliada" class="image-modal-content" id="image-modal-content">
+    </div>
+
     <script>
         /* ===== NAVBAR activo ===== */
         (function(){
@@ -634,29 +716,55 @@
             const placeholder = document.getElementById('gallery-placeholder');
             const btnClear    = document.getElementById('btn-clear');
             const btnExport   = document.getElementById('btn-export');
+            const modal       = document.getElementById('image-modal');
+            const modalImg    = document.getElementById('image-modal-content');
+            const modalClose  = document.getElementById('image-modal-close');
+            const maxImages   = 10;
             let files         = [];
 
+            function openModal(src, alt) {
+                if(!modal || !modalImg) return;
+                modalImg.src = src;
+                modalImg.alt = alt || 'Imagen ampliada';
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeModal() {
+                if(!modal || !modalImg) return;
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                modalImg.src = '';
+            }
+
             function renderGrid() {
-                if(files.length === 0){
-                    grid.style.display = 'none';
-                    placeholder.style.display = '';
-                    return;
-                }
                 placeholder.style.display = 'none';
                 grid.style.display = '';
                 grid.innerHTML = '';
-                files.forEach((f, idx) => {
+                files.slice(0, maxImages).forEach((f, idx) => {
                     const url  = URL.createObjectURL(f);
                     const item = document.createElement('div');
                     item.className = 'excel-img-item';
                     item.innerHTML = `<img src="${url}" alt="${f.name}"><div class="excel-img-caption">${idx+1}. ${f.name}</div>`;
+                    const image = item.querySelector('img');
+                    if(image){
+                        image.addEventListener('click', () => openModal(url, f.name));
+                    }
                     grid.appendChild(item);
                 });
+
+                const missingSlots = Math.max(0, maxImages - files.length);
+                for(let i = 0; i < missingSlots; i++){
+                    const slot = document.createElement('div');
+                    slot.className = 'excel-img-item empty-slot';
+                    slot.innerHTML = `<div class="empty-slot-label">Espacio ${files.length + i + 1} de ${maxImages}</div>`;
+                    grid.appendChild(slot);
+                }
             }
 
             input.addEventListener('change', () => {
                 const nuevos = [...input.files].sort((a,b) => a.name.localeCompare(b.name));
-                files = [...files, ...nuevos];
+                files = [...files, ...nuevos].slice(0, maxImages);
                 renderGrid();
                 input.value = '';
             });
@@ -680,9 +788,29 @@
                 e.preventDefault();
                 dropzone.style.background = '';
                 const dropped = [...e.dataTransfer.files].filter(f => f.type.startsWith('image/'));
-                files = [...files, ...dropped].sort((a,b) => a.name.localeCompare(b.name));
+                files = [...files, ...dropped].sort((a,b) => a.name.localeCompare(b.name)).slice(0, maxImages);
                 renderGrid();
             });
+
+            if(modalClose){
+                modalClose.addEventListener('click', closeModal);
+            }
+
+            if(modal){
+                modal.addEventListener('click', (event) => {
+                    if(event.target === modal){
+                        closeModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if(event.key === 'Escape'){
+                    closeModal();
+                }
+            });
+
+            renderGrid();
         })();
     </script>
 
