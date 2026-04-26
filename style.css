@@ -25,7 +25,7 @@ body {
 }
 
 /* =========================================
-   2. NAVBAR Y MENÚ DESPLEGABLE (DROPDOWN)
+   2. NAVBAR Y NAVEGACIÓN
    ========================================= */
 .navbar {
     display: flex;
@@ -63,9 +63,8 @@ body {
 
 .nav-links a:hover { color: var(--accent-gold); }
 
-/* Estilos Dropdown */
+/* Dropdown para Introducción */
 .dropdown { position: relative; }
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -75,61 +74,50 @@ body {
     z-index: 1;
     border-radius: 8px;
     margin-top: 10px;
-    overflow: hidden;
 }
-
 .dropdown-content a {
     color: var(--primary-coffee) !important;
     padding: 12px 16px;
     display: block;
     border-bottom: 1px solid #eee;
 }
-
-.dropdown-content a:hover { background-color: var(--bg-cream); }
 .dropdown:hover .dropdown-content { display: block; }
 
 /* =========================================
-   3. SECCIÓN HERO (PÁGINA INICIO)
+   3. HERO (PÁGINA DE INICIO)
    ========================================= */
-header {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/hero-bg.jpg'); /* Agrega una imagen de fondo si deseas */
+.hero-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/cacao.webp');
     background-size: cover;
     background-position: center;
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
 .hero {
     text-align: center;
     color: white;
-    padding: 0 10%;
-    margin-top: 60px;
+    padding: 0 20px;
 }
 
 .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
-.hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; }
 
 .btn-main {
     background-color: var(--accent-gold);
     color: var(--primary-coffee);
-    padding: 15px 35px;
+    padding: 12px 30px;
     border: none;
     border-radius: 50px;
     font-weight: bold;
-    font-size: 1.1rem;
     cursor: pointer;
     transition: 0.3s;
 }
-
-.btn-main:hover {
-    background-color: var(--accent-dark-gold);
-    transform: scale(1.05);
-}
+.btn-main:hover { background-color: var(--accent-dark-gold); transform: scale(1.05); }
 
 /* =========================================
-   4. ESTRUCTURA DE CONTENEDORES Y SECCIONES
+   4. CONTENEDORES Y BLOQUES COMUNES
    ========================================= */
 .container {
     max-width: 1100px;
@@ -137,184 +125,152 @@ header {
     padding: 0 20px;
 }
 
-.info-section {
-    display: flex; gap: 30px; padding: 40px; background: #fff;
-    margin: 40px auto; border-radius: 15px; box-shadow: var(--shadow);
-    max-width: 1200px; align-items: center;
+.info-section, .economic-block {
+    background: var(--white);
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
 }
 
-.column-layout { flex-direction: column; align-items: flex-start; }
-
-.info-title { 
-    font-size: 2rem; 
-    margin-bottom: 15px; 
-    border-bottom: 3px solid var(--accent-gold); 
+.info-title, .economic-heading h3 {
+    font-size: 2rem;
+    border-bottom: 3px solid var(--accent-gold);
     display: inline-block;
+    margin-bottom: 20px;
     padding-bottom: 5px;
 }
 
-.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 10px; }
-.section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
-
-.info-image { max-width: 400px; width: 100%; border-radius: 10px; }
-.banner-image { width: 100%; margin-top: 60px; display: block; }
-.bmc-iframe { width: 100%; height: 550px; border: 2px solid var(--accent-gold); border-radius: 10px; }
-
 /* =========================================
-   5. ACORDEONES (DETAILS / SUMMARY)
+   5. REALIDAD ECONÓMICA (PÁISES Y EXCEL)
    ========================================= */
-details {
-    background: var(--white);
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 4px 4px 0px var(--accent-gold);
-    border: 1px solid #e3d5ca;
-    overflow: hidden;
-}
 
-summary {
-    padding: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: var(--white);
-    transition: 0.3s;
-}
-
-summary:hover { background-color: #faf3eb; }
-summary i { color: var(--accent-dark-gold); font-size: 1.2rem; }
-
-.content { padding: 25px; border-top: 1px solid #eee; }
-
-/* Canales de comunicación */
-.social-channels {
+/* Cuadrícula de países */
+.country-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    list-style: none;
-    margin-top: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
 }
 
-.social-channels a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    background: var(--bg-cream);
-    text-decoration: none;
-    color: var(--primary-coffee);
-    border-radius: 8px;
+.country-card {
+    background: #fffaf5;
+    border: 1px solid var(--accent-gold);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
     transition: 0.3s;
 }
 
-.social-channels a:hover { background: var(--accent-gold); color: white; }
-.social-channels i { font-size: 1.5rem; margin-bottom: 10px; }
+.country-card:hover { transform: translateY(-5px); }
 
-/* =========================================
-   6. ANÁLISIS DE TEST (BLOQUES Y FIRMAS)
-   ========================================= */
-.analysis-block { margin-bottom: 40px; }
-.test-image-wrapper { margin: 20px 0; text-align: center; }
-.test-img { max-width: 100%; border: 1px solid #ddd; border-radius: 5px; }
+.country-card-header {
+    background: var(--primary-coffee);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
 
-.signature-box {
-    margin-top: 25px;
+.country-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    padding: 10px;
+}
+
+/* Galería de Excel */
+.upload-dropzone {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    padding: 40px;
+    border: 2px dashed var(--accent-gold);
+    background: #fffcf9;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
-.signature-img { width: 150px; height: auto; margin-bottom: 5px; }
-.signature-line { width: 200px; height: 1px; background: #333; }
+.upload-dropzone i { font-size: 3rem; color: var(--accent-dark-gold); margin-bottom: 10px; }
 
-.responsive-img { width: 100%; height: auto; border-radius: 10px; }
+.excel-input { display: none; }
+
+.excel-actions { display: flex; gap: 10px; margin-bottom: 20px; }
+
+.excel-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    min-height: 100px;
+}
+
+/* Panel de Calificación */
+.rating-panel {
+    background: #fdf8f3;
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 5px solid var(--accent-gold);
+}
+
+.analysis-display {
+    min-height: 100px;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+}
+.star-btn.active { color: #f1c40f; }
+
+.rating-delete {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 /* =========================================
-   7. GRIDS (PDF Y GALERÍA)
+   6. REALIDAD EMPRESARIAL (PDF Y GALERÍA)
    ========================================= */
-.pdf-grid-ltr {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px; width: 100%;
-}
-
-.gallery-grid-rtl {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px; width: 100%;
-    direction: rtl; 
-}
-
-.diagnostic-gallery-item {
-    background: #fff; padding: 15px; border-radius: 12px;
-    border: 1px solid #e3d5ca; box-shadow: 6px 6px 0 var(--accent-gold);
-    display: flex; flex-direction: column; direction: ltr; 
-}
-
-.gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
-
 .diagnostic-caption-box {
     width: 100%; min-height: 100px; border: 1px solid var(--accent-gold);
     border-radius: 8px; padding: 10px; font-size: 0.9rem;
     background: #fffaf5; margin-top: 10px; word-break: break-all;
 }
 
-/* Capa PDF */
-.diagnostic-card {
-    background: #fff; border: 1px solid #e3d5ca; border-radius: 12px;
-    padding: 15px; box-shadow: 6px 6px 0 var(--accent-gold);
-    position: relative; height: 350px; overflow: hidden;
-}
+.diagnostic-caption-box a { color: #0066cc; font-weight: bold; }
 
-.card-preview { width: 100%; height: 280px; border: none; pointer-events: none; }
-
-.iframe-overlay {
-    position: absolute; top: 50px; left: 15px; right: 15px; bottom: 15px;
-    z-index: 5; display: flex; align-items: center; justify-content: center;
-    color: transparent; font-weight: bold; border-radius: 8px;
+.gallery-grid-rtl {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; direction: rtl; 
 }
-.diagnostic-card:hover .iframe-overlay { color: #3d2b1f; background: rgba(212, 163, 115, 0.3); }
+.diagnostic-gallery-item { direction: ltr; }
 
 /* =========================================
-   8. MEDIA QUERIES (RESPONSIVE)
+   7. RESPONSIVE (CELULARES Y TABLETS)
    ========================================= */
-
-/* TABLETS */
-@media (max-width: 1024px) {
-    .hero h1 { font-size: 2.8rem; }
-    .info-section { margin: 20px; }
-}
-
-/* CELULARES */
 @media (max-width: 768px) {
-    .navbar { padding: 10px 5%; }
+    .nav-links { display: none; } /* Ocultar menú en móvil para usar hamburguesa luego */
     
-    .nav-links {
-        display: none; /* Aquí podrías implementar un menú hamburguesa con JS */
-    }
-
-    .hero h1 { font-size: 2rem; }
-    .hero p { font-size: 1rem; }
-
-    .info-section { 
-        flex-direction: column; 
-        padding: 20px;
-        text-align: center;
-    }
-
-    .info-image { max-width: 100%; }
+    .hero h1 { font-size: 2.2rem; }
     
-    .gallery-grid-rtl { direction: ltr; } /* Normalizar dirección en móviles */
+    .container { margin-top: 80px; padding: 0 15px; }
     
-    .signature-box { align-items: center; }
-
-    .section-title { font-size: 1.8rem; }
+    .info-section, .economic-block { padding: 20px; }
     
-    .pdf-grid-ltr { grid-template-columns: 1fr; }
-}
+    .excel-actions { flex-direction: column; }
+    
+    .gallery-grid-rtl { direction: ltr; }
 
-@media (max-width: 480px) {
-    .btn-main { width: 100%; padding: 12px; }
-    .logo { font-size: 1rem; }
+    .country-grid { grid-template-columns: 1fr; }
 }
