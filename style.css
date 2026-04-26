@@ -335,6 +335,23 @@ details[open] summary::after { content: '\f146'; }
 
 .diagnostic-caption-box a { color: #0066cc; font-weight: bold; text-decoration: underline; }
 
+/* Secciones de diagnostico y evidencias con titulo arriba */
+.info-section.column-layout {
+    display: block;
+}
+
+.info-section.column-layout .info-title {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 26px;
+    text-align: center;
+}
+
+.info-section.column-layout .pdf-grid-ltr,
+.info-section.column-layout .gallery-grid-rtl {
+    margin-top: 8px;
+}
+
 /* =========================================
    6. REALIDAD ECONÓMICA (PAÍSES Y EXCEL)
    ========================================= */
@@ -515,6 +532,12 @@ details[open] summary::after { content: '\f146'; }
 
     .pdf-grid-ltr {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1201px) {
+    .info-section.column-layout .gallery-grid-rtl {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 /* =========================================
