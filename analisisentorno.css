@@ -28,39 +28,84 @@ body {
    2. NAVBAR (FIJA ARRIBA)
    ========================================= */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary-coffee);
-    padding: 15px 5%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 2000;
+    display: flex;                      /* Alineación horizontal de logo y menú */
+    justify-content: space-between;     /* Logo a la izquierda, links a la derecha */
+    align-items: center;                /* Centrado vertical de los elementos */
+    background-color: rgba(61, 43, 31, 0.98); /* Café con 98% opacidad */
+    padding: 15px 5%;                   /* Espaciado interno de la barra */
+    color: #fff;                        /* Texto blanco */
+    position: fixed;                    /* Siempre visible arriba al hacer scroll */
+    width: 100%;                        /* Ocupa todo el ancho de la ventana */
+    top: 0;                             /* Pegada al borde superior */
+    z-index: 2000;                      /* Prioridad de visualización máxima */
 }
 
 .logo {
-    color: var(--white);
-    font-weight: bold;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
+    color: var(--accent-gold);          /* Logo en color dorado */
+    font-weight: bold;                  /* Texto grueso */
+    font-size: 1.2rem;                  /* Tamaño de fuente del logo */
+    letter-spacing: 1px;                /* Separación entre letras */
+}
+
+.nav-toggle {
+    display: none;                      /* Oculto por defecto (solo aparece en móviles) */
+    background: transparent;            /* Sin fondo */
+    border: 1px solid rgba(212, 163, 115, 0.6); /* Borde dorado transparente */
+    color: #fff;                        /* Icono blanco */
+    width: 40px;                        /* Ancho fijo del botón */
+    height: 40px;                       /* Alto fijo del botón */
+    border-radius: 8px;                 /* Bordes un poco redondos */
+    cursor: pointer;                    /* Indica que se puede hacer clic */
 }
 
 .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
+    display: flex;                      /* Links en fila */
+    list-style: none;                   /* Quita los puntos de la lista */
+    gap: 20px;                          /* Espacio entre cada link */
+    align-items: center;                /* Centrado vertical */
 }
 
 .nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: 0.3s ease;
+    color: #fff;                        /* Texto blanco */
+    text-decoration: none;              /* Quita el subrayado */
+    font-size: 0.9rem;                  /* Tamaño de letra */
+    transition: 0.3s;                   /* Suaviza el cambio de color al pasar el mouse */
 }
 
-.nav-links a:hover {
-    color: var(--accent-gold);
+.nav-links a:hover { 
+    color: var(--accent-gold);          /* Cambia a dorado al pasar el mouse */
+}
+
+/* Estilos del Dropdown (Menú desplegable) */
+.dropdown { 
+    position: relative;                 /* Referencia para el contenido absoluto */
+}
+
+.dropdown-content {
+    display: none;                      /* Oculto hasta el hover */
+    position: absolute;                 /* Flota sobre el contenido */
+    background-color: var(--white);     /* Fondo blanco */
+    min-width: 200px;                   /* Ancho mínimo de la cajita */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Sombra suave para profundidad */
+    z-index: 1;                         /* Encima de otros elementos */
+    border-radius: 8px;                 /* Bordes redondos */
+    margin-top: 10px;                   /* Separación del menú superior */
+}
+
+.dropdown-content a {
+    color: var(--primary-coffee) !important; /* Texto café oscuro */
+    padding: 12px 16px;                 /* Relleno de cada link interno */
+    display: block;                     /* Cada link ocupa una línea */
+    border-bottom: 1px solid #eee;      /* Línea separadora */
+}
+
+.dropdown:hover .dropdown-content { 
+    display: block;                     /* Se muestra al pasar el ratón */
+}
+
+.container {
+    width: min(1100px, 92%);            /* Máximo 1100px, o 92% en pantallas pequeñas */
+    margin: 110px auto 0;               /* Centra y da espacio por la navbar fija */
 }
 
 /* =========================================
