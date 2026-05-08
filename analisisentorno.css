@@ -1,12 +1,13 @@
+/* =========================================
+   1. CONFIGURACIÓN Y VARIABLES
+   ========================================= */
 :root {
-    --primary-coffee: #3d2b1f;
-    --secondary-coffee: #5a3c2a;
-    --accent-gold: #d4a373;
-    --accent-dark-gold: #bc8a5f;
-    --bg-cream: #f5ebe0;
-    --card-bg: #fffaf5;
-    --white: #ffffff;
-    --shadow: rgba(61, 43, 31, 0.15);
+    --primary-coffee: #3d2b1f;    /* Café oscuro de la navbar */
+    --accent-gold: #d4a373;       /* Dorado de detalles */
+    --bg-cream: #f5ebe0;          /* Fondo de la página */
+    --white: #ffffff;             /* Color de la tarjeta central */
+    --text-brown: #582f0e;        /* Color para títulos de sección */
+    --shadow: rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -16,20 +17,22 @@
 }
 
 body {
-    font-family: "Lato", sans-serif;
-    background: var(--bg-cream);
+    font-family: 'Lato', sans-serif;
+    background-color: var(--bg-cream);
     color: var(--primary-coffee);
-    line-height: 1.7;
-    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* =========================================
+   2. NAVBAR (FIJA ARRIBA)
+   ========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(61, 43, 31, 0.98);
+    background-color: var(--primary-coffee);
     padding: 15px 5%;
-    color: #fff;
     position: fixed;
     width: 100%;
     top: 0;
@@ -37,187 +40,141 @@ body {
 }
 
 .logo {
-    color: var(--accent-gold);
-    font-weight: 700;
-    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.3rem;
     letter-spacing: 1px;
-}
-
-.nav-toggle {
-    display: none;
-    background: transparent;
-    border: 1px solid rgba(212, 163, 115, 0.6);
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    cursor: pointer;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 20px;
-    align-items: center;
 }
 
 .nav-links a {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: 0.25s ease;
+    transition: 0.3s ease;
 }
 
-.nav-links a:hover,
-.nav-links a.is-active {
+.nav-links a:hover {
     color: var(--accent-gold);
 }
 
-.banner-image {
-    display: block;
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-top: 72px;
-    max-height: 420px;
-    object-fit: cover;
+/* =========================================
+   3. BANNER UNIFICADO (CACAO + LOGO)
+   ========================================= */
+.banner-wrapper {
+    margin-top: 55px; /* Altura de la navbar */
+    display: flex;
+    width: 100%;
+    height: 380px;
+    background-color: #fffaf5; /* Fondo claro tras el logo */
     border-bottom: 4px solid var(--accent-gold);
 }
 
-.container {
-    width: min(1100px, 92%);
-    margin: 2rem auto;
+.banner-left {
+    width: 35%;
+    height: 100%;
 }
 
-.entorno-block {
-    background: var(--white);
-    border: 1px solid #e9d6c1;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px var(--shadow);
-    padding: 2rem;
-}
-
-.block-header {
-    text-align: center;
-    margin-bottom: 1.6rem;
-}
-
-.block-header h1 {
-    font-family: "Playfair Display", serif;
-    font-size: 2rem;
-}
-
-.cultural-sections {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    align-items: stretch;
-}
-
-.cultural-card {
-    background: var(--card-bg);
-    border: 1px solid #e6cfb3;
-    border-left: 6px solid var(--accent-gold);
-    border-radius: 12px;
-    padding: 1rem 1.1rem;
-}
-
-.cultural-card h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 1.22rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-}
-
-.section-image {
-    margin: 0;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.section-image img {
+.banner-left img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
+    height: 100%;
+    object-fit: cover; /* Ajusta la foto del cacao */
 }
 
-footer {
-    background: var(--primary-coffee);
-    color: #ead8c4;
+.banner-right {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-asocaval {
+    max-width: 450px;
+    width: 90%;
+    height: auto;
+}
+
+/* =========================================
+   4. CONTENEDOR DE ANÁLISIS (LA TARJETA)
+   ========================================= */
+.container {
+    width: min(1050px, 92%);
+    margin: -50px auto 60px; /* Sube la tarjeta para que pise el banner */
+    position: relative;
+    z-index: 100;
+}
+
+.analysis-card {
+    background: var(--white);
+    border-radius: 15px 15px 0 0; /* Bordes redondos arriba */
+    padding: 45px 30px;
+    box-shadow: 0 -5px 25px var(--shadow);
     text-align: center;
-    padding: 1.1rem;
-    font-size: 0.86rem;
-    border-top: 3px solid var(--accent-gold);
+    min-height: 500px;
 }
 
-footer span {
-    color: var(--accent-gold);
+.analysis-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--primary-coffee);
+    margin-bottom: 8px;
 }
 
-@media (max-width: 900px) {
-    .nav-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    margin: 0 auto 45px;
+    border-radius: 2px;
+}
+
+/* Caja de "Entorno Cultural" */
+.sub-section-header {
+    background-color: #e9dcc9; /* Tono crema oscuro de la imagen */
+    padding: 18px 25px;
+    border-radius: 12px;
+    text-align: left;
+    font-weight: bold;
+    color: var(--text-brown);
+    font-size: 1.1rem;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   5. RESPONSIVE (CELULARES)
+   ========================================= */
+@media (max-width: 768px) {
+    .banner-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .banner-left, .banner-right {
+        width: 100%;
+        height: 220px;
     }
 
     .nav-links {
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.4rem;
-        margin-top: 0.6rem;
+        display: none; /* Simplifica el menú en móvil */
     }
 
-    .navbar.menu-open .nav-links {
-        display: flex;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 0.55rem 0.75rem;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.08);
-    }
-
-    .navbar {
-        flex-wrap: wrap;
-        padding: 0.85rem 1rem;
-    }
-
-    .banner-image {
-        margin-top: 64px;
-        max-height: 290px;
-    }
-
-    .cultural-sections {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 600px) {
     .container {
-        width: 95%;
-        margin: 1.2rem auto;
+        margin-top: -30px;
     }
 
-    .entorno-block {
-        padding: 1.2rem 0.95rem;
+    .analysis-card {
+        padding: 25px 15px;
     }
 
-    .block-header h1 {
-        font-size: 1.6rem;
-    }
-
-    .cultural-card h2 {
-        font-size: 1.08rem;
-    }
-
-    .cultural-sections {
-        grid-template-columns: 1fr;
+    .analysis-card h1 {
+        font-size: 1.8rem;
     }
 }
