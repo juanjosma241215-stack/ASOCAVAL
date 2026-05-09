@@ -464,6 +464,24 @@ details[open] summary::after {
     cursor: zoom-in;
 }
 
+.image-view-btn {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid var(--accent-dark-gold);
+    background: var(--accent-gold);
+    color: var(--primary-coffee);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.image-view-btn:hover {
+    background: var(--accent-dark-gold);
+    color: #fff;
+}
+
 .diagnostic-caption-box {
     width: 100%; 
     min-height: 100px; 
