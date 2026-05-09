@@ -368,6 +368,19 @@ details[open] summary::after {
     gap: 34px;
 }
 
+.diagnostic-stack {
+    display: grid;
+    gap: 28px;
+}
+
+.diagnostic-text-block {
+    max-width: 760px;
+}
+
+.diagnostic-pdfs-block {
+    width: 100%;
+}
+
 .description-layout .info-text {
     justify-self: start;
 }
@@ -382,19 +395,20 @@ details[open] summary::after {
 .pdf-grid-ltr {
     display: grid; 
     grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columnas iguales */
-    gap: 16px; 
+    gap: 22px; 
     align-items: start;
+    width: 100%;
 }
 
 .diagnostic-card {
     background: #fff; 
     border: 1px solid #e3d5ca; 
     border-radius: 12px; 
-    padding: 14px; 
+    padding: 16px; 
     box-shadow: 6px 6px 0 #d4a373;      /* Sombra lateral dorada */
     position: relative; 
     transition: 0.3s ease; 
-    height: 390px;                      /* Altura uniforme de tarjetas */
+    height: 420px;                      /* Altura uniforme de tarjetas */
     overflow: hidden; 
 }
 
@@ -407,7 +421,7 @@ details[open] summary::after {
 
 .card-preview { 
     width: 100%; 
-    height: 318px; 
+    height: 340px; 
     border: none; 
     pointer-events: none;               /* Desactiva clics dentro del PDF miniatura */
     border-radius: 8px;
@@ -416,7 +430,7 @@ details[open] summary::after {
 
 .iframe-overlay {
     position: absolute;                 /* Capa que flota sobre el PDF */
-    top: 52px; left: 14px; right: 14px; bottom: 14px; 
+    top: 58px; left: 16px; right: 16px; bottom: 16px; 
     background: rgba(212, 163, 115, 0.1); /* Tinte dorado suave */
     z-index: 5; 
     display: flex; 
@@ -447,6 +461,7 @@ details[open] summary::after {
     background: #fffaf5;
     border: 1px solid #e3d5ca;
     padding: 8px;
+    cursor: zoom-in;
 }
 
 .diagnostic-caption-box {
@@ -581,6 +596,10 @@ details[open] summary::after {
 
     .diagnostic-layout {
         grid-template-columns: 1fr;
+    }
+
+    .diagnostic-stack {
+        gap: 22px;
     }
 
     .description-layout .info-image {

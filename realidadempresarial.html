@@ -80,15 +80,15 @@
         </section>
 
         <section class="info-section">
-            <div class="description-layout diagnostic-layout">
-                <div class="info-text">
+            <div class="diagnostic-stack">
+                <div class="info-text diagnostic-text-block">
                     <h2 class="info-title">Diagnostico de potencialidades de internacionalizacion</h2>
                     <p class="info-description">
                         Su realidad empresarial refleja oportunidades de innovacion, fortalecimiento comercial y mejora continua en la gestion de recursos, produccion y posicionamiento dentro del mercado.
                     </p>
                 </div>
 
-                <div>
+                <div class="diagnostic-pdfs-block">
                     <h3 class="section-subtitle">Archivos PDF</h3>
                     <div class="pdf-grid-ltr">
                         <div class="diagnostic-card">
@@ -113,51 +113,51 @@
             <h3 class="section-subtitle" style="margin-top: 30px;">Graficas</h3>
             <div class="gallery-grid-rtl">
                 <div>
-                    <img src="img/grafica1.jpg" alt="Grafica 1" class="gallery-img">
+                    <img src="img/grafica1.jpg" alt="Grafica 1" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 1"></textarea>
                 </div>
                 <div>
-                    <img src="img/grafica2.jpg" alt="Grafica 2" class="gallery-img">
+                    <img src="img/grafica2.jpg" alt="Grafica 2" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 2"></textarea>
                 </div>
                 <div>
-                    <img src="img/grafica3.jpg" alt="Grafica 3" class="gallery-img">
+                    <img src="img/grafica3.jpg" alt="Grafica 3" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 3"></textarea>
                 </div>
                 <div>
-                    <img src="img/grafica4.jpg" alt="Grafica 4" class="gallery-img">
+                    <img src="img/grafica4.jpg" alt="Grafica 4" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 4"></textarea>
                 </div>
                 <div>
-                    <img src="img/grafica5.jpg" alt="Grafica 5" class="gallery-img">
+                    <img src="img/grafica5.jpg" alt="Grafica 5" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 5"></textarea>
                 </div>
                 <div>
-                    <img src="img/grafica6.jpg" alt="Grafica 6" class="gallery-img">
+                    <img src="img/grafica6.jpg" alt="Grafica 6" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 6"></textarea>
                 </div>
                 <div>
-                    <img src="img/grafica7.jpg" alt="Grafica 7" class="gallery-img">
+                    <img src="img/grafica7.jpg" alt="Grafica 7" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 7"></textarea>
                 </div>
                 <div>
-                    <img src="img/grafica8.jpg" alt="Grafica 8" class="gallery-img">
+                    <img src="img/grafica8.jpg" alt="Grafica 8" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 8"></textarea>
                 </div>
                 <div>
-                    <img src="img/indicador1.jpg" alt="Grafica 9" class="gallery-img">
+                    <img src="img/indicador1.jpg" alt="Grafica 9" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 9"></textarea>
                 </div>
                 <div>
-                    <img src="img/indicadores2.jpg" alt="Grafica 10" class="gallery-img">
+                    <img src="img/indicadores2.jpg" alt="Grafica 10" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 10"></textarea>
                 </div>
                 <div>
-                    <img src="img/indicador3.jpg" alt="Grafica 11" class="gallery-img">
+                    <img src="img/indicador3.jpg" alt="Grafica 11" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 11"></textarea>
                 </div>
                 <div>
-                    <img src="img/indicador4.jpg" alt="Grafica 12" class="gallery-img">
+                    <img src="img/indicador4.jpg" alt="Grafica 12" class="gallery-img" data-zoomable>
                     <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 12"></textarea>
                 </div>
             </div>
@@ -187,6 +187,11 @@
             </div>
         </section>
     </main>
+
+    <div class="image-modal" id="image-modal" aria-hidden="true">
+        <button type="button" class="image-modal-close" id="image-modal-close" aria-label="Cerrar imagen">×</button>
+        <img src="" alt="Vista ampliada" class="image-modal-content" id="image-modal-content">
+    </div>
 
 </body>
 </html>

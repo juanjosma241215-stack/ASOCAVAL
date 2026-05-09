@@ -114,8 +114,17 @@ function setupImageExpand() {
     const modal = document.getElementById('image-modal');
     const modalContent = document.getElementById('image-modal-content');
     const modalClose = document.getElementById('image-modal-close');
-    const triggers = document.querySelectorAll('[data-expand-image]');
-    if (!(modal instanceof HTMLElement) || !(modalContent instanceof HTMLImageElement) || !triggers.length) return;
+    const buttonTriggers = document.querySelectorAll('[data-expand-image]');
+    const imageTriggers = document.querySelectorAll('img[data-zoomable]');
+    if (!(modal instanceof HTMLElement) || !(modalContent instanceof HTMLImageElement) || (!buttonTriggers.length && !imageTriggers.length)) return;
+
+    const openModal = (source, alt) => {
+        if (!source) return;
+        modalContent.src = source;
+        modalContent.alt = alt || 'Vista ampliada';
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+    };
 
     const closeModal = () => {
         modal.classList.remove('open');
@@ -123,16 +132,17 @@ function setupImageExpand() {
         modalContent.src = '';
     };
 
-    triggers.forEach((trigger) => {
+    buttonTriggers.forEach((trigger) => {
         trigger.addEventListener('click', () => {
             const source = trigger.getAttribute('data-image-src');
             const alt = trigger.getAttribute('data-image-alt') || 'Vista ampliada';
-            if (!source) return;
+            openModal(source, alt);
+        });
+    });
 
-            modalContent.src = source;
-            modalContent.alt = alt;
-            modal.classList.add('open');
-            modal.setAttribute('aria-hidden', 'false');
+    imageTriggers.forEach((image) => {
+        image.addEventListener('click', () => {
+            openModal(image.getAttribute('src'), image.getAttribute('alt') || 'Vista ampliada');
         });
     });
 
