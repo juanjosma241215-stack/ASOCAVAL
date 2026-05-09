@@ -482,6 +482,46 @@ details[open] summary::after {
     color: #fff;
 }
 
+.image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 5000;
+}
+
+.image-modal.open {
+    display: flex;
+}
+
+.image-modal-content {
+    max-width: min(1100px, 94vw);
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    border: 3px solid var(--accent-gold);
+    background: #fff;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35);
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--primary-coffee);
+    font-size: 1.35rem;
+    cursor: pointer;
+}
+
 .diagnostic-caption-box {
     width: 100%; 
     min-height: 100px; 
