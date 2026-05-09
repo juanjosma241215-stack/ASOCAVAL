@@ -10,194 +10,178 @@
 </head>
 <body>
 
-   <nav class="navbar">
+    <nav class="navbar">
         <div class="logo">ASOCAVAL</div>
-        <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
-            <i class="fas fa-bars"></i>
-        </button>
         <ul class="nav-links">
             <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
             <li><a href="introduccion.html"><i class="fas fa-info-circle"></i> Introduccion</a></li>
             <li><a href="realidadempresarial.html"><i class="fas fa-building"></i> Realidad Empresarial</a></li>
             <li><a href="realidadeconomica.html"><i class="fas fa-chart-line"></i> Realidad Economica</a></li>
-            <li><a href="analisisentorno.html"><i class="fa-solid fa-magnifying-glass-chart"></i> Análisis de entorno</a></li>
         </ul>
     </nav>
 
-    <img src="img/logo.jpg" class="banner-image" alt="Banner Asocaval">
+    <img src="img/logo.jpg" alt="Banner Asocaval" class="banner-image">
 
     <main class="container">
-        
         <section class="info-section description-layout">
             <div class="info-text">
-                <h2 class="info-title">Descripción</h2>
+                <h2 class="info-title">Descripcion</h2>
                 <p class="info-description">
-                   Somos una organización de 74 familias en Valdivia, Antioquia, comprometidas con la transformación social. Con más de 15 años de trayectoria, lideramos la sustitución de cultivos ilícitos mediante la producción de cacao sostenible, consolidando una economía de paz y resiliencia a orillas del Río Cauca.
+                    Somos una organizacion de 74 familias en Valdivia, Antioquia, comprometidas con la transformacion social. Con mas de 15 anos de trayectoria, lideramos la sustitucion de cultivos ilicitos mediante la produccion de cacao sostenible, consolidando una economia de paz y resiliencia a orillas del Rio Cauca.
                 </p>
-             <div class="business-toggle-item">
-                        <button type="button" class="business-toggle-btn" data-toggle-target="bienes-content">Bienes</button>
-                        <div id="bienes-content" class="business-toggle-content" hidden>
-                            <p><br><strong>Cacao en Grano:</strong> Grano seco de calidad superior, clasificado como fino de aroma y sabor, ideal para chocolatería gourmet.<br><strong>Material Vegetal:</strong> Producción de plántulas de cacao injertadas en vivero certificado por el ICA, brindando genética de alto rendimiento.</p>
-                        </div>
-                    </div>
-                    
-                           <div class="business-toggle-group">
-                    <div class="business-toggle-item">
-                        <button type="button" class="business-toggle-btn" data-toggle-target="servicios-content">Servicios</button>
-                        <div id="servicios-content" class="business-toggle-content" hidden>
-                            <p><br><strong>Asistencia técnica:</strong> acompañamiento y asesoría técnica para los asociados y productores de cacao.<br><strong>Fondo rotatorio:</strong> créditos o apoyo económico para cubrir necesidades del cultivo y facilitar la inversión.<br><strong>Venta de material vegetal:</strong> suministro de plantas y material certificado para expandir cacao de buena calidad y con mayor rentabilidad.<br><strong>Asesoría en Proyectos Productivos:</strong> Brindan acompañamiento en la formulación y ejecución de proyectos para el sector rural, gestionando recursos y estructurando instituciones para su desarrollo.<br><strong>Comercialización de Cacao:</strong> Se encargan de vender cacao bajo estándares de calidad, mediante alianzas comerciales y plataformas de exportación que impulsan el crecimiento económico de los productores.<br><strong>Capacitación en Temas Productivos:</strong> Ofrecen formación para fortalecer la cadena productiva, mejorar la competitividad y optimizar el desarrollo de productos en el mercado.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <img src="img/descripcionima.jpg" class="info-image" alt="Descripción Asocaval">
+            <img src="img/descripcionima.jpg" alt="Imagen descriptiva 1" class="info-image">
         </section>
-<section class="info-section section-full-width">
-    <div class="info-text">
-        <h2 class="info-title">Business Model Canvas</h2>
-        
-    </div>
-    <div class="pdf-container">
-        <iframe src="docs/BMC.pdf" class="bmc-iframe"></iframe>
-    </div>
-</section>
 
-        <section class="info-section column-layout">
-            <h2 class="info-title">Diagnóstico de Internacionalización</h2>
-            <div class="pdf-grid-ltr">
-                
-                <a href="docs/Cuestionario.pdf" target="_blank" class="card-link">
-                    <div class="diagnostic-card">
-                        <div class="card-label"><i class="fas fa-file-pdf"></i> Cuestionario</div>
-                        <div class="iframe-overlay">Toca para abrir</div>
-                        <iframe src="docs/Cuestionario.pdf" class="card-preview"></iframe>
+        <section class="portfolio-section">
+            <h2 class="section-title">Portafolio</h2>
+            <div class="portfolio-grid">
+                <details class="portfolio-card">
+                    <summary class="card-header">
+                        <i class="fas fa-box-open"></i> Bienes
+                    </summary>
+                    <div class="content">
+                        <ul>
+                            <li><strong>Cacao en Grano:</strong> Grano seco de calidad superior, clasificado como fino de aroma y sabor, ideal para chocolateria gourmet.</li>
+                            <li><strong>Material Vegetal:</strong> Produccion de plantulas de cacao injertadas en vivero certificado por el ICA, brindando genetica de alto rendimiento.</li>
+                        </ul>
                     </div>
-                </a>
+                </details>
 
-                <a href="docs/Ponderación.pdf" target="_blank" class="card-link">
-                    <div class="diagnostic-card">
-                        <div class="card-label"><i class="fas fa-file-pdf"></i> Ponderación</div>
-                        <div class="iframe-overlay">Toca para abrir</div>
-                        <iframe src="docs/Ponderación.pdf" class="card-preview"></iframe>
+                <details class="portfolio-card">
+                    <summary class="card-header">
+                        <i class="fas fa-handshake"></i> Servicios
+                    </summary>
+                    <div class="content">
+                        <ul>
+                            <li><strong>Asistencia tecnica:</strong> acompanamiento y asesoria tecnica para los asociados y productores de cacao.</li>
+                            <li><strong>Fondo rotatorio:</strong> creditos o apoyo economico para cubrir necesidades del cultivo y facilitar la inversion.</li>
+                            <li><strong>Venta de material vegetal:</strong> suministro de plantas y material certificado para expandir cacao de buena calidad y con mayor rentabilidad.</li>
+                            <li><strong>Asesoria en Proyectos Productivos:</strong> brindan acompanamiento en la formulacion y ejecucion de proyectos para el sector rural.</li>
+                            <li><strong>Comercializacion de Cacao:</strong> venden cacao bajo estandares de calidad mediante alianzas comerciales y plataformas de exportacion.</li>
+                            <li><strong>Capacitacion en Temas Productivos:</strong> ofrecen formacion para fortalecer la cadena productiva y mejorar la competitividad.</li>
+                        </ul>
                     </div>
-                </a>
-
-                <a href="docs/Resultados.pdf" target="_blank" class="card-link">
-                    <div class="diagnostic-card">
-                        <div class="card-label"><i class="fas fa-file-pdf"></i> Resultados</div>
-                        <div class="iframe-overlay">Toca para abrir</div>
-                        <iframe src="docs/Resultados.pdf" class="card-preview"></iframe>
-                    </div>
-                </a>
-
+                </details>
             </div>
         </section>
 
-        <section class="info-section column-layout">
-            <h2 class="info-title">Gráficos de internacionalización</h2>
-            <div class="gallery-grid-rtl">
-                
-                <div class="diagnostic-gallery-item">
-                    <a href="img/grafica1.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica1.jpg" class="gallery-img">
-                        <div class="img-zoom-hint">Ver pantalla completa</div>
-                    </a>
-                    <div class="diagnostic-caption-box">
-                        Universidad Ceipa (2026). Ceipa center OIER <br>
-                        <a href="https://app.powerbi.com/view?r=eyJrIjoiNjQ5YWFlYTItNjdmMC00OGNlLTllNzUtZjQ0ODUwMDE0OTc0IiwidCI6IjcxZDNhMjRlLTRmNjItNGRlYS05YjI1LTczZmUzOTA2MDAwZSIsImMiOjR9&pageName=6aecc902073086ab508a" target="_blank">Ver Power BI</a>
-                    </div>
-                </div>
-
-                <div class="diagnostic-gallery-item">
-                    <a href="img/grafica2.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica2.jpg" class="gallery-img">
-                    </a>
-                    <div class="diagnostic-caption-box">
-                        Legiscomex - Inteligencia comercial <br>
-                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank">Acceder a Legiscomex</a>
-                    </div>
-                </div>
-
-                <div class="diagnostic-gallery-item">
-                    <a href="img/grafica3.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica3.jpg" class="gallery-img">
-                    </a>
-                    <div class="diagnostic-caption-box">
-                        Estadísticas Legiscomex <br>
-                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank">Ver fuente</a>
-                    </div>
-                </div>
-
-                <div class="diagnostic-gallery-item">
-                    <a href="img/grafica4.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica4.jpg" class="gallery-img">
-                    </a>
-                    <div class="diagnostic-caption-box">
-                        Análisis de mercado <br>
-                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/" target="_blank">Ver enlace</a>
-                    </div>
-                </div>
-                   <div class="diagnostic-gallery-item">
-                    <a href="img/grafica5.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica5.jpg" class="gallery-img">
-                    </a>
-                    <div class="diagnostic-caption-box">
-                     Indicadores Economicos<br>
-                        <a href="https://ceipa.metaproxy.org/CEIPA?url=https://071020gmp-y-https-www-legiscomex-com.ceipa.metaproxy.org/
-                    " target="_blank">Ver enlace</a>
-                    </div>
-                </div>
-
-
-                <div class="diagnostic-gallery-item">
-                    <a href="img/grafica6.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica6.jpg" class="gallery-img">
-                    </a>
-                    <div class="diagnostic-caption-box">
-                        International Trade Centre. (2026). Trade Map: Trade statistics <br>
-                        <a href="https://www.trademap.org/Index.aspx" target="_blank">Ver Trade Map</a>
-                    </div>
-                </div>
-
-                <div class="diagnostic-gallery-item">
-                    <a href="img/grafica7.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica7.jpg" class="gallery-img">
-                    </a>
-                    <div class="diagnostic-caption-box">
-                        Trade Map - Desarrollo de negocios internacionales <br>
-                        <a href="https://www.trademap.org/Index.aspx" target="_blank">Ver fuente</a>
-                    </div>
-                </div>
-
-                <div class="diagnostic-gallery-item">
-                    <a href="img/grafica8.jpg" target="_blank" class="image-link">
-                        <img src="img/grafica8.jpg" class="gallery-img">
-                    </a>
-                    <div class="diagnostic-caption-box">
-                        Estadísticas ITC <br>
-                        <a href="https://www.trademap.org/Index.aspx" target="_blank">Ver sitio oficial</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <section class="info-section section-full-width">
-    <div class="info-text">
-        <h2 class="info-title">DOFA</h2>
-        
-    </div>
-    <div class="pdf-container">
-        <iframe src="docs/DOFA.pdf" class="bmc-iframe"></iframe>
-    </div>
-</section>
- <section class="info-section">
+        <section class="info-section">
             <div class="info-text">
-                <h2 class="info-title">Objetivo de internacionalización</h2>
+                <h2 class="info-title">Business Model Canvas</h2>
+            </div>
+            <div class="pdf-container">
+                <iframe src="docs/BMC.pdf" class="bmc-iframe" title="Business Model Canvas"></iframe>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="description-layout">
+                <div class="info-text">
+                    <h2 class="info-title">Diagnostico de potencialidades de internacionalizacion</h2>
+                    <p class="info-description">
+                        Su realidad empresarial refleja oportunidades de innovacion, fortalecimiento comercial y mejora continua en la gestion de recursos, produccion y posicionamiento dentro del mercado.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="section-subtitle">Archivos PDF</h3>
+                    <div class="pdf-grid-ltr">
+                        <div class="diagnostic-card">
+                            <strong>Cuestionario</strong>
+                            <iframe src="docs/Cuestionario.pdf" class="card-preview" title="Cuestionario PDF"></iframe>
+                            <a href="docs/Cuestionario.pdf" target="_blank" class="iframe-overlay">Ver PDF</a>
+                        </div>
+                        <div class="diagnostic-card">
+                            <strong>Ponderacion</strong>
+                            <iframe src="docs/Ponderación.pdf" class="card-preview" title="Ponderacion PDF"></iframe>
+                            <a href="docs/Ponderación.pdf" target="_blank" class="iframe-overlay">Ver PDF</a>
+                        </div>
+                        <div class="diagnostic-card">
+                            <strong>Resultados</strong>
+                            <iframe src="docs/Resultados.pdf" class="card-preview" title="Resultados PDF"></iframe>
+                            <a href="docs/Resultados.pdf" target="_blank" class="iframe-overlay">Ver PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle" style="margin-top: 30px;">Graficas</h3>
+            <div class="gallery-grid-rtl">
+                <div>
+                    <img src="img/foto1.jpg" alt="Grafica 1" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 1"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto2.jpg" alt="Grafica 2" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 2"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto3.jpg" alt="Grafica 3" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 3"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto4.jpg" alt="Grafica 4" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 4"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto5.jpg" alt="Grafica 5" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 5"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto6.jpg" alt="Grafica 6" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 6"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto7.jpg" alt="Grafica 7" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 7"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto8.jpg" alt="Grafica 8" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 8"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto9.jpg" alt="Grafica 9" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 9"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto10.jpg" alt="Grafica 10" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 10"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto11.jpg" alt="Grafica 11" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 11"></textarea>
+                </div>
+                <div>
+                    <img src="img/foto12.jpg" alt="Grafica 12" class="gallery-img">
+                    <textarea class="diagnostic-caption-box" rows="3" placeholder="Texto de la grafica 12"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-text">
+                <h2 class="info-title">DOFA</h2>
                 <p class="info-description">
-                  Exportar 50 toneladas de cacao fino de aroma en un periodo de 12 meses del año 2027, distribuidas equitativamente entre Indonesia y Malasia, consolidando a ASOCAVAL como una compañía referente en cacao sostenible y de alto valor agregado. Este objetivo se logrará mediante una estrategia de storytelling internacional que visibilice su historia de transformación territorial, la sustitución de cultivos ilícitos y su compromiso con el desarrollo sostenible, fortaleciendo la conexión con compradores estratégicos y diferenciando la marca en mercados altamente competitivos.
+                    El trabajo colaborativo entre sus integrantes permite fortalecer la toma de decisiones, la planificacion estrategica y la generacion de valor para la comunidad de Valdivia.
                 </p>
             </div>
-            </section>
+            <div class="info-media">
+                <img src="https://via.placeholder.com/600x400?text=Imagen+4" alt="Imagen descriptiva 4" class="info-image">
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-text">
+                <h2 class="info-title">Objetivo de internacionalizacion</h2>
+                <p class="info-description">
+                    Esta seccion puede adaptarse para presentar fortalezas, retos, proyeccion o cualquier aspecto relevante de la empresa, manteniendo una estructura visual clara, ordenada y responsive.
+                </p>
+            </div>
+            <div class="info-media">
+                <img src="https://via.placeholder.com/600x400?text=Imagen+5" alt="Imagen descriptiva 5" class="info-image">
+            </div>
+        </section>
     </main>
 
 </body>

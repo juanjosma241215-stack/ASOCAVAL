@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavbarState();
     setupMobileMenu();
     setupActiveLinks();
+    setupImageExpand();
     setupRevealAnimations();
     setupDetailsBehavior();
     setupHeroMotion();
@@ -107,6 +108,49 @@ function setupBackToTop() {
 
     toggleButton();
     window.addEventListener('scroll', toggleButton, { passive: true });
+}
+
+function setupImageExpand() {
+    const modal = document.getElementById('image-modal');
+    const modalContent = document.getElementById('image-modal-content');
+    const modalClose = document.getElementById('image-modal-close');
+    const triggers = document.querySelectorAll('[data-expand-image]');
+    if (!(modal instanceof HTMLElement) || !(modalContent instanceof HTMLImageElement) || !triggers.length) return;
+
+    const closeModal = () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        modalContent.src = '';
+    };
+
+    triggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+            const source = trigger.getAttribute('data-image-src');
+            const alt = trigger.getAttribute('data-image-alt') || 'Vista ampliada';
+            if (!source) return;
+
+            modalContent.src = source;
+            modalContent.alt = alt;
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+        });
+    });
+
+    if (modalClose instanceof HTMLButtonElement) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('open')) {
+            closeModal();
+        }
+    });
 }
 
 function setupNavbarState() {
